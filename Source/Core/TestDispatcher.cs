@@ -1,46 +1,35 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Reactive.Concurrency;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Funt.Core.Models;
 
 namespace Funt.Core
 {
     public class TestDispatcher
     {
-        public IEnumerable<TestResult> EnqueueTests(IEnumerable<TestDescriptor> tests)
+        public IEnumerable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
         {
-            var results = new ConcurrentQueue<TestResult>();
-            var newResultAddedEvent = new ManualResetEventSlim(false);
-
-            var dispatchTask = Task.Factory.StartNew(() => SplitAndRunTests(tests, results, newResultAddedEvent));
-
-            do
-            {
-                newResultAddedEvent.Wait(1000);
-
-                TestResult result;
-                while (results.TryDequeue(out result))
-                {
-                    yield return result;
-                }
-
-                newResultAddedEvent.Reset();
-            } while (!dispatchTask.IsCompleted);
+            return Observable
+                    .Create<TestResult>(o => SplitAndRunTests(tests, o))
+                    .SubscribeOn(Scheduler.Default)
+                    .ToEnumerable();
         }
 
-        private void SplitAndRunTests(IEnumerable<TestDescriptor> tests, ConcurrentQueue<TestResult> results, ManualResetEventSlim newResultAddedEvent)
+        private IDisposable SplitAndRunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
             foreach (var test in tests)
             {
-                results.Enqueue(new TestResult
+                observer.OnNext(new TestResult
                                     {
                                         Test = test,
                                         IsSuccess = true
                                     });
-
-                newResultAddedEvent.Set();
             }
+
+            observer.OnCompleted();
+            return Disposable.Empty;
         }
     }
 }
