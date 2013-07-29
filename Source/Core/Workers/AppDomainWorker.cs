@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Threading;
 using Funt.Core.Models;
 
 namespace Funt.Core.Workers
@@ -28,6 +29,8 @@ namespace Funt.Core.Workers
                                         Test = test,
                                         IsSuccess = random.Next(20) != 0
                                     });
+
+                Thread.Sleep(random.Next(100));
             }
 
             observer.OnCompleted();
