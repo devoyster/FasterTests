@@ -40,6 +40,7 @@
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reactive.Core">
       <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>
@@ -50,6 +51,9 @@
     <Reference Include="System.Reactive.Linq">
       <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net40\System.Reactive.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reactive.Runtime.Remoting">
+      <HintPath>..\packages\Rx-Remoting.2.1.30214.0\lib\Net40\System.Reactive.Runtime.Remoting.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -59,9 +63,17 @@
     <Compile Include="Models\TestResult.cs" />
     <Compile Include="Nunit\NunitTestInspector.cs" />
     <Compile Include="TestDispatcher.cs" />
+    <Compile Include="Workers\AppDomainWorker.cs" />
+    <Compile Include="Workers\TestWorkersPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{ff3e3b74-0880-4e11-b655-58e76e38389b}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

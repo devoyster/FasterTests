@@ -1,35 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reactive.Concurrency;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Funt.Core.Models;
+using Funt.Core.Workers;
+using Funt.Helpers;
+using System.Linq;
 
 namespace Funt.Core
 {
     public class TestDispatcher
     {
+        private readonly TestWorkersPool _testWorkersPool;
+
+        public TestDispatcher(TestWorkersPool testWorkersPool)
+        {
+            _testWorkersPool = testWorkersPool;
+        }
+
         public IEnumerable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
         {
-            return Observable
-                    .Create<TestResult>(o => SplitAndRunTests(tests, o))
-                    .SubscribeOn(Scheduler.Default)
+            var batches = SplitTests(tests);
+            var observables = batches.Select(_testWorkersPool.RunTestsAsync);
+
+            return observables
+                    .Merge()
                     .ToEnumerable();
         }
 
-        private IDisposable SplitAndRunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
+        private IEnumerable<IEnumerable<TestDescriptor>> SplitTests(IEnumerable<TestDescriptor> tests)
         {
-            foreach (var test in tests)
-            {
-                observer.OnNext(new TestResult
-                                    {
-                                        Test = test,
-                                        IsSuccess = true
-                                    });
-            }
-
-            observer.OnCompleted();
-            return Disposable.Empty;
+            var maxDegreeOfParallelism = Environment.ProcessorCount;
+            return tests.SplitInEqualBatches(maxDegreeOfParallelism);
         }
     }
 }
