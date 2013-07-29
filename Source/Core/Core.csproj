@@ -48,7 +48,9 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Models\TestDescriptor.cs" />
+    <Compile Include="Models\TestResult.cs" />
     <Compile Include="Nunit\NunitTestInspector.cs" />
+    <Compile Include="TestDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Funt.Core;
 using Funt.Core.Nunit;
 using Funt.Helpers;
 using System.Linq;
@@ -16,11 +17,17 @@ namespace Funt.ConsoleHost
             CoreExtensions.Host.InitializeService();
 
             var inspector = new NunitTestInspector();
-            var tests = inspector.FindAllTests(assembly);
+            var tests = inspector.FindAllTests(assembly).ToList();
 
             tests
-                .Select(d => d.Name)
+                .Select(t => t.Name)
                 .ForEach(Console.WriteLine);
+
+            Console.WriteLine("Run results:");
+
+            var dispatcher = new TestDispatcher();
+            var results = dispatcher.EnqueueTests(tests);
+            results.ForEach(r => Console.Write(r.IsSuccess ? '.' : 'F'));
         }
     }
 }
