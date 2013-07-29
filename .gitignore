@@ -1,0 +1,54 @@
+# OS junk
+[Tt]humbs.db
+*.DS_Store
+
+# NuGet
+packages
+
+# VS junk
+*.[Oo]bj
+*.user
+*.aps
+*.eto
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+# ReSharper
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+# Project files
+[Bb]uild/
+
+# Office Temp Files
+~$*
+
+# Git originals
+*.orig
+
+# NCrunch
+*ncrunch*
+*crunch*.local.xml
