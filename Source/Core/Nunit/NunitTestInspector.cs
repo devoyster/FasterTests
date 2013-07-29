@@ -19,7 +19,7 @@ namespace Funt.Core.Nunit
                     .Select(t => new TestDescriptor
                                      {
                                          Name = t.FullName,
-                                         AssemblyName = assembly.GetName().Name
+                                         Assembly= assembly
                                      });
         }
     }

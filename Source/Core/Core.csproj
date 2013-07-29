@@ -40,7 +40,6 @@
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reactive.Core">
       <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>

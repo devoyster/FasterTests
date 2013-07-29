@@ -26,7 +26,7 @@ namespace Funt.ConsoleHost
             Console.WriteLine("Run results:");
 
             var dispatcher = new TestDispatcher();
-            var results = dispatcher.EnqueueTests(tests);
+            var results = dispatcher.RunTestsAsync(tests);
             results.ForEach(r => Console.Write(r.IsSuccess ? '.' : 'F'));
         }
     }
