@@ -33,7 +33,7 @@ namespace Funt.Core.Nunit
                         var setUpFixtureBuilder = new SetUpFixtureBuilder();
                         var allSetUpFixtureNames = assembly
                                                     .GetTypes()
-                                                    .Where(t => t.Namespace != null && allNamespaces.Any(n => n.Contains(t.Namespace)))
+                                                    .Where(t => string.IsNullOrEmpty(t.Namespace) || allNamespaces.Any(n => n.Contains(t.Namespace)))
                                                     .Where(setUpFixtureBuilder.CanBuildFrom)
                                                     .Select(t => t.FullName);
 
