@@ -14,7 +14,7 @@ namespace Funt.ConsoleHost
         static void Main(string[] args)
         {
             string[][] noParallelGroups = null;
-            if (!string.IsNullOrWhiteSpace(args[1]))
+            if (args.Length > 1 && !string.IsNullOrWhiteSpace(args[1]))
             {
                 noParallelGroups = args[1].Split(';').Select(g => g.Split(',').ToArray()).ToArray();
             }
