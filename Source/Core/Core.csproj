@@ -62,6 +62,7 @@
     <Compile Include="Models\TestDescriptor.cs" />
     <Compile Include="Models\TestResult.cs" />
     <Compile Include="Nunit\NunitTestInspector.cs" />
+    <Compile Include="Nunit\NunitTestRunner.cs" />
     <Compile Include="TestDispatcher.cs" />
     <Compile Include="Workers\AppDomainWorker.cs" />
     <Compile Include="Workers\TestWorkersPool.cs" />

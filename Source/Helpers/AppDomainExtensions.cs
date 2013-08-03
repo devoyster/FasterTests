@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Funt.Helpers
 {
@@ -7,7 +8,7 @@ namespace Funt.Helpers
         public static T CreateInstanceAndUnwrap<T>(this AppDomain domain) where T : MarshalByRefObject
         {
             var type = typeof (T);
-            return (T)domain.CreateInstanceAndUnwrap(type.Assembly.FullName, type.FullName);
+            return (T)domain.CreateInstanceFromAndUnwrap(type.Assembly.Location, type.FullName, false, BindingFlags.Default, null, null, null, null);
         }
     }
 }
