@@ -16,7 +16,15 @@ namespace Funt.ConsoleHost
             string[][] noParallelGroups = null;
             if (args.Length > 1 && !string.IsNullOrWhiteSpace(args[1]))
             {
-                noParallelGroups = args[1].Split(';').Select(g => g.Split(',').ToArray()).ToArray();
+                noParallelGroups = string.IsNullOrEmpty(args[1])
+                                    ? null
+                                    : args[1].Split(';').Select(g => g.Split(',').ToArray()).ToArray();
+            }
+
+            string[] configStringsToPatch = null;
+            if (args.Length > 2 && !string.IsNullOrWhiteSpace(args[2]))
+            {
+                configStringsToPatch = args[2].Split(',');
             }
 
             var inspector = new NunitTestInspector();
@@ -37,7 +45,7 @@ namespace Funt.ConsoleHost
 
             var sw = Stopwatch.StartNew();
 
-            var dispatcher = new TestDispatcher(new TestWorkersPool(), noParallelGroups);
+            var dispatcher = new TestDispatcher(new TestWorkersPool(configStringsToPatch), noParallelGroups);
             var results = dispatcher.RunTestsAsync(tests);
 
             var errors = new List<string>();
