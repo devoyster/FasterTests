@@ -13,6 +13,12 @@ namespace Funt.ConsoleHost
     {
         static void Main(string[] args)
         {
+            string[][] noParallelGroups = null;
+            if (!string.IsNullOrWhiteSpace(args[1]))
+            {
+                noParallelGroups = args[1].Split(';').Select(g => g.Split(',').ToArray()).ToArray();
+            }
+
             var inspector = new NunitTestInspector();
             var tests = inspector
                             .FindAllTests(args[0])
@@ -31,7 +37,7 @@ namespace Funt.ConsoleHost
 
             var sw = Stopwatch.StartNew();
 
-            var dispatcher = new TestDispatcher(new TestWorkersPool());
+            var dispatcher = new TestDispatcher(new TestWorkersPool(), noParallelGroups);
             var results = dispatcher.RunTestsAsync(tests);
 
             var errors = new List<string>();
