@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reactive.Linq;
 using Funt.Core.Models;
 using Funt.Core.Workers;
@@ -20,6 +21,9 @@ namespace Funt.Core
         public IEnumerable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
         {
             var batches = SplitTests(tests);
+
+            Environment.CurrentDirectory = Path.GetDirectoryName(tests.First().AssemblyPath);
+
             var observables = batches.Select(_testWorkersPool.RunTestsAsync);
 
             return observables
