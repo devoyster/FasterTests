@@ -41,8 +41,8 @@ namespace Funt.Core
                             .GroupBy(x => x.group != null ? x.group[0] : x.d.Name)
                             .Select(g => g.Select(x => x.d).ToList())
                             .OrderByDescending(g => g.Count)
-                            .ThenBy(g => g[0].Name)
-                            .ToList();
+                            .ThenBy(g => g[0].Name);
+            var groupedQueue = new Queue<List<TestDescriptor>>(grouped);
 
             var maxDegreeOfParallelism = Environment.ProcessorCount;
 
@@ -56,29 +56,15 @@ namespace Funt.Core
             {
                 var bucket = buckets[i];
 
-                while (grouped.Any())
+                while (groupedQueue.Count > 0 && bucket.Count < batchSize)
                 {
-                    var firstGroup = grouped[0];
-                    grouped.RemoveAt(0);
-                    bucket.AddRange(firstGroup);
-
-                    if (bucket.Count > batchSize)
-                    {
-                        break;
-                    }
-
-                    while (grouped.Any() && bucket.Count + grouped[grouped.Count - 1].Count <= batchSize)
-                    {
-                        var lastGroup = grouped[grouped.Count - 1];
-                        grouped.RemoveAt(grouped.Count - 1);
-                        bucket.AddRange(lastGroup);
-                    }
+                    bucket.AddRange(groupedQueue.Dequeue());
                 }
 
-                batchSize = grouped.Sum(g => g.Count) / (maxDegreeOfParallelism - i - 1) + 1;
+                batchSize = groupedQueue.Sum(g => g.Count) / (maxDegreeOfParallelism - i - 1) + 1;
             }
 
-            buckets[buckets.Length - 1].AddRange(grouped.SelectMany(g => g));
+            buckets[buckets.Length - 1].AddRange(groupedQueue.SelectMany(g => g));
 
             return buckets;
         }
