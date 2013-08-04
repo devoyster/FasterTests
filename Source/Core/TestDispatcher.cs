@@ -34,14 +34,18 @@ namespace Funt.Core
 
         private IEnumerable<IEnumerable<TestDescriptor>> SplitTests(IEnumerable<TestDescriptor> tests)
         {
-            var groups = _noParallelGroups ?? new string[0][];
+            var groups = _noParallelGroups;
 
             var grouped = tests
-                            .Select(d => new { d, group = groups.FirstOrDefault(g => g.Any(ns => d.Name.StartsWith(ns))) })
-                            .GroupBy(x => x.group != null ? x.group[0] : x.d.Name)
-                            .Select(g => g.Select(x => x.d).ToList())
-                            .OrderByDescending(g => g.Count)
-                            .ThenBy(g => g[0].Name);
+                            .Select(d => new
+                                             {
+                                                 d,
+                                                 group = groups != null
+                                                            ? groups.FirstOrDefault(g => g.Any(ns => d.Name.StartsWith(ns))).First()
+                                                            : d.Name.Substring(0, d.Name.LastIndexOf('.'))
+                                             })
+                            .GroupBy(x => x.group)
+                            .Select(g => g.Select(x => x.d).ToList());
             var groupedQueue = new Queue<List<TestDescriptor>>(grouped);
 
             var maxDegreeOfParallelism = Environment.ProcessorCount;
