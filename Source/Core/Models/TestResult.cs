@@ -9,5 +9,7 @@ namespace Funt.Core.Models
         public bool IsSuccess { get; set; }
         public bool IsIgnored { get; set; }
         public string ErrorMessage { get; set; }
+        public TimeSpan CpuTime { get; set; }
+        public string AppDomainName { get; set; }
     }
 }
