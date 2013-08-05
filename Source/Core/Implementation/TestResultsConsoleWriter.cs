@@ -6,16 +6,16 @@ using Funt.Helpers;
 
 namespace Funt.Core.Implementation
 {
-    public class TestResultsWriter : ITestResultsWriter
+    public class TestResultsConsoleWriter : ITestResultsConsumer
     {
         private readonly TextWriter _output;
 
-        public TestResultsWriter(TextWriter output)
+        public TestResultsConsoleWriter(TextWriter output)
         {
             _output = output;
         }
 
-        public void Write(IEnumerable<TestResult> results)
+        public void Consume(IEnumerable<TestResult> results)
         {
             _output.WriteLine("Run results:");
 

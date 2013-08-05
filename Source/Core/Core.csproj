@@ -60,14 +60,17 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Implementation\TestDispatcher.cs" />
-    <Compile Include="Implementation\TestResultsWriter.cs" />
+    <Compile Include="Implementation\TestResultsConsoleWriter.cs" />
+    <Compile Include="Implementation\TestRunnerEntryPoint.cs" />
     <Compile Include="Integration\Implementation\Nunit\NunitInitializer.cs" />
+    <Compile Include="Integration\Implementation\Nunit\NunitObserverEventListener.cs" />
     <Compile Include="Integration\Implementation\Nunit\NunitTestEngine.cs" />
     <Compile Include="Integration\Implementation\Nunit\NunitTestInspector.cs" />
     <Compile Include="Integration\ITestEngine.cs" />
     <Compile Include="Integration\ITestInspector.cs" />
     <Compile Include="ITestDispatcher.cs" />
-    <Compile Include="ITestResultsWriter.cs" />
+    <Compile Include="ITestResultsConsumer.cs" />
+    <Compile Include="ITestRunnerEntryPoint.cs" />
     <Compile Include="Models\TestDescriptor.cs" />
     <Compile Include="Models\TestResult.cs" />
     <Compile Include="TestRunner.cs" />

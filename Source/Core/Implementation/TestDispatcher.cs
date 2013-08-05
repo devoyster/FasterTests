@@ -4,16 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using Funt.Core.Models;
-using Funt.Core.Workers.Implementation;
+using Funt.Core.Workers;
 
 namespace Funt.Core.Implementation
 {
     public class TestDispatcher : ITestDispatcher
     {
-        private readonly TestWorkersPool _testWorkersPool;
+        private readonly ITestWorkersPool _testWorkersPool;
         private readonly string[][] _noParallelGroups;
 
-        public TestDispatcher(TestWorkersPool testWorkersPool, string[][] noParallelGroups)
+        public TestDispatcher(ITestWorkersPool testWorkersPool, string[][] noParallelGroups)
         {
             _testWorkersPool = testWorkersPool;
             _noParallelGroups = noParallelGroups;

@@ -3,8 +3,8 @@ using Funt.Core.Models;
 
 namespace Funt.Core
 {
-    public interface ITestResultsWriter
+    public interface ITestResultsConsumer
     {
-        void Write(IEnumerable<TestResult> results);
+        void Consume(IEnumerable<TestResult> results);
     }
 }

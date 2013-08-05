@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Funt.Core.Implementation;
 using Funt.Core.Integration.Implementation.Nunit;
 using Funt.Core.Workers.Implementation;
@@ -22,16 +21,12 @@ namespace Funt.Core
         public void Run()
         {
             var inspector = new NunitTestInspector();
-            var tests = inspector
-                            .FindAllTests(_testAssemblyPath)
-                            .OrderBy(d => d.Name)
-                            .ToList();
-
             var dispatcher = new TestDispatcher(new TestWorkersPool(_configStringsToPatch), _noParallelGroups);
-            var results = dispatcher.RunTestsAsync(tests);
+            var writer = new TestResultsConsoleWriter(Console.Out);
 
-            var writer = new TestResultsWriter(Console.Out);
-            writer.Write(results);
+            var entryPoint = new TestRunnerEntryPoint(_testAssemblyPath, inspector, dispatcher, writer);
+
+            entryPoint.Run();
         }
     }
 }
