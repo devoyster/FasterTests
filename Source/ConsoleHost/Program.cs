@@ -1,5 +1,6 @@
 ﻿using Funt.Core;
 using System.Linq;
+using Funt.Core.Models;
 
 namespace Funt.ConsoleHost
 {
@@ -21,8 +22,12 @@ namespace Funt.ConsoleHost
                 configStringsToPatch = args[2].Split(',');
             }
 
-            var runner = new TestRunner(args[0], noParallelGroups, configStringsToPatch);
-            runner.Run();
+            new TestRunner().Run(new TestRunSettings
+                                     {
+                                         AssemblyPath = args[0],
+                                         NoParallelGroups = noParallelGroups,
+                                         ConfigStringsToPatch = configStringsToPatch
+                                     });
         }
     }
 }

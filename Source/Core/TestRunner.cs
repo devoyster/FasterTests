@@ -1,30 +1,17 @@
-﻿using System;
-using Funt.Core.Implementation;
-using Funt.Core.Integration.Implementation.Nunit;
-using Funt.Core.Workers.Implementation;
+﻿using Funt.Core.Infrastructure.Implementation;
+using Funt.Core.Models;
+using SimpleInjector;
 
 namespace Funt.Core
 {
     public class TestRunner
     {
-        private readonly string _testAssemblyPath;
-        private readonly string[][] _noParallelGroups;
-        private readonly string[] _configStringsToPatch;
-
-        public TestRunner(string testAssemblyPath, string[][] noParallelGroups, string[] configStringsToPatch)
+        public void Run(TestRunSettings settings)
         {
-            _testAssemblyPath = testAssemblyPath;
-            _noParallelGroups = noParallelGroups;
-            _configStringsToPatch = configStringsToPatch;
-        }
+            var container = new Container();
+            new DependenciesConfigurator(settings).ConfigureIn(container);
 
-        public void Run()
-        {
-            var inspector = new NunitTestInspector();
-            var dispatcher = new TestDispatcher(new TestWorkersPool(_configStringsToPatch), _noParallelGroups);
-            var writer = new TestResultsConsoleWriter(Console.Out);
-
-            var entryPoint = new TestRunnerEntryPoint(_testAssemblyPath, inspector, dispatcher, writer);
+            var entryPoint = container.GetInstance<ITestRunnerEntryPoint>();
 
             entryPoint.Run();
         }
