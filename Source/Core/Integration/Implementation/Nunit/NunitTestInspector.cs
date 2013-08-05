@@ -5,9 +5,9 @@ using Funt.Core.Models;
 using NUnit.Core;
 using NUnit.Core.Builders;
 
-namespace Funt.Core.Integration.Nunit
+namespace Funt.Core.Integration.Implementation.Nunit
 {
-    public class NunitTestInspector
+    public class NunitTestInspector : ITestInspector
     {
         public IEnumerable<TestDescriptor> FindAllTests(string assemblyPath)
         {

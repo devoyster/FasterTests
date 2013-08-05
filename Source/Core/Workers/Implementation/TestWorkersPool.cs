@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Funt.Core.Models;
 using Funt.Helpers;
 
-namespace Funt.Core.Workers
+namespace Funt.Core.Workers.Implementation
 {
-    public class TestWorkersPool : MarshalByRefObject
+    public class TestWorkersPool : ITestWorkersPool
     {
         private readonly string[] _configStringsToPatch;
         private int _workerIndex;

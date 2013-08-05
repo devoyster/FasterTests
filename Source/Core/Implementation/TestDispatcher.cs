@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reactive.Linq;
 using Funt.Core.Models;
-using Funt.Core.Workers;
-using System.Linq;
+using Funt.Core.Workers.Implementation;
 
-namespace Funt.Core
+namespace Funt.Core.Implementation
 {
-    public class TestDispatcher
+    public class TestDispatcher : ITestDispatcher
     {
         private readonly TestWorkersPool _testWorkersPool;
         private readonly string[][] _noParallelGroups;

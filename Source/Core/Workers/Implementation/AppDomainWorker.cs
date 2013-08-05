@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
-using Funt.Core.Integration.Nunit;
+using Funt.Core.Integration.Implementation.Nunit;
 using Funt.Core.Models;
 
-namespace Funt.Core.Workers
+namespace Funt.Core.Workers.Implementation
 {
     public class AppDomainWorker : MarshalByRefObject
     {

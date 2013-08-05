@@ -11,9 +11,9 @@ using NUnit.Core.Filters;
 
 using TestResult = Funt.Core.Models.TestResult;
 
-namespace Funt.Core.Integration.Nunit
+namespace Funt.Core.Integration.Implementation.Nunit
 {
-    public class NunitTestEngine
+    public class NunitTestEngine : ITestEngine
     {
         public IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
         {

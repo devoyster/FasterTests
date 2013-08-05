@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Funt.Core.Integration.Nunit;
-using Funt.Core.Workers;
+using Funt.Core.Implementation;
+using Funt.Core.Integration.Implementation.Nunit;
+using Funt.Core.Workers.Implementation;
 
 namespace Funt.Core
 {

@@ -1,6 +1,6 @@
-﻿using NUnit.Core;
+using NUnit.Core;
 
-namespace Funt.Core.Integration.Nunit
+namespace Funt.Core.Integration.Implementation.Nunit
 {
     public static class NunitInitializer
     {

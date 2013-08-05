@@ -59,16 +59,21 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Integration\Nunit\NunitInitializer.cs" />
-    <Compile Include="Integration\Nunit\NunitTestInspector.cs" />
-    <Compile Include="Integration\Nunit\NunitTestEngine.cs" />
+    <Compile Include="Implementation\TestDispatcher.cs" />
+    <Compile Include="Implementation\TestResultsWriter.cs" />
+    <Compile Include="Integration\Implementation\Nunit\NunitInitializer.cs" />
+    <Compile Include="Integration\Implementation\Nunit\NunitTestEngine.cs" />
+    <Compile Include="Integration\Implementation\Nunit\NunitTestInspector.cs" />
+    <Compile Include="Integration\ITestEngine.cs" />
+    <Compile Include="Integration\ITestInspector.cs" />
+    <Compile Include="ITestDispatcher.cs" />
+    <Compile Include="ITestResultsWriter.cs" />
     <Compile Include="Models\TestDescriptor.cs" />
     <Compile Include="Models\TestResult.cs" />
-    <Compile Include="TestDispatcher.cs" />
-    <Compile Include="TestResultsWriter.cs" />
     <Compile Include="TestRunner.cs" />
-    <Compile Include="Workers\AppDomainWorker.cs" />
-    <Compile Include="Workers\TestWorkersPool.cs" />
+    <Compile Include="Workers\Implementation\AppDomainWorker.cs" />
+    <Compile Include="Workers\Implementation\TestWorkersPool.cs" />
+    <Compile Include="Workers\ITestWorkersPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

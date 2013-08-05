@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Funt.Core.Models;
 using Funt.Helpers;
 
-namespace Funt.Core
+namespace Funt.Core.Implementation
 {
-    public class TestResultsWriter
+    public class TestResultsWriter : ITestResultsWriter
     {
         private readonly TextWriter _output;
 
