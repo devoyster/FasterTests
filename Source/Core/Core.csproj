@@ -64,6 +64,8 @@
     <Compile Include="Nunit\NunitTestInspector.cs" />
     <Compile Include="Nunit\NunitTestRunner.cs" />
     <Compile Include="TestDispatcher.cs" />
+    <Compile Include="TestResultsWriter.cs" />
+    <Compile Include="TestRunner.cs" />
     <Compile Include="Workers\AppDomainWorker.cs" />
     <Compile Include="Workers\TestWorkersPool.cs" />
   </ItemGroup>

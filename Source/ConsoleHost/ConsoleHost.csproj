@@ -50,10 +50,6 @@
       <Project>{43855e36-6ea6-4492-8f7c-df56e3afc662}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
-      <Project>{ff3e3b74-0880-4e11-b655-58e76e38389b}</Project>
-      <Name>Helpers</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
