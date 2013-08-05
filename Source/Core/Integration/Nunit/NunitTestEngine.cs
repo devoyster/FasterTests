@@ -1,29 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
 using Funt.Core.Models;
-using System.Linq;
 using NUnit.Core;
 using NUnit.Core.Builders;
 using NUnit.Core.Filters;
 
 using TestResult = Funt.Core.Models.TestResult;
 
-namespace Funt.Core.Nunit
+namespace Funt.Core.Integration.Nunit
 {
-    public class NunitTestRunner
+    public class NunitTestEngine
     {
         public IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
         {
             return Observable.Create<TestResult>(
                 observer =>
                     {
-                        if (!CoreExtensions.Host.Initialized)
-                        {
-                            CoreExtensions.Host.InitializeService();
-                        }
+                        NunitInitializer.EnsureInitialized();
 
                         var assemblyPath = tests.First().AssemblyPath;
                         var assembly = Assembly.LoadFrom(assemblyPath);
@@ -89,10 +86,6 @@ namespace Funt.Core.Nunit
         {
             _observer.OnNext(new TestResult
                                  {
-                                     Test = new TestDescriptor
-                                                {
-                                                    Name = result.FullName
-                                                },
                                      IsSuccess = result.IsSuccess,
                                      IsIgnored = result.ResultState == ResultState.Ignored || result.ResultState == ResultState.Skipped,
                                      ErrorMessage = result.Message + Environment.NewLine + result.StackTrace

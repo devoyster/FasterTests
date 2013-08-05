@@ -1,20 +1,17 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Funt.Core.Models;
-using System.Linq;
 using NUnit.Core;
 using NUnit.Core.Builders;
 
-namespace Funt.Core.Nunit
+namespace Funt.Core.Integration.Nunit
 {
     public class NunitTestInspector
     {
         public IEnumerable<TestDescriptor> FindAllTests(string assemblyPath)
         {
-            if (!CoreExtensions.Host.Initialized)
-            {
-                CoreExtensions.Host.InitializeService();
-            }
+            NunitInitializer.EnsureInitialized();
 
             var assembly = Assembly.LoadFrom(assemblyPath);
 

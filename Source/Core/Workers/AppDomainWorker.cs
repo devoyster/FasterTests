@@ -5,8 +5,8 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
+using Funt.Core.Integration.Nunit;
 using Funt.Core.Models;
-using Funt.Core.Nunit;
 
 namespace Funt.Core.Workers
 {
@@ -42,7 +42,7 @@ namespace Funt.Core.Workers
 
         private IDisposable RunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
-            var nunitRunner = new NunitTestRunner();
+            var nunitRunner = new NunitTestEngine();
 
             nunitRunner
                 .RunTests(tests)

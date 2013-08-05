@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Funt.Core.Nunit;
+using Funt.Core.Integration.Nunit;
 using Funt.Core.Workers;
 
 namespace Funt.Core
