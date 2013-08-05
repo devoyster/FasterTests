@@ -26,7 +26,7 @@ namespace Funt.Core.Workers
                                          ConfigurationFile = PatchConfigFile(Path.GetFileName(assemblyPath) + ".config")
                                      };
 
-            var domain = AppDomain.CreateDomain(_workerIndex.ToString(), null, domainSettings);
+            var domain = AppDomain.CreateDomain("Funt.Worker", null, domainSettings);
 
             var worker = domain.CreateInstanceAndUnwrap<AppDomainWorker>();
             worker.InstallAssemblyResolve();

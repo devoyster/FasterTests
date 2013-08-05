@@ -91,13 +91,11 @@ namespace Funt.Core.Nunit
                                  {
                                      Test = new TestDescriptor
                                                 {
-                                                    Name = result.Test.ClassName
+                                                    Name = result.FullName
                                                 },
                                      IsSuccess = result.IsSuccess,
                                      IsIgnored = result.ResultState == ResultState.Ignored || result.ResultState == ResultState.Skipped,
-                                     ErrorMessage = result.Message + Environment.NewLine + result.StackTrace,
-                                     CpuTime = TimeSpan.FromSeconds(result.Time),
-                                     AppDomainName = AppDomain.CurrentDomain.FriendlyName
+                                     ErrorMessage = result.Message + Environment.NewLine + result.StackTrace
                                  });
         }
 

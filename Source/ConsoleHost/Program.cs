@@ -55,7 +55,7 @@ namespace Funt.ConsoleHost
                                     count++;
                                     if (r.IsSuccess)
                                     {
-                                        Console.Write(r.AppDomainName);
+                                        Console.Write('.');
                                     }
                                     else if (r.IsIgnored)
                                     {
