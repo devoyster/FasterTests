@@ -25,11 +25,11 @@ namespace FasterTests.Core.Implementation
         public void Run()
         {
             var tests = _testInspector
-                            .FindAllTests(_testAssemblyPath)
+                            .LoadAllTestsFrom(_testAssemblyPath)
                             .OrderBy(d => d.Name)
                             .ToList();
 
-            var results = _testDispatcher.RunTestsAsync(tests);
+            var results = _testDispatcher.RunTests(tests);
 
             _testResultsConsumer.Consume(results);
         }

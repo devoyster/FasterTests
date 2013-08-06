@@ -5,6 +5,6 @@ namespace FasterTests.Core.Interfaces
 {
     public interface ITestDispatcher
     {
-        IEnumerable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests);
+        IEnumerable<TestResult> RunTests(IEnumerable<TestDescriptor> tests);
     }
 }

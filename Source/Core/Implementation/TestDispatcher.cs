@@ -20,13 +20,13 @@ namespace FasterTests.Core.Implementation
             _noParallelGroups = noParallelGroups;
         }
 
-        public IEnumerable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
+        public IEnumerable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
         {
             var batches = SplitTests(tests);
 
             Environment.CurrentDirectory = Path.GetDirectoryName(tests.First().AssemblyPath);
 
-            var observables = batches.Select(_testWorkersPool.RunTestsAsync);
+            var observables = batches.Select(_testWorkersPool.RunTests);
 
             return observables
                     .Merge()

@@ -10,7 +10,7 @@ namespace FasterTests.Core.Implementation.Integration.Nunit
 {
     public class NunitTestInspector : ITestInspector
     {
-        public IEnumerable<TestDescriptor> FindAllTests(string assemblyPath)
+        public IEnumerable<TestDescriptor> LoadAllTestsFrom(string assemblyPath)
         {
             NunitInitializer.EnsureInitialized();
 

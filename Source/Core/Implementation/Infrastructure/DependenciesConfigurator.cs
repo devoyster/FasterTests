@@ -3,7 +3,7 @@ using FasterTests.Core.Implementation.Integration.Nunit;
 using FasterTests.Core.Implementation.Workers;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Integration;
-using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 using SimpleInjector;
 

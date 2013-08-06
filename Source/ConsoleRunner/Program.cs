@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using FasterTests.Core;
-using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 
 namespace FasterTests.ConsoleRunner
 {

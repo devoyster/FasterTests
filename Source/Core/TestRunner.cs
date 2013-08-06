@@ -1,6 +1,6 @@
 ﻿using FasterTests.Core.Implementation.Infrastructure;
 using FasterTests.Core.Interfaces;
-using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using SimpleInjector;
 
 namespace FasterTests.Core

@@ -5,6 +5,6 @@ namespace FasterTests.Core.Interfaces.Integration
 {
     public interface ITestInspector
     {
-        IEnumerable<TestDescriptor> FindAllTests(string assemblyPath);
+        IEnumerable<TestDescriptor> LoadAllTestsFrom(string assemblyPath);
     }
 }

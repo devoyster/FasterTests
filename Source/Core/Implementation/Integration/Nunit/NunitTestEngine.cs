@@ -9,6 +9,7 @@ using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 using NUnit.Core.Builders;
 using NUnit.Core.Filters;
+
 using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
 namespace FasterTests.Core.Implementation.Integration.Nunit

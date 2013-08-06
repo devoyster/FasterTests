@@ -18,7 +18,7 @@ namespace FasterTests.Core.Implementation.Workers
             _configStringsToPatch = configStringsToPatch;
         }
 
-        public IObservable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
+        public IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
         {
             var assemblyPath = tests.First().AssemblyPath;
             var domainSettings = new AppDomainSetup
