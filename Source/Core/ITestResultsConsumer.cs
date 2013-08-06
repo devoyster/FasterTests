@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Funt.Core.Models;
+using FasterTests.Core.Models;
 
-namespace Funt.Core
+namespace FasterTests.Core
 {
     public interface ITestResultsConsumer
     {

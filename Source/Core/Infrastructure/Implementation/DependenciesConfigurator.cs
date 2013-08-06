@@ -1,13 +1,13 @@
 ﻿using System;
-using Funt.Core.Implementation;
-using Funt.Core.Integration;
-using Funt.Core.Integration.Implementation.Nunit;
-using Funt.Core.Models;
-using Funt.Core.Workers;
-using Funt.Core.Workers.Implementation;
+using FasterTests.Core.Implementation;
+using FasterTests.Core.Integration;
+using FasterTests.Core.Integration.Implementation.Nunit;
+using FasterTests.Core.Models;
+using FasterTests.Core.Workers;
+using FasterTests.Core.Workers.Implementation;
 using SimpleInjector;
 
-namespace Funt.Core.Infrastructure.Implementation
+namespace FasterTests.Core.Infrastructure.Implementation
 {
     public class DependenciesConfigurator : IDependenciesConfigurator
     {

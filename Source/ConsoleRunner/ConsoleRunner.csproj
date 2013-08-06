@@ -7,8 +7,8 @@
     <ProjectGuid>{746154ED-63A4-42F5-BB7D-746EE353A53C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Funt.ConsoleHost</RootNamespace>
-    <AssemblyName>funtrun</AssemblyName>
+    <RootNamespace>FasterTests.ConsoleRunner</RootNamespace>
+    <AssemblyName>FasterTests-Run</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

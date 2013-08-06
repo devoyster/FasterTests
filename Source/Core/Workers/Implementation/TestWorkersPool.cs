@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Funt.Core.Models;
-using Funt.Helpers;
+using FasterTests.Core.Models;
+using FasterTests.Helpers;
 
-namespace Funt.Core.Workers.Implementation
+namespace FasterTests.Core.Workers.Implementation
 {
     public class TestWorkersPool : ITestWorkersPool
     {

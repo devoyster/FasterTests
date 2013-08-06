@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("Andriy Kozachuk")]
-[assembly: AssemblyProduct("Funt")]
+[assembly: AssemblyProduct("FasterTests")]
 [assembly: AssemblyCopyright("Copyright © Andriy Kozachuk 2013")]
 
 [assembly: ComVisible(false)]

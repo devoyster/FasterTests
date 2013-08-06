@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Funt.Core.Models;
+using FasterTests.Core.Models;
 
-namespace Funt.Core.Integration
+namespace FasterTests.Core.Integration
 {
     public interface ITestEngine
     {

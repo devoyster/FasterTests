@@ -1,6 +1,6 @@
 ﻿using SimpleInjector;
 
-namespace Funt.Core.Infrastructure
+namespace FasterTests.Core.Infrastructure
 {
     public interface IDependenciesConfigurator
     {

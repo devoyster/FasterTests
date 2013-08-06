@@ -1,4 +1,4 @@
-﻿namespace Funt.Core
+﻿namespace FasterTests.Core
 {
     public interface ITestRunnerEntryPoint
     {

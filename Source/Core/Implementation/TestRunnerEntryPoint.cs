@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Funt.Core.Integration;
+using FasterTests.Core.Integration;
 
-namespace Funt.Core.Implementation
+namespace FasterTests.Core.Implementation
 {
     public class TestRunnerEntryPoint : ITestRunnerEntryPoint
     {

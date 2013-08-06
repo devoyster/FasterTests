@@ -1,4 +1,4 @@
-﻿namespace Funt.Core.Models
+﻿namespace FasterTests.Core.Models
 {
     public class TestRunSettings
     {

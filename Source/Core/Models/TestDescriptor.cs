@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Funt.Core.Models
+namespace FasterTests.Core.Models
 {
     [Serializable]
     public class TestDescriptor

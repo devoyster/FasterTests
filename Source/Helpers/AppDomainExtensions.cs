@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Funt.Helpers
+namespace FasterTests.Helpers
 {
     public static class AppDomainExtensions
     {

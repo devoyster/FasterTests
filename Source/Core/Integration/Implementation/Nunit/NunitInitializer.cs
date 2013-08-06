@@ -1,6 +1,6 @@
 using NUnit.Core;
 
-namespace Funt.Core.Integration.Implementation.Nunit
+namespace FasterTests.Core.Integration.Implementation.Nunit
 {
     public static class NunitInitializer
     {

@@ -1,8 +1,8 @@
-﻿using Funt.Core;
-using System.Linq;
-using Funt.Core.Models;
+﻿using System.Linq;
+using FasterTests.Core;
+using FasterTests.Core.Models;
 
-namespace Funt.ConsoleHost
+namespace FasterTests.ConsoleRunner
 {
     internal static class Program
     {

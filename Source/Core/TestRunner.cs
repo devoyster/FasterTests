@@ -1,8 +1,8 @@
-﻿using Funt.Core.Infrastructure.Implementation;
-using Funt.Core.Models;
+﻿using FasterTests.Core.Infrastructure.Implementation;
+using FasterTests.Core.Models;
 using SimpleInjector;
 
-namespace Funt.Core
+namespace FasterTests.Core
 {
     public class TestRunner
     {

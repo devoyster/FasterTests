@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Funt.Core.Models;
+using FasterTests.Core.Models;
 
-namespace Funt.Core.Workers
+namespace FasterTests.Core.Workers
 {
     public interface ITestWorkersPool
     {

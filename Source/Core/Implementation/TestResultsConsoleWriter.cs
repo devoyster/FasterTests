@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Funt.Core.Models;
-using Funt.Helpers;
+using FasterTests.Core.Models;
+using FasterTests.Helpers;
 
-namespace Funt.Core.Implementation
+namespace FasterTests.Core.Implementation
 {
     public class TestResultsConsoleWriter : ITestResultsConsumer
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
-using Funt.Core.Models;
-using Funt.Core.Workers;
+using FasterTests.Core.Models;
+using FasterTests.Core.Workers;
 
-namespace Funt.Core.Implementation
+namespace FasterTests.Core.Implementation
 {
     public class TestDispatcher : ITestDispatcher
     {

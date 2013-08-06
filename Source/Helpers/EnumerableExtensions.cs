@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Funt.Helpers
+namespace FasterTests.Helpers
 {
     public static class EnumerableExtensions
     {
