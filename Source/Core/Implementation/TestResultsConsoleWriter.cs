@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using FasterTests.Core.Models;
+using FasterTests.Core.Interfaces;
+using FasterTests.Core.Interfaces.Models;
 using FasterTests.Helpers;
 
 namespace FasterTests.Core.Implementation

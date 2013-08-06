@@ -46,6 +46,10 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.Interfaces\Core.Interfaces.csproj">
+      <Project>{25706010-0f5b-46d4-a13b-8ed490972f55}</Project>
+      <Name>Core.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{43855e36-6ea6-4492-8f7c-df56e3afc662}</Project>
       <Name>Core</Name>

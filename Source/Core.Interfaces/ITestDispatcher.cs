@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FasterTests.Core.Models;
+using FasterTests.Core.Interfaces.Models;
 
-namespace FasterTests.Core
+namespace FasterTests.Core.Interfaces
 {
     public interface ITestDispatcher
     {

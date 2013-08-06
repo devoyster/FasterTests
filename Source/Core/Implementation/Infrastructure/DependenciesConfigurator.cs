@@ -1,13 +1,14 @@
 ﻿using System;
-using FasterTests.Core.Implementation;
-using FasterTests.Core.Integration;
-using FasterTests.Core.Integration.Implementation.Nunit;
-using FasterTests.Core.Models;
-using FasterTests.Core.Workers;
-using FasterTests.Core.Workers.Implementation;
+using FasterTests.Core.Implementation.Integration.Nunit;
+using FasterTests.Core.Implementation.Workers;
+using FasterTests.Core.Interfaces;
+using FasterTests.Core.Interfaces.Infrastructure;
+using FasterTests.Core.Interfaces.Integration;
+using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Workers;
 using SimpleInjector;
 
-namespace FasterTests.Core.Infrastructure.Implementation
+namespace FasterTests.Core.Implementation.Infrastructure
 {
     public class DependenciesConfigurator : IDependenciesConfigurator
     {

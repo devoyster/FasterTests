@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using FasterTests.Core.Models;
+using FasterTests.Core.Interfaces.Integration;
+using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 using NUnit.Core.Builders;
 
-namespace FasterTests.Core.Integration.Implementation.Nunit
+namespace FasterTests.Core.Implementation.Integration.Nunit
 {
     public class NunitTestInspector : ITestInspector
     {

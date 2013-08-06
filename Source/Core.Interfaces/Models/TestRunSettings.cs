@@ -1,4 +1,4 @@
-﻿namespace FasterTests.Core.Models
+﻿namespace FasterTests.Core.Interfaces.Models
 {
     public class TestRunSettings
     {

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
-using FasterTests.Core.Models;
+using FasterTests.Core.Interfaces.Integration;
+using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 using NUnit.Core.Builders;
 using NUnit.Core.Filters;
-using TestResult = FasterTests.Core.Models.TestResult;
+using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
-namespace FasterTests.Core.Integration.Implementation.Nunit
+namespace FasterTests.Core.Implementation.Integration.Nunit
 {
     public class NunitTestEngine : ITestEngine
     {

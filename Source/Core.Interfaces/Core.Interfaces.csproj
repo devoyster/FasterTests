@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{43855E36-6EA6-4492-8F7C-DF56E3AFC662}</ProjectGuid>
+    <ProjectGuid>{25706010-0F5B-46D4-A13B-8ED490972F55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FasterTests.Core</RootNamespace>
-    <AssemblyName>FasterTests.Core</AssemblyName>
+    <RootNamespace>FasterTests.Core.Interfaces</RootNamespace>
+    <AssemblyName>FasterTests.Core.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -34,60 +34,35 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\packages\SimpleInjector.2.3.0\lib\net40-client\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net40\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net40\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Runtime.Remoting">
-      <HintPath>..\packages\Rx-Remoting.2.1.30214.0\lib\Net40\System.Reactive.Runtime.Remoting.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Implementation\TestDispatcher.cs" />
-    <Compile Include="Implementation\TestResultsConsoleWriter.cs" />
-    <Compile Include="Implementation\TestRunnerEntryPoint.cs" />
-    <Compile Include="Implementation\Infrastructure\DependenciesConfigurator.cs" />
-    <Compile Include="Implementation\Integration\Nunit\NunitInitializer.cs" />
-    <Compile Include="Implementation\Integration\Nunit\NunitObserverEventListener.cs" />
-    <Compile Include="Implementation\Integration\Nunit\NunitTestEngine.cs" />
-    <Compile Include="Implementation\Integration\Nunit\NunitTestInspector.cs" />
-    <Compile Include="TestRunner.cs" />
-    <Compile Include="Implementation\Workers\AppDomainWorker.cs" />
-    <Compile Include="Implementation\Workers\TestWorkersPool.cs" />
+    <Compile Include="Infrastructure\IDependenciesConfigurator.cs" />
+    <Compile Include="Integration\ITestEngine.cs" />
+    <Compile Include="Integration\ITestInspector.cs" />
+    <Compile Include="ITestDispatcher.cs" />
+    <Compile Include="ITestResultsConsumer.cs" />
+    <Compile Include="ITestRunnerEntryPoint.cs" />
+    <Compile Include="Models\TestDescriptor.cs" />
+    <Compile Include="Models\TestResult.cs" />
+    <Compile Include="Models\TestRunSettings.cs" />
+    <Compile Include="Workers\ITestWorkersPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core.Interfaces\Core.Interfaces.csproj">
-      <Project>{25706010-0f5b-46d4-a13b-8ed490972f55}</Project>
-      <Name>Core.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
-      <Project>{ff3e3b74-0880-4e11-b655-58e76e38389b}</Project>
-      <Name>Helpers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

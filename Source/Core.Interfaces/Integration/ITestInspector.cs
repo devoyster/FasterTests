@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using FasterTests.Core.Models;
+using FasterTests.Core.Interfaces.Models;
 
-namespace FasterTests.Core.Integration
+namespace FasterTests.Core.Interfaces.Integration
 {
     public interface ITestInspector
     {

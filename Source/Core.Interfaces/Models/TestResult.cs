@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FasterTests.Core.Models
+namespace FasterTests.Core.Interfaces.Models
 {
     [Serializable]
     public class TestResult

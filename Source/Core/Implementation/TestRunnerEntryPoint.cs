@@ -1,5 +1,6 @@
 ﻿using System.Linq;
-using FasterTests.Core.Integration;
+using FasterTests.Core.Interfaces;
+using FasterTests.Core.Interfaces.Integration;
 
 namespace FasterTests.Core.Implementation
 {

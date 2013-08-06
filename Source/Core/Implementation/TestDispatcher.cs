@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
-using FasterTests.Core.Models;
-using FasterTests.Core.Workers;
+using FasterTests.Core.Interfaces;
+using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Workers;
 
 namespace FasterTests.Core.Implementation
 {

@@ -1,4 +1,4 @@
-﻿namespace FasterTests.Core
+﻿namespace FasterTests.Core.Interfaces
 {
     public interface ITestRunnerEntryPoint
     {
