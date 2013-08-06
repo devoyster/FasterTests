@@ -2,7 +2,6 @@
 using FasterTests.Core.Implementation.Integration.Nunit;
 using FasterTests.Core.Implementation.Workers;
 using FasterTests.Core.Interfaces;
-using FasterTests.Core.Interfaces.Infrastructure;
 using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
@@ -10,7 +9,7 @@ using SimpleInjector;
 
 namespace FasterTests.Core.Implementation.Infrastructure
 {
-    public class DependenciesConfigurator : IDependenciesConfigurator
+    public class DependenciesConfigurator
     {
         private readonly TestRunSettings _settings;
 
