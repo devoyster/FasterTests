@@ -18,8 +18,10 @@ namespace FasterTests.Core.Implementation.Infrastructure
             _settings = settings;
         }
 
-        public void ConfigureIn(Container container)
+        public Container ConfigureContainer()
         {
+            var container = new Container();
+
             container.Register<ITestRunnerEntryPoint>(() => new TestRunnerEntryPoint(_settings.AssemblyPath,
                                                                                      container.GetInstance<ITestInspector>(),
                                                                                      container.GetInstance<ITestDispatcher>(),
@@ -36,6 +38,8 @@ namespace FasterTests.Core.Implementation.Infrastructure
             container.Register<ITestEngine, NunitTestEngine>();
 
             container.Verify();
+
+            return container;
         }
     }
 }

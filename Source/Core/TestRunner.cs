@@ -1,7 +1,6 @@
 ﻿using FasterTests.Core.Implementation.Infrastructure;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Settings;
-using SimpleInjector;
 
 namespace FasterTests.Core
 {
@@ -9,8 +8,7 @@ namespace FasterTests.Core
     {
         public void Run(TestRunSettings settings)
         {
-            var container = new Container();
-            new DependenciesConfigurator(settings).ConfigureIn(container);
+            var container = new DependenciesConfigurator(settings).ConfigureContainer();
 
             var entryPoint = container.GetInstance<ITestRunnerEntryPoint>();
 
