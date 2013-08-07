@@ -34,6 +34,12 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Machine.Fakes">
+      <HintPath>..\packages\Machine.Fakes.1.7.0\lib\net40\Machine.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Fakes.Adapters.Moq">
+      <HintPath>..\packages\Machine.Fakes.Moq.1.7.0\lib\net40\Machine.Fakes.Adapters.Moq.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications.0.5.14\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
@@ -47,6 +53,7 @@
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_failed_test_results_to_console.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_ignored_test_results_to_console.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_successful_test_results_to_console.cs" />
+    <Compile Include="Core\When_test_runner_entry_point_is_invoked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
