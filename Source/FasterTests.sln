@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Interfaces", "Core.Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8AAD6E6D-B790-4DE4-945B-5AF43638A3BB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestAssemblies", "TestAssemblies", "{A27CE0FC-BCEF-4CC5-B328-C54D4F72C95D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.NunitInspectorTestAssembly", "Tests.NunitInspectorTestAssembly\Tests.NunitInspectorTestAssembly.csproj", "{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,8 +53,15 @@ Global
 		{8AAD6E6D-B790-4DE4-945B-5AF43638A3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AAD6E6D-B790-4DE4-945B-5AF43638A3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AAD6E6D-B790-4DE4-945B-5AF43638A3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DF9F23E-154D-40B6-91A0-7A982B0FB3B9} = {A27CE0FC-BCEF-4CC5-B328-C54D4F72C95D}
 	EndGlobalSection
 EndGlobal

@@ -65,6 +65,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\Integration\Nunit\When_NUnit_tests_are_loaded_from_assembly.cs" />
     <Compile Include="Core\ServiceContainerSpecs\TestServices\ServiceWithNamedParameters.cs" />
     <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched.cs" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\Helpers\Helpers.csproj">
       <Project>{ff3e3b74-0880-4e11-b655-58e76e38389b}</Project>
       <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.NunitInspectorTestAssembly\Tests.NunitInspectorTestAssembly.csproj">
+      <Project>{0df9f23e-154d-40b6-91a0-7a982b0fb3b9}</Project>
+      <Name>Tests.NunitInspectorTestAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
