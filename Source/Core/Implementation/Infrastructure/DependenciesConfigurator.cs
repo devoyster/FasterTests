@@ -20,7 +20,7 @@ namespace FasterTests.Core.Implementation.Infrastructure
             container.Register(_settings.NoParallelGroups, "noParallelGroups");
             container.Register(_settings.ConfigStringsToPatch, "configStringsToPatch");
 
-            container.Register(Console.Out, "output");
+            container.Register(_settings.Output ?? Console.Out, "output");
 
             container.RegisterAssembly(GetType().Assembly);
 

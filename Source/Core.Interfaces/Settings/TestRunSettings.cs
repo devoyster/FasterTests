@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace FasterTests.Core.Interfaces.Settings
 {
     public class TestRunSettings
@@ -5,5 +7,6 @@ namespace FasterTests.Core.Interfaces.Settings
         public string AssemblyPath { get; set; }
         public string[][] NoParallelGroups { get; set; }
         public string[] ConfigStringsToPatch { get; set; }
+        public TextWriter Output { get; set; }
     }
 }

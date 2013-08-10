@@ -12,17 +12,15 @@ namespace FasterTests.Core.Implementation.Workers
 {
     public class AppDomainWorker : MarshalByRefObject
     {
-        public void InstallAssemblyResolve()
+        public void InstallAssemblyResolve(string parentDomainBinPath)
         {
-            var funtBinariesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
             AppDomain.CurrentDomain.AssemblyResolve +=
                 (_, e) =>
                     {
                         var name = new AssemblyName(e.Name).Name;
                         try
                         {
-                            return Assembly.LoadFrom(Path.Combine(funtBinariesPath, name) + ".dll");
+                            return Assembly.LoadFrom(Path.Combine(parentDomainBinPath, name) + ".dll");
                         }
                         catch
                         {

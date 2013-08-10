@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reactive.Linq;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers;
@@ -20,6 +21,11 @@ namespace FasterTests.Core.Implementation.Workers
 
         public IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
         {
+            if (!tests.Any())
+            {
+                return Observable.Empty<TestResult>();
+            }
+
             var assemblyPath = tests.First().AssemblyPath;
             var domainSettings = new AppDomainSetup
                                      {
@@ -29,8 +35,8 @@ namespace FasterTests.Core.Implementation.Workers
 
             var domain = AppDomain.CreateDomain("Funt.Worker", null, domainSettings);
 
-            var worker = domain.CreateInstanceAndUnwrap<AppDomainWorker>();
-            worker.InstallAssemblyResolve();
+            var worker = domain.CreateInstanceFromAndUnwrap<AppDomainWorker>();
+            worker.InstallAssemblyResolve(AppDomain.CurrentDomain.BaseDirectory);
 
             return worker.RunTestsAsync(tests);
         }

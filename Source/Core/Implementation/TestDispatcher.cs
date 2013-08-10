@@ -36,7 +36,7 @@ namespace FasterTests.Core.Implementation
         private IEnumerable<IEnumerable<TestDescriptor>> SplitTests(IEnumerable<TestDescriptor> tests)
         {
             var groups = _noParallelGroups;
-            if (groups.Length == 0)
+            if (groups != null && groups.Length == 0)
             {
                 groups = null;
             }
