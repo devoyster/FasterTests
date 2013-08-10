@@ -65,6 +65,12 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\NunitTestEngineSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_green_nunit_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_red_nunit_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_which_throws_an_exception_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_with_setup_fixture_is_invoked.cs" />
     <Compile Include="Core\Integration\Nunit\When_NUnit_tests_are_loaded_from_assembly.cs" />
     <Compile Include="Core\ServiceContainerSpecs\TestServices\ServiceWithNamedParameters.cs" />
     <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />
@@ -95,6 +101,10 @@
     <ProjectReference Include="..\Tests.NunitInspectorTestAssembly\Tests.NunitInspectorTestAssembly.csproj">
       <Project>{0df9f23e-154d-40b6-91a0-7a982b0fb3b9}</Project>
       <Name>Tests.NunitInspectorTestAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.NunitTestAssembly\Tests.NunitTestAssembly.csproj">
+      <Project>{817907a1-b6e7-4c37-8004-b4fc3e93406f}</Project>
+      <Name>Tests.NunitTestAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
