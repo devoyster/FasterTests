@@ -16,7 +16,7 @@ namespace FasterTests.Tests.Core
             output = new StringWriter();
             settings = new TestRunSettings
                            {
-                               AssemblyPath = typeof(Marker).Assembly.Location,
+                               AssemblyPath = typeof(NunitTestAssemblyMarker).Assembly.Location,
                                Output = output
                            };
         };

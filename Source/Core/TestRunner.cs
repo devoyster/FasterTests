@@ -10,9 +10,8 @@ namespace FasterTests.Core
         {
             var container = new DependenciesConfigurator(settings).ConfigureContainer();
 
-            var entryPoint = container.GetInstance<ITestRunnerBootstrapper>();
-
-            entryPoint.Run();
+            var bootstrapper = container.GetInstance<ITestRunnerBootstrapper>();
+            bootstrapper.Run();
         }
     }
 }

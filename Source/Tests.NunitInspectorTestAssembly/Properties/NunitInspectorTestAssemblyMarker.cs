@@ -1,6 +1,6 @@
 ﻿namespace FasterTests.Tests.NunitInspectorTestAssembly.Properties
 {
-    public abstract class Marker
+    public abstract class NunitInspectorTestAssemblyMarker
     {
     }
 }

@@ -45,7 +45,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="EmptyTests.cs" />
-    <Compile Include="Properties\Marker.cs" />
+    <Compile Include="Properties\NunitInspectorTestAssemblyMarker.cs" />
     <Compile Include="Namespace\NamespaceSetupFixture.cs" />
     <Compile Include="Namespace\TestsInNamespace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

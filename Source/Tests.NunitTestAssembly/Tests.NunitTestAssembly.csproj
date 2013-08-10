@@ -47,7 +47,7 @@
     <Compile Include="IgnoredTest.cs" />
     <Compile Include="Namespace\SetUpFixture.cs" />
     <Compile Include="Namespace\TestWithSetUpFixture.cs" />
-    <Compile Include="Properties\Marker.cs" />
+    <Compile Include="Properties\NunitTestAssemblyMarker.cs" />
     <Compile Include="TestWhichThrowsAnException.cs" />
     <Compile Include="TestWithFailingAssert.cs" />
     <Compile Include="PassingTest.cs" />

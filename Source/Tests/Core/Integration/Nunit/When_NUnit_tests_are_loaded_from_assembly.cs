@@ -14,7 +14,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit
         Establish context = () =>
         {
             subject = new NunitTestInspector();
-            nunitTestAssemblyPath = typeof(Marker).Assembly.Location;
+            nunitTestAssemblyPath = typeof(NunitInspectorTestAssemblyMarker).Assembly.Location;
         };
 
         Because of = () =>
