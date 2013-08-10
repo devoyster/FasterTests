@@ -4,17 +4,17 @@ using FasterTests.Core.Interfaces.Integration;
 
 namespace FasterTests.Core.Implementation
 {
-    public class TestRunnerEntryPoint : ITestRunnerEntryPoint
+    public class TestRunnerBootstrapper : ITestRunnerBootstrapper
     {
         private readonly string _testAssemblyPath;
         private readonly ITestInspector _testInspector;
         private readonly ITestDispatcher _testDispatcher;
         private readonly ITestResultsConsumer _testResultsConsumer;
 
-        public TestRunnerEntryPoint(string testAssemblyPath,
-                                    ITestInspector testInspector,
-                                    ITestDispatcher testDispatcher,
-                                    ITestResultsConsumer testResultsConsumer)
+        public TestRunnerBootstrapper(string testAssemblyPath,
+                                      ITestInspector testInspector,
+                                      ITestDispatcher testDispatcher,
+                                      ITestResultsConsumer testResultsConsumer)
         {
             _testAssemblyPath = testAssemblyPath;
             _testInspector = testInspector;

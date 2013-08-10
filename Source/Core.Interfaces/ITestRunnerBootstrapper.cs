@@ -1,6 +1,6 @@
 ﻿namespace FasterTests.Core.Interfaces
 {
-    public interface ITestRunnerEntryPoint
+    public interface ITestRunnerBootstrapper
     {
         void Run();
     }

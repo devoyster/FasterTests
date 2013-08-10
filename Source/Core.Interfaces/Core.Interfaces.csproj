@@ -45,7 +45,7 @@
     <Compile Include="Integration\ITestInspector.cs" />
     <Compile Include="ITestDispatcher.cs" />
     <Compile Include="ITestResultsConsumer.cs" />
-    <Compile Include="ITestRunnerEntryPoint.cs" />
+    <Compile Include="ITestRunnerBootstrapper.cs" />
     <Compile Include="Models\TestDescriptor.cs" />
     <Compile Include="Models\TestResult.cs" />
     <Compile Include="Settings\TestRunSettings.cs" />

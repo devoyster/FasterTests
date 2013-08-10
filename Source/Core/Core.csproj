@@ -61,7 +61,7 @@
     </Compile>
     <Compile Include="Implementation\TestDispatcher.cs" />
     <Compile Include="Implementation\TestResultsConsoleWriter.cs" />
-    <Compile Include="Implementation\TestRunnerEntryPoint.cs" />
+    <Compile Include="Implementation\TestRunnerBootstrapper.cs" />
     <Compile Include="Implementation\Infrastructure\DependenciesConfigurator.cs" />
     <Compile Include="Implementation\Integration\Nunit\NunitInitializer.cs" />
     <Compile Include="Implementation\Integration\Nunit\NunitObserverEventListener.cs" />

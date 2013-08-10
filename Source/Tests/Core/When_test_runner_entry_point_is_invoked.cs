@@ -8,8 +8,8 @@ using Machine.Specifications;
 
 namespace FasterTests.Tests.Core
 {
-    [Subject(typeof(TestRunnerEntryPoint))]
-    public class When_test_runner_entry_point_is_invoked : WithSubject<TestRunnerEntryPoint>
+    [Subject(typeof(TestRunnerBootstrapper))]
+    public class When_test_runner_bootstrapper_is_invoked : WithSubject<TestRunnerBootstrapper>
     {
         Because of = () =>
             Subject.Run();
