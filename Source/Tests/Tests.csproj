@@ -79,7 +79,7 @@
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_failed_test_results_to_console.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_ignored_test_results_to_console.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_successful_test_results_to_console.cs" />
-    <Compile Include="Core\When_test_runner_entry_point_is_invoked.cs" />
+    <Compile Include="Core\When_test_runner_bootstrapper_is_invoked.cs" />
     <Compile Include="TestHelpers\EnumerableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
