@@ -67,6 +67,7 @@
     <Compile Include="Implementation\Integration\Nunit\NunitObserverEventListener.cs" />
     <Compile Include="Implementation\Integration\Nunit\NunitTestEngine.cs" />
     <Compile Include="Implementation\Integration\Nunit\NunitTestInspector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContainer.cs" />
     <Compile Include="TestRunner.cs" />
     <Compile Include="Implementation\Workers\AppDomainWorker.cs" />

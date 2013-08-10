@@ -65,6 +65,8 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\ServiceContainerSpecs\TestServices\ServiceWithNamedParameters.cs" />
+    <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched_with_no_parallel_groups.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_failed_test_results_to_console.cs" />
