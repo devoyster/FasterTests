@@ -1,8 +1,11 @@
-﻿using FasterTests.Core.Implementation.Integration.Nunit;
+﻿using System;
+using System.Collections.Generic;
+using FasterTests.Core.Implementation.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using Machine.Specifications;
 using System.Reactive.Linq;
 using Machine.Specifications.Annotations;
+using System.Linq;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
 {
@@ -20,15 +23,20 @@ namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
 
         protected static void RunTest<T>() where T : class
         {
-            var test = new TestDescriptor
-                           {
-                               Name = typeof(T).FullName,
-                               AssemblyPath = typeof(T).Assembly.Location
-                           };
+            TestResult = RunTests(typeof(T)).Single();
+        }
 
-            var results = subject.RunTests(new[] { test });
+        protected static IList<TestResult> RunTests(params Type[] testTypes)
+        {
+            var tests = testTypes.Select(t => new TestDescriptor
+                                                  {
+                                                      Name = t.FullName,
+                                                      AssemblyPath = t.Assembly.Location
+                                                  });
 
-            TestResult = results.Single();
+            var results = subject.RunTests(tests);
+
+            return results.ToEnumerable().ToList();
         }
     }
 }

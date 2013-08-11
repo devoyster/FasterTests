@@ -2,7 +2,7 @@
 
 namespace FasterTests.Tests.NunitTestAssembly.Namespace
 {
-    public class TestWithSetUpFixture
+    public class TestWithSetupFixture
     {
         [Test]
         public void Method()

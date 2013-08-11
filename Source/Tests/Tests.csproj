@@ -70,7 +70,9 @@
     <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_red_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_which_throws_an_exception_is_executed.cs" />
-    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_with_setup_fixture_is_invoked.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_with_failing_setup_fixture_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_with_setup_fixtures_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\NunitTestEngineSpecs\When_test_with_setup_fixture_is_executed_twice.cs" />
     <Compile Include="Core\Integration\Nunit\When_NUnit_tests_are_loaded_from_assembly.cs" />
     <Compile Include="Core\ServiceContainerSpecs\TestServices\ServiceWithNamedParameters.cs" />
     <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />

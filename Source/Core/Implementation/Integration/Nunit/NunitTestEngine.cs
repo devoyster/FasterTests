@@ -31,7 +31,7 @@ namespace FasterTests.Core.Implementation.Integration.Nunit
                         var setUpFixtureBuilder = new SetUpFixtureBuilder();
                         var allSetUpFixtureNames = assembly
                                                     .GetTypes()
-                                                    .Where(t => string.IsNullOrEmpty(t.Namespace) || allNamespaces.Any(n => n.Contains(t.Namespace)))
+                                                    .Where(t => string.IsNullOrEmpty(t.Namespace) || allNamespaces.Any(n => n.StartsWith(t.Namespace)))
                                                     .Where(setUpFixtureBuilder.CanBuildFrom)
                                                     .Select(t => t.FullName);
 

@@ -44,10 +44,15 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AnotherNamespace\AnotherNamespaceSetupFixture.cs" />
+    <Compile Include="AnotherNamespace\AnotherTestWithSetupFixture.cs" />
+    <Compile Include="FailingNamespace\SetupFixtureWhichThrowsAnException.cs" />
+    <Compile Include="FailingNamespace\TestWithFailingSetupFixture.cs" />
     <Compile Include="IgnoredTest.cs" />
-    <Compile Include="Namespace\SetUpFixture.cs" />
-    <Compile Include="Namespace\TestWithSetUpFixture.cs" />
+    <Compile Include="Namespace\NamespaceSetupFixture.cs" />
+    <Compile Include="Namespace\TestWithSetupFixture.cs" />
     <Compile Include="Properties\NunitTestAssemblyMarker.cs" />
+    <Compile Include="RootSetupFixture.cs" />
     <Compile Include="TestWhichThrowsAnException.cs" />
     <Compile Include="TestWithFailingAssert.cs" />
     <Compile Include="PassingTest.cs" />
