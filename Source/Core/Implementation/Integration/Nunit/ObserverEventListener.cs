@@ -5,11 +5,11 @@ using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
 namespace FasterTests.Core.Implementation.Integration.Nunit
 {
-    public class NunitObserverEventListener : EventListener
+    public class ObserverEventListener : EventListener
     {
         private readonly IObserver<TestResult> _observer;
 
-        public NunitObserverEventListener(IObserver<TestResult> observer)
+        public ObserverEventListener(IObserver<TestResult> observer)
         {
             _observer = observer;
         }

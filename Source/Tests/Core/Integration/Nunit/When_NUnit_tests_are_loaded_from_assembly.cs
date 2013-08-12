@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace FasterTests.Tests.Core.Integration.Nunit
 {
-    [Subject(typeof(NunitTestInspector))]
+    [Subject(typeof(TestInspector))]
     public class When_nunit_tests_are_loaded_from_assembly
     {
         Establish context = () =>
         {
-            subject = new NunitTestInspector();
+            subject = new TestInspector(new TestFrameworkInitializer());
             nunitTestAssemblyPath = typeof(NunitInspectorTestAssemblyMarker).Assembly.Location;
         };
 
@@ -27,7 +27,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit
         It should_not_load_setup_fixtures = () => testNames.ShouldNotContain(typeof(RootSetupFixture).FullName,
                                                                              typeof(NamespaceSetupFixture).FullName);
 
-        private static NunitTestInspector subject;
+        private static TestInspector subject;
         private static string nunitTestAssemblyPath;
         private static List<string> testNames;
     }

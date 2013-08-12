@@ -2,11 +2,14 @@
 using FasterTests.Tests.NunitTestAssembly.FailingNamespace;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
-    [Subject(typeof(NunitTestEngine))]
+    [Subject(typeof(TestEngine))]
     public class When_test_with_failing_setup_fixture_is_executed : NunitTestEngineSpecification
     {
+        Establish context = () =>
+            WhenToldToSetupForReturn(false);
+
         Because of = () =>
             RunTest<TestWithFailingSetupFixture>();
 

@@ -2,9 +2,9 @@
 using FasterTests.Tests.NunitTestAssembly;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
-    [Subject(typeof(NunitTestEngine))]
+    [Subject(typeof(TestEngine))]
     public class When_ignored_nunit_test_is_executed : NunitTestEngineSpecification
     {
         Because of = () =>

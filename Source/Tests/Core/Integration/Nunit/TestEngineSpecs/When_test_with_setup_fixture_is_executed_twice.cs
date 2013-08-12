@@ -1,14 +1,22 @@
 ﻿using FasterTests.Core.Implementation.Integration.Nunit;
+using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
-    [Subject(typeof(NunitTestEngine))]
+    [Subject(typeof(TestEngine))]
     public class When_test_with_setup_fixture_is_executed_twice : NunitTestEngineSpecification
     {
         Establish context = () =>
+        {
             AnotherNamespaceSetupFixture.InvocationCount = 0;
+
+            Configure(r => r.For<string>().Use(typeof(AnotherNamespaceSetupFixture).Assembly.Location));
+            Configure<ISetupFixtureFactory, SetupFixtureFactory>();
+            Configure<ISetupFixturesContext, AssemblySetupFixturesContext>();
+        };
 
         Because of = () =>
             RunTests(typeof(AnotherTestWithSetupFixture), typeof(AnotherTestWithSetupFixture));

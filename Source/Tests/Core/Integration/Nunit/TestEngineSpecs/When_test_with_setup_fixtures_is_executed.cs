@@ -1,12 +1,14 @@
 ﻿using FasterTests.Core.Implementation.Integration.Nunit;
+using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Tests.NunitTestAssembly;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using FasterTests.Tests.NunitTestAssembly.Namespace;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
-    [Subject(typeof(NunitTestEngine))]
+    [Subject(typeof(TestEngine))]
     public class When_test_with_setup_fixtures_is_executed : NunitTestEngineSpecification
     {
         Establish context = () =>
@@ -14,6 +16,10 @@ namespace FasterTests.Tests.Core.Integration.Nunit.NunitTestEngineSpecs
             RootSetupFixture.WasInvoked = false;
             NamespaceSetupFixture.WasInvoked = false;
             AnotherNamespaceSetupFixture.InvocationCount = 0;
+
+            Configure(r => r.For<string>().Use(typeof(AnotherNamespaceSetupFixture).Assembly.Location));
+            Configure<ISetupFixtureFactory, SetupFixtureFactory>();
+            Configure<ISetupFixturesContext, AssemblySetupFixturesContext>();
         };
 
         Because of = () =>

@@ -6,7 +6,10 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
 using FasterTests.Core.Implementation.Integration.Nunit;
+using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
+using System.Linq;
+using FasterTests.Helpers;
 
 namespace FasterTests.Core.Implementation.Workers
 {
@@ -40,11 +43,15 @@ namespace FasterTests.Core.Implementation.Workers
 
         private IDisposable RunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
-            var nunitRunner = new NunitTestEngine();
+            var engine = new TestEngine(new TestFrameworkInitializer(),
+                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureFactory()));
 
-            nunitRunner
-                .RunTests(tests)
-                .Subscribe(observer.OnNext);
+            using (engine)
+            {
+                engine.Results.Subscribe(observer.OnNext);
+
+                tests.ForEach(engine.RunTest);
+            }
 
             observer.OnCompleted();
             return Disposable.Create(() => AppDomain.Unload(AppDomain.CurrentDomain));

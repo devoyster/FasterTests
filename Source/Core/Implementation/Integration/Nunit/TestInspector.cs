@@ -1,26 +1,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
 using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
-using NUnit.Core.Builders;
 
 namespace FasterTests.Core.Implementation.Integration.Nunit
 {
-    public class NunitTestInspector : ITestInspector
+    public class TestInspector : ITestInspector
     {
+        private readonly ITestFrameworkInitializer _initializer;
+
+        public TestInspector(ITestFrameworkInitializer initializer)
+        {
+            _initializer = initializer;
+        }
+
         public IEnumerable<TestDescriptor> LoadAllTestsFrom(string assemblyPath)
         {
-            NunitInitializer.EnsureInitialized();
+            _initializer.EnsureInitialized();
 
             var assembly = Assembly.LoadFrom(assemblyPath);
 
-            var setUpFixtureBuilder = new SetUpFixtureBuilder();
             return assembly
                     .GetTypes()
                     .Where(TestFixtureBuilder.CanBuildFrom)
-                    .Where(t => !setUpFixtureBuilder.CanBuildFrom(t))
+                    .Where(t => !SetUpFixtureBuilderProvider.Instance.CanBuildFrom(t))
                     .Select(t => new TestDescriptor
                                     {
                                         Name = t.FullName,

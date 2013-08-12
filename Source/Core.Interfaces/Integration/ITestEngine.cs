@@ -1,11 +1,12 @@
-using System;
-using System.Collections.Generic;
+﻿using System;
 using FasterTests.Core.Interfaces.Models;
 
 namespace FasterTests.Core.Interfaces.Integration
 {
-    public interface ITestEngine
+    public interface ITestEngine : IDisposable
     {
-        IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests);
+        IObservable<TestResult> Results { get; }
+
+        void RunTest(TestDescriptor test);
     }
 }
