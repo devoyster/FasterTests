@@ -1,6 +1,6 @@
 ﻿using NUnit.Core.Builders;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures
+namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 {
     public static class SetUpFixtureBuilderProvider
     {

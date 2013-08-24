@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Reflection;
-using FasterTests.Core.Implementation;
+using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
 using Machine.Fakes;

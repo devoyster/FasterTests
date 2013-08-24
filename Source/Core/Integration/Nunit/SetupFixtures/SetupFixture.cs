@@ -3,7 +3,7 @@ using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures
+namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 {
     public class SetupFixture : SetUpFixture, ISetupFixture
     {

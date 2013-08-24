@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reflection;
-using FasterTests.Core.Implementation;
+using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers;

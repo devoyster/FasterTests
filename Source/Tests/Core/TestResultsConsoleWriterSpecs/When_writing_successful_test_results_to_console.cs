@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using FasterTests.Core.Implementation;
+using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
 using Machine.Specifications;
 

@@ -5,7 +5,7 @@ using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures
+namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 {
     public class AssemblySetupFixturesContext : ISetupFixturesContext
     {

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixtures;
 using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public class TestInspector : ITestInspector
     {

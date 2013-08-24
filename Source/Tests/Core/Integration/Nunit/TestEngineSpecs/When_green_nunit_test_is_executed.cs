@@ -1,4 +1,4 @@
-﻿using FasterTests.Core.Implementation.Integration.Nunit;
+﻿using FasterTests.Core.Integration.Nunit;
 using FasterTests.Tests.NunitTestAssembly;
 using Machine.Specifications;
 

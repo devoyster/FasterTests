@@ -7,10 +7,9 @@ using FasterTests.Core.Interfaces.Models;
 using System.Reactive.Linq;
 using NUnit.Core;
 using NUnit.Core.Filters;
-
 using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public class TestEngine : ITestEngine
     {

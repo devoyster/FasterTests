@@ -2,7 +2,7 @@
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Integration;
 
-namespace FasterTests.Core.Implementation
+namespace FasterTests.Core
 {
     public class TestRunnerBootstrapper : ITestRunnerBootstrapper
     {

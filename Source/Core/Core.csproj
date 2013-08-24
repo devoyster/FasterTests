@@ -59,23 +59,23 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Implementation\Integration\Nunit\SetupFixtures\AssemblySetupFixturesContext.cs" />
-    <Compile Include="Implementation\Integration\Nunit\SetupFixtures\SetupFixture.cs" />
-    <Compile Include="Implementation\Integration\Nunit\SetupFixtures\SetUpFixtureBuilderProvider.cs" />
-    <Compile Include="Implementation\Integration\Nunit\SetupFixtures\SetupFixtureFactory.cs" />
-    <Compile Include="Implementation\Integration\Nunit\TestEngine.cs" />
-    <Compile Include="Implementation\TestDispatcher.cs" />
-    <Compile Include="Implementation\TestResultsConsoleWriter.cs" />
-    <Compile Include="Implementation\TestRunnerBootstrapper.cs" />
-    <Compile Include="Implementation\Infrastructure\DependenciesConfigurator.cs" />
-    <Compile Include="Implementation\Integration\Nunit\TestFrameworkInitializer.cs" />
-    <Compile Include="Implementation\Integration\Nunit\ObserverEventListener.cs" />
-    <Compile Include="Implementation\Integration\Nunit\TestInspector.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtures\AssemblySetupFixturesContext.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtures\SetupFixture.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtures\SetUpFixtureBuilderProvider.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtures\SetupFixtureFactory.cs" />
+    <Compile Include="Integration\Nunit\TestEngine.cs" />
+    <Compile Include="TestDispatcher.cs" />
+    <Compile Include="TestResultsConsoleWriter.cs" />
+    <Compile Include="TestRunnerBootstrapper.cs" />
+    <Compile Include="Infrastructure\DependenciesConfigurator.cs" />
+    <Compile Include="Integration\Nunit\TestFrameworkInitializer.cs" />
+    <Compile Include="Integration\Nunit\ObserverEventListener.cs" />
+    <Compile Include="Integration\Nunit\TestInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContainer.cs" />
     <Compile Include="TestRunner.cs" />
-    <Compile Include="Implementation\Workers\AppDomainWorker.cs" />
-    <Compile Include="Implementation\Workers\TestWorkersPool.cs" />
+    <Compile Include="Workers\AppDomainWorker.cs" />
+    <Compile Include="Workers\TestWorkersPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -7,7 +7,7 @@ using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers;
 
-namespace FasterTests.Core.Implementation.Workers
+namespace FasterTests.Core.Workers
 {
     public class TestWorkersPool : ITestWorkersPool
     {

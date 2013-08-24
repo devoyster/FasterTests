@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FasterTests.Core.Implementation.Integration.Nunit;
+using FasterTests.Core.Integration.Nunit;
 using FasterTests.Tests.NunitInspectorTestAssembly;
 using FasterTests.Tests.NunitInspectorTestAssembly.Namespace;
 using FasterTests.Tests.NunitInspectorTestAssembly.Properties;

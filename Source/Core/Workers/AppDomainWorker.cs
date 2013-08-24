@@ -5,13 +5,13 @@ using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reflection;
-using FasterTests.Core.Implementation.Integration.Nunit;
-using FasterTests.Core.Implementation.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Integration.Nunit;
+using FasterTests.Core.Integration.Nunit.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 using FasterTests.Helpers;
 
-namespace FasterTests.Core.Implementation.Workers
+namespace FasterTests.Core.Workers
 {
     public class AppDomainWorker : MarshalByRefObject
     {

@@ -1,4 +1,4 @@
-﻿using FasterTests.Core.Implementation.Infrastructure;
+﻿using FasterTests.Core.Infrastructure;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Settings;
 

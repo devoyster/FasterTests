@@ -1,9 +1,8 @@
 using System;
 using NUnit.Core;
-
 using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public class ObserverEventListener : EventListener
     {

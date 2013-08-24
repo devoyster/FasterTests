@@ -1,7 +1,7 @@
 using FasterTests.Core.Interfaces.Integration;
 using NUnit.Core;
 
-namespace FasterTests.Core.Implementation.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public class TestFrameworkInitializer : ITestFrameworkInitializer
     {

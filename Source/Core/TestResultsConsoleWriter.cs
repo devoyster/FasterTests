@@ -5,7 +5,7 @@ using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Helpers;
 
-namespace FasterTests.Core.Implementation
+namespace FasterTests.Core
 {
     public class TestResultsConsoleWriter : ITestResultsConsumer
     {

@@ -7,7 +7,7 @@ using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
 
-namespace FasterTests.Core.Implementation
+namespace FasterTests.Core
 {
     public class TestDispatcher : ITestDispatcher
     {

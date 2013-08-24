@@ -1,7 +1,7 @@
 ﻿using System;
 using FasterTests.Core.Interfaces.Settings;
 
-namespace FasterTests.Core.Implementation.Infrastructure
+namespace FasterTests.Core.Infrastructure
 {
     internal class DependenciesConfigurator
     {
