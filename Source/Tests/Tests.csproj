@@ -34,6 +34,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Fakes">
       <HintPath>..\packages\Machine.Fakes.1.7.0\lib\net40\Machine.Fakes.dll</HintPath>
     </Reference>
@@ -42,6 +45,29 @@
     </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications.0.5.14\lib\net40\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit-console-runner">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit-console-runner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit-gui-runner">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit-gui-runner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.uiexception">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.uiexception.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.uikit">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.uikit.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,6 +91,12 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_fixture_from_global_namespace_is_checked_for_any_test.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_sibling_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_parent_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_nested_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\NunitSetupFixtureSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_same_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\NunitTestEngineSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />
@@ -84,6 +116,7 @@
     <Compile Include="Core\When_tests_are_ran.cs" />
     <Compile Include="Core\When_test_runner_bootstrapper_is_invoked.cs" />
     <Compile Include="TestHelpers\EnumerableExtensions.cs" />
+    <Compile Include="TestHelpers\NunitTestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

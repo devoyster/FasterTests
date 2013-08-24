@@ -46,6 +46,7 @@
     </Compile>
     <Compile Include="AnotherNamespace\AnotherNamespaceSetupFixture.cs" />
     <Compile Include="AnotherNamespace\AnotherTestWithSetupFixture.cs" />
+    <Compile Include="GlobalSetupFixture.cs" />
     <Compile Include="FailingNamespace\SetupFixtureWhichThrowsAnException.cs" />
     <Compile Include="FailingNamespace\TestWithFailingSetupFixture.cs" />
     <Compile Include="IgnoredTest.cs" />

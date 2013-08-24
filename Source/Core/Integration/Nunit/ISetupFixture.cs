@@ -7,7 +7,7 @@ namespace FasterTests.Core.Integration.Nunit
     {
         bool IsSetupSucceeded { get; }
 
-        bool ShouldRunFor(TestDescriptor test);
+        bool IsRequiredFor(TestDescriptor test);
 
         void Setup(IObserver<TestResult> resultsObserver);
 

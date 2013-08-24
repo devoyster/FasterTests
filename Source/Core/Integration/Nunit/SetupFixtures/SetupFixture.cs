@@ -15,14 +15,14 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 
         public bool IsSetupSucceeded { get; private set; }
 
-        public bool ShouldRunFor(TestDescriptor test)
+        public bool IsRequiredFor(TestDescriptor test)
         {
             return string.IsNullOrEmpty(_type.Namespace) || test.Name.StartsWith(_type.Namespace + ".");
         }
 
         public void Setup(IObserver<Interfaces.Models.TestResult> resultsObserver)
         {
-            var testResult = new NUnit.Core.TestResult(this);
+            var testResult = CreateNunitTestResult();
 
             DoOneTimeSetUp(testResult);
             DoOneTimeBeforeTestSuiteActions(testResult);
@@ -37,10 +37,15 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                 return;
             }
 
-            var testResult = new NUnit.Core.TestResult(this);
+            var testResult = CreateNunitTestResult();
 
             DoOneTimeAfterTestSuiteActions(testResult);
             DoOneTimeTearDown(testResult);
+        }
+
+        private NUnit.Core.TestResult CreateNunitTestResult()
+        {
+            return new NUnit.Core.TestResult(this);
         }
     }
 }

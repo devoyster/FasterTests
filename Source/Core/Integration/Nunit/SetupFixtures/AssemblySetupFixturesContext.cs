@@ -23,7 +23,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
         {
             InitializeSetupFixtures();
 
-            var fixturesToTeardown = _activeFixtures.TakeWhile(f => !f.ShouldRunFor(test)).ToList();
+            var fixturesToTeardown = _activeFixtures.TakeWhile(f => !f.IsRequiredFor(test)).ToList();
             foreach (var fixture in fixturesToTeardown)
             {
                 fixture.Teardown(resultsObserver);
@@ -35,7 +35,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                 return false;
             }
 
-            var fixturesToSetup = _allFixtures.Where(f => f.ShouldRunFor(test))
+            var fixturesToSetup = _allFixtures.Where(f => f.IsRequiredFor(test))
                                               .Where(f => !_activeFixtures.Contains(f));
             foreach (var fixture in fixturesToSetup)
             {

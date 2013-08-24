@@ -7,6 +7,7 @@ using Machine.Fakes;
 using System.Linq;
 using FasterTests.Helpers;
 using Machine.Specifications;
+using FasterTests.Tests.TestHelpers;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
@@ -27,11 +28,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 
         protected static IList<TestResult> RunTests(params Type[] testTypes)
         {
-            var tests = testTypes.Select(t => new TestDescriptor
-                                                  {
-                                                      Name = t.FullName,
-                                                      AssemblyPath = t.Assembly.Location
-                                                  });
+            var tests = testTypes.Select(t => t.GetTestDescriptor());
 
             var results = new List<TestResult>();
             Subject.Results.Subscribe(results.Add);
