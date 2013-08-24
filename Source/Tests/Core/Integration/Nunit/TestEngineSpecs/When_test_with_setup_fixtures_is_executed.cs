@@ -12,7 +12,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
     {
         Establish context = () =>
         {
-            RootSetupFixture.WasInvoked = false;
+            RootSetupFixture.SetupWasInvoked = false;
             NamespaceSetupFixture.WasInvoked = false;
             AnotherNamespaceSetupFixture.InvocationCount = 0;
 
@@ -24,7 +24,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
         Because of = () =>
             RunTest<TestWithSetupFixture>();
 
-        It should_invoke_root_setup_fixture = () => RootSetupFixture.WasInvoked.ShouldBeTrue();
+        It should_invoke_root_setup_fixture = () => RootSetupFixture.SetupWasInvoked.ShouldBeTrue();
 
         It should_invoke_namespace_setup_fixture = () => NamespaceSetupFixture.WasInvoked.ShouldBeTrue();
 

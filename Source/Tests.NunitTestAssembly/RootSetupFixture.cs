@@ -5,12 +5,20 @@ namespace FasterTests.Tests.NunitTestAssembly
     [SetUpFixture]
     public class RootSetupFixture
     {
-        public static bool WasInvoked { get; set; }
+        public static bool SetupWasInvoked { get; set; }
+
+        public static bool TeardownWasInvoked { get; set; }
 
         [SetUp]
         public void Setup()
         {
-            WasInvoked = true;
+            SetupWasInvoked = true;
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            TeardownWasInvoked = true;
         }
     }
 }

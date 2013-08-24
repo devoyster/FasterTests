@@ -5,7 +5,7 @@ namespace FasterTests.Core.Integration.Nunit
 {
     public interface ISetupFixture
     {
-        bool IsSetupSucceeded { get; }
+        SetupFixtureState State { get; }
 
         bool IsRequiredFor(TestDescriptor test);
 

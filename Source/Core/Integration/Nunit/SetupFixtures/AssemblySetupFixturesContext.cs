@@ -30,7 +30,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                 _activeFixtures.Pop();
             }
 
-            if (_activeFixtures.Any() && !_activeFixtures.Peek().IsSetupSucceeded)
+            if (_activeFixtures.Any() && !_activeFixtures.Peek().IsSetupSucceeded())
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                 _activeFixtures.Push(fixture);
                 fixture.Setup(resultsObserver);
 
-                if (!fixture.IsSetupSucceeded)
+                if (!fixture.IsSetupSucceeded())
                 {
                     return false;
                 }

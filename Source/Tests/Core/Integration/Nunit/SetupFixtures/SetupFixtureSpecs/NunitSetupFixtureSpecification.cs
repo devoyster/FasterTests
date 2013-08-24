@@ -1,12 +1,11 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixtures;
+using Machine.Fakes;
 using Machine.Specifications;
-using Machine.Specifications.Annotations;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixtures.SetupFixtureSpecs
 {
-    public abstract class NunitSetupFixtureSpecification<TSetupFixture> where TSetupFixture : class
+    public abstract class NunitSetupFixtureSpecification<TSetupFixture> : WithFakes where TSetupFixture : class
     {
-        [UsedImplicitly]
         Establish context = () =>
             Subject = new SetupFixture(typeof(TSetupFixture));
 

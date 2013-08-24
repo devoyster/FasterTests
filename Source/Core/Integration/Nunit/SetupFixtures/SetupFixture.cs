@@ -13,7 +13,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
             _type = type;
         }
 
-        public bool IsSetupSucceeded { get; private set; }
+        public SetupFixtureState State { get; private set; }
 
         public bool IsRequiredFor(TestDescriptor test)
         {
@@ -22,25 +22,35 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 
         public void Setup(IObserver<Interfaces.Models.TestResult> resultsObserver)
         {
-            var testResult = CreateNunitTestResult();
+            if (State != SetupFixtureState.NoSetupExecuted)
+            {
+                throw new InvalidOperationException("Fixture was already set up");
+            }
 
+            var testResult = CreateNunitTestResult();
             DoOneTimeSetUp(testResult);
             DoOneTimeBeforeTestSuiteActions(testResult);
 
-            IsSetupSucceeded = !testResult.IsFailure && !testResult.IsError;
+            State = testResult.IsFailure || testResult.IsError
+                        ? SetupFixtureState.SetupFailed
+                        : SetupFixtureState.SetupSucceeded;
         }
 
         public void Teardown(IObserver<Interfaces.Models.TestResult> resultsObserver)
         {
-            if (!IsSetupSucceeded)
+            switch (State)
             {
-                return;
+                case SetupFixtureState.NoSetupExecuted:
+                    throw new InvalidOperationException("Fixture was not set up");
+
+                case SetupFixtureState.SetupSucceeded:
+                    var testResult = CreateNunitTestResult();
+                    DoOneTimeAfterTestSuiteActions(testResult);
+                    DoOneTimeTearDown(testResult);
+                    break;
             }
 
-            var testResult = CreateNunitTestResult();
-
-            DoOneTimeAfterTestSuiteActions(testResult);
-            DoOneTimeTearDown(testResult);
+            State = SetupFixtureState.NoSetupExecuted;
         }
 
         private NUnit.Core.TestResult CreateNunitTestResult()

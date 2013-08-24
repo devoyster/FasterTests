@@ -62,6 +62,8 @@
     <Compile Include="Integration\Nunit\ISetupFixture.cs" />
     <Compile Include="Integration\Nunit\ISetupFixtureFactory.cs" />
     <Compile Include="Integration\Nunit\ISetupFixturesContext.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtureExtensions.cs" />
+    <Compile Include="Integration\Nunit\SetupFixtureState.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\AssemblySetupFixturesContext.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\SetupFixture.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\SetUpFixtureBuilderProvider.cs" />
