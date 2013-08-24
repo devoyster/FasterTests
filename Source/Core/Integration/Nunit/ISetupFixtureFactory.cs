@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FasterTests.Core.Interfaces.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public interface ISetupFixtureFactory
     {

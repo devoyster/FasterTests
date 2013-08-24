@@ -1,6 +1,5 @@
 ﻿using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Integration.Nunit.SetupFixtures;
-using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using Machine.Specifications;
 

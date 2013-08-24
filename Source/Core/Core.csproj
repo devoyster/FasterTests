@@ -59,6 +59,9 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Integration\Nunit\ISetupFixture.cs" />
+    <Compile Include="Integration\Nunit\ISetupFixtureFactory.cs" />
+    <Compile Include="Integration\Nunit\ISetupFixturesContext.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\AssemblySetupFixturesContext.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\SetupFixture.cs" />
     <Compile Include="Integration\Nunit\SetupFixtures\SetUpFixtureBuilderProvider.cs" />

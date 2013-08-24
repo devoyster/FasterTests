@@ -44,9 +44,6 @@
     <Compile Include="Integration\ITestEngine.cs" />
     <Compile Include="Integration\ITestInspector.cs" />
     <Compile Include="Integration\ITestFrameworkInitializer.cs" />
-    <Compile Include="Integration\Nunit\ISetupFixturesContext.cs" />
-    <Compile Include="Integration\Nunit\ISetupFixture.cs" />
-    <Compile Include="Integration\Nunit\ISetupFixtureFactory.cs" />
     <Compile Include="ITestDispatcher.cs" />
     <Compile Include="ITestResultsConsumer.cs" />
     <Compile Include="ITestRunnerBootstrapper.cs" />

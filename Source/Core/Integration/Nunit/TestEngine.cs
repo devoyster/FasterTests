@@ -2,7 +2,6 @@
 using System.Reactive.Subjects;
 using System.Reflection;
 using FasterTests.Core.Interfaces.Integration;
-using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using System.Reactive.Linq;
 using NUnit.Core;

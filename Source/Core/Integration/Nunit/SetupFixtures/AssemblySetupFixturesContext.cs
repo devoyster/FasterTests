@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 

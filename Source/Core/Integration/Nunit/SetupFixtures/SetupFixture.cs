@@ -1,5 +1,4 @@
 ﻿using System;
-using FasterTests.Core.Interfaces.Integration.Nunit;
 using FasterTests.Core.Interfaces.Models;
 using NUnit.Core;
 

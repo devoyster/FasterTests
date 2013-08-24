@@ -1,7 +1,7 @@
 ﻿using System;
 using FasterTests.Core.Interfaces.Models;
 
-namespace FasterTests.Core.Interfaces.Integration.Nunit
+namespace FasterTests.Core.Integration.Nunit
 {
     public interface ISetupFixturesContext
     {
