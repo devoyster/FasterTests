@@ -1,16 +1,17 @@
 ﻿using System;
 using FasterTests.Core.Interfaces.Models;
-using NUnit.Core;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixtures
 {
-    public class SetupFixture : SetUpFixture, ISetupFixture
+    public class SetupFixture : ISetupFixture
     {
         private readonly Type _type;
+        private readonly SetupFixtureAdapter _adapter;
 
-        public SetupFixture(Type type) : base(type)
+        public SetupFixture(Type type)
         {
             _type = type;
+            _adapter = new SetupFixtureAdapter(type);
         }
 
         public SetupFixtureState State { get; private set; }
@@ -20,23 +21,21 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
             return string.IsNullOrEmpty(_type.Namespace) || test.Name.StartsWith(_type.Namespace + ".");
         }
 
-        public void Setup(IObserver<Interfaces.Models.TestResult> resultsObserver)
+        public void Setup(IObserver<TestResult> resultsObserver)
         {
             if (State != SetupFixtureState.NoSetupExecuted)
             {
                 throw new InvalidOperationException("Fixture was already set up");
             }
 
-            var testResult = CreateNunitTestResult();
-            DoOneTimeSetUp(testResult);
-            DoOneTimeBeforeTestSuiteActions(testResult);
+            var testResult = _adapter.Setup();
 
             State = testResult.IsFailure || testResult.IsError
                         ? SetupFixtureState.SetupFailed
                         : SetupFixtureState.SetupSucceeded;
         }
 
-        public void Teardown(IObserver<Interfaces.Models.TestResult> resultsObserver)
+        public void Teardown(IObserver<TestResult> resultsObserver)
         {
             switch (State)
             {
@@ -44,18 +43,11 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                     throw new InvalidOperationException("Fixture was not set up");
 
                 case SetupFixtureState.SetupSucceeded:
-                    var testResult = CreateNunitTestResult();
-                    DoOneTimeAfterTestSuiteActions(testResult);
-                    DoOneTimeTearDown(testResult);
+                    _adapter.Teardown();
                     break;
             }
 
             State = SetupFixtureState.NoSetupExecuted;
-        }
-
-        private NUnit.Core.TestResult CreateNunitTestResult()
-        {
-            return new NUnit.Core.TestResult(this);
         }
     }
 }
