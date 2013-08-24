@@ -14,6 +14,11 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
             _lazyAdapter = new Lazy<SetupFixtureAdapter>(() => new SetupFixtureAdapter(type));
         }
 
+        public Type Type
+        {
+            get { return _type; }
+        }
+
         public SetupFixtureState State { get; private set; }
 
         public bool IsRequiredFor(TestDescriptor test)
