@@ -45,7 +45,7 @@ namespace FasterTests.Core.Workers
         private IDisposable RunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
             var engine = new TestEngine(new TestFrameworkInitializer(),
-                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureFactory(), new SetupFixtureTypeInspector()));
+                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureFactory(new SetupFixtureTypeInspector())));
 
             using (engine)
             {

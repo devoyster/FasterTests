@@ -4,10 +4,10 @@ using FasterTests.Tests.NunitTestAssembly;
 using Machine.Fakes;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureFactorySpecs
 {
     [Subject(typeof(SetupFixtureFactory))]
-    public class When_setup_fixture_is_created : WithSubject<SetupFixtureFactory>
+    public class When_single_setup_fixture_is_created : WithSubject<SetupFixtureFactory>
     {
         Because of = () =>
             setupFixture = Subject.Create(typeof(RootSetupFixture));

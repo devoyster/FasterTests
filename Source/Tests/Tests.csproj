@@ -70,6 +70,7 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_performed_without_setup.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_performed_with_two_required_fixtures.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_performed.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactorySpecs\When_all_setup_fixtures_from_assembly_are_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_parent_fixture_failed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_on_failing_fixture.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_after_failed_setup.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_same_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_without_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\When_setup_fixture_factory_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactorySpecs\When_single_setup_fixture_is_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixture_types_are_loaded_from_assembly.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_engine_is_disposed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\NunitTestEngineSpecification.cs" />

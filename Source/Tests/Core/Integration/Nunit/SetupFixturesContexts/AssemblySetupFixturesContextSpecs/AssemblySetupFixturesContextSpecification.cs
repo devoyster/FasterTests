@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Interfaces.Models;
 using Machine.Fakes;
@@ -18,43 +17,31 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
             cachedFixtures = new Dictionary<Type, ISetupFixture>();
 
             The<ISetupFixtureFactory>()
-                .WhenToldTo(f => f.Create(Param.IsAny<Type>()))
-                .Return((Type t) => TheFixtureFor(t));
-
-            The<ISetupFixtureTypeInspector>()
-                .WhenToldTo(i => i.LoadAllFrom(Param.IsAny<string>()))
-                .Return(() => cachedFixtures.Keys
-                                .OrderBy(t => t.Namespace ?? "")
-                                .ThenBy(t => t.Name));
+                .WhenToldTo(f => f.CreateAllFrom(Param.IsAny<string>()))
+                .Return(() => cachedFixtures.Values
+                                .OrderBy(f => f.Type.Namespace ?? "")
+                                .ThenBy(f => f.Type.Name));
         };
 
         protected static ISetupFixture TheFixtureFor<T>()
         {
-            return TheFixtureFor(typeof(T));
+            return cachedFixtures[typeof(T)];
         }
 
         protected static ISetupFixture ConfigureFixtureFor<T>(bool isRequired = false, bool isSetupSucceeds = true)
         {
-            var fixture = TheFixtureFor<T>();
+            var fixture = An<ISetupFixture>();
+            cachedFixtures.Add(typeof(T), fixture);
 
+            fixture
+                .WhenToldTo(f => f.Type)
+                .Return(typeof(T));
             fixture
                 .WhenToldTo(f => f.IsRequiredFor(TestDescriptor))
                 .Return(isRequired);
             fixture
                 .WhenToldTo(f => f.State)
                 .Return(isSetupSucceeds ? SetupFixtureState.SetupSucceeded : SetupFixtureState.SetupFailed);
-
-            return fixture;
-        }
-
-        private static ISetupFixture TheFixtureFor(Type type)
-        {
-            ISetupFixture fixture;
-            if (!cachedFixtures.TryGetValue(type, out fixture))
-            {
-                fixture = An<ISetupFixture>();
-                cachedFixtures.Add(type, fixture);
-            }
 
             return fixture;
         }

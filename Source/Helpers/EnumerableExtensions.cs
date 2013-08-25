@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace FasterTests.Helpers
 {
@@ -11,6 +13,11 @@ namespace FasterTests.Helpers
             {
                 action(item);
             }
+        }
+
+        public static ReadOnlyCollection<T> ToReadOnlyCollection<T>(this IEnumerable<T> source)
+        {
+            return source.ToList().AsReadOnly();
         }
     }
 }
