@@ -48,7 +48,6 @@
     <Compile Include="Properties\NunitInspectorTestAssemblyMarker.cs" />
     <Compile Include="Namespace\NamespaceSetupFixture.cs" />
     <Compile Include="Namespace\TestsInNamespace.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootSetupFixture.cs" />
     <Compile Include="TestsWithoutTestFixture.cs" />
     <Compile Include="TestsWithTestFixture.cs" />
