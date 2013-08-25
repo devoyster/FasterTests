@@ -9,6 +9,6 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
         Because of = () =>
             Subject.TeardownAll(TheResultsObserver);
 
-        It should_not_fail = () => {};
+        It should_succeed = () => {};
     }
 }

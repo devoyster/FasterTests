@@ -2,9 +2,14 @@
 {
     public static class SetupFixtureExtensions
     {
-        public static bool IsSetupSucceeded(this ISetupFixture setupFixture)
+        public static bool IsSetupFailed(this ISetupFixture setupFixture)
         {
-            return setupFixture.State == SetupFixtureState.SetupSucceeded;
+            return setupFixture.State == SetupFixtureState.SetupFailed;
+        }
+
+        public static bool IsSetupExecuted(this ISetupFixture setupFixture)
+        {
+            return setupFixture.State != SetupFixtureState.NoSetupExecuted;
         }
     }
 }

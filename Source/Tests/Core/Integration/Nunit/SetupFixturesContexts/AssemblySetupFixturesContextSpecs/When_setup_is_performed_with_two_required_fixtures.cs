@@ -18,12 +18,16 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
         };
 
         Because of = () =>
-            Subject.SetupFor(TestDescriptor, TheResultsObserver);
+            result = Subject.SetupFor(TestDescriptor, TheResultsObserver);
+
+        It should_succeed = () => result.ShouldBeTrue();
 
         It should_setup_first_fixture = () => TheFixtureFor<RootSetupFixture>().WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
 
         It should_setup_second_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
 
         It should_skip_not_required_fixture = () => TheFixtureFor<AnotherNamespaceSetupFixture>().WasNotToldTo(f => f.Setup(TheResultsObserver));
+
+        private static bool result;
     }
 }

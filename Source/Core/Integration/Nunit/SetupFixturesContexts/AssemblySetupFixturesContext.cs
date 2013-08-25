@@ -10,35 +10,27 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
     {
         private readonly string _testAssemblyPath;
         private readonly ISetupFixtureFactory _setupFixtureFactory;
-        private IList<ISetupFixture> _allFixtures;
-        private Stack<ISetupFixture> _activeFixtures;
+        private readonly Lazy<IEnumerable<ISetupFixture>> _allFixturesLazy;
 
         public AssemblySetupFixturesContext(string testAssemblyPath,
                                             ISetupFixtureFactory setupFixtureFactory)
         {
             _testAssemblyPath = testAssemblyPath;
             _setupFixtureFactory = setupFixtureFactory;
+
+            _allFixturesLazy = new Lazy<IEnumerable<ISetupFixture>>(() =>
+                _setupFixtureFactory.CreateAllFrom(_testAssemblyPath).ToReadOnlyCollection());
         }
 
         public bool SetupFor(TestDescriptor test, IObserver<TestResult> resultsObserver)
         {
-            InitializeSetupFixtures();
+            TeardownNotRequiredFixtures(test, resultsObserver);
 
-            var fixturesToTeardown = _activeFixtures.TakeWhile(f => !f.IsRequiredFor(test)).ToList();
-            foreach (var fixture in fixturesToTeardown)
+            var fixturesWhereSetupExecuted = GetRequiredFixtures(test).ToLookup(f => f.IsSetupExecuted());
+
+            var anyFixtureFailed = fixturesWhereSetupExecuted[true].Any(f => f.IsSetupFailed());
+            foreach (var fixture in fixturesWhereSetupExecuted[false])
             {
-                fixture.Teardown(resultsObserver);
-                _activeFixtures.Pop();
-            }
-
-            var anyFixtureFailed = _activeFixtures.Any(f => !f.IsSetupSucceeded());
-
-            var fixturesToSetup = _allFixtures.Where(f => f.IsRequiredFor(test))
-                                              .Where(f => !_activeFixtures.Contains(f));
-            foreach (var fixture in fixturesToSetup)
-            {
-                _activeFixtures.Push(fixture);
-
                 if (anyFixtureFailed)
                 {
                     fixture.SetParentFailed(resultsObserver);
@@ -48,36 +40,39 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
                     fixture.Setup(resultsObserver);
                 }
 
-                anyFixtureFailed |= !fixture.IsSetupSucceeded();
+                anyFixtureFailed |= fixture.IsSetupFailed();
             }
 
-            return anyFixtureFailed;
+            return !anyFixtureFailed;
         }
 
         public void TeardownAll(IObserver<TestResult> resultsObserver)
         {
-            if (_allFixtures == null)
-            {
-                return;
-            }
-
-            while (_activeFixtures.Any())
-            {
-                var fixture = _activeFixtures.Pop();
-                fixture.Teardown(resultsObserver);
-            }
+            TeardownExecutedFixtures(AllFixtures, resultsObserver);
         }
 
-        private void InitializeSetupFixtures()
+        private IEnumerable<ISetupFixture> AllFixtures
         {
-            if (_allFixtures != null)
-            {
-                return;
-            }
+            get { return _allFixturesLazy.Value; }
+        }
 
-            _allFixtures = _setupFixtureFactory.CreateAllFrom(_testAssemblyPath).ToReadOnlyCollection();
+        private void TeardownNotRequiredFixtures(TestDescriptor test, IObserver<TestResult> resultsObserver)
+        {
+            var notRequiredFixtures = AllFixtures.Where(f => !f.IsRequiredFor(test));
+            TeardownExecutedFixtures(notRequiredFixtures, resultsObserver);
+        }
 
-            _activeFixtures = new Stack<ISetupFixture>();
+        private void TeardownExecutedFixtures(IEnumerable<ISetupFixture> notRequiredFixtures, IObserver<TestResult> resultsObserver)
+        {
+            notRequiredFixtures
+                .Where(f => f.IsSetupExecuted())
+                .Reverse()
+                .ForEach(f => f.Teardown(resultsObserver));
+        }
+
+        private IEnumerable<ISetupFixture> GetRequiredFixtures(TestDescriptor test)
+        {
+            return AllFixtures.Where(f => f.IsRequiredFor(test));
         }
     }
 }

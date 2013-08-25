@@ -28,10 +28,16 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
             return cachedFixtures[typeof(T)];
         }
 
-        protected static ISetupFixture ConfigureFixtureFor<T>(bool isRequired = false, bool isSetupSucceeds = true)
+        protected static ISetupFixture ConfigureFixtureFor<T>(bool isRequired = false,
+                                                              bool isSetupSucceeded = false,
+                                                              bool isSetupFailed = false)
         {
             var fixture = An<ISetupFixture>();
             cachedFixtures.Add(typeof(T), fixture);
+
+            var state = isSetupSucceeded
+                            ? SetupFixtureState.SetupSucceeded
+                            : (isSetupFailed ? SetupFixtureState.SetupFailed : SetupFixtureState.NoSetupExecuted);
 
             fixture
                 .WhenToldTo(f => f.Type)
@@ -41,7 +47,10 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
                 .Return(isRequired);
             fixture
                 .WhenToldTo(f => f.State)
-                .Return(isSetupSucceeds ? SetupFixtureState.SetupSucceeded : SetupFixtureState.SetupFailed);
+                .Return(() => state);
+            fixture
+                .WhenToldTo(f => f.Setup(TheResultsObserver))
+                .Callback(() => state = SetupFixtureState.SetupSucceeded);
 
             return fixture;
         }

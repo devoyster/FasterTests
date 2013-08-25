@@ -11,17 +11,15 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
     {
         Establish context = () =>
         {
-            ConfigureFixtureFor<NamespaceSetupFixture>(isRequired: true);
+            ConfigureFixtureFor<NamespaceSetupFixture>(isSetupSucceeded: true);
             ConfigureFixtureFor<AnotherNamespaceSetupFixture>();
-
-            Subject.SetupFor(TestDescriptor, TheResultsObserver);
         };
 
         Because of = () =>
             Subject.TeardownAll(TheResultsObserver);
 
-        It should_teardown_required_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.Teardown(TheResultsObserver)).OnlyOnce();
+        It should_teardown_setup_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.Teardown(TheResultsObserver)).OnlyOnce();
 
-        It should_skip_not_required_fixture = () => TheFixtureFor<AnotherNamespaceSetupFixture>().WasNotToldTo(f => f.Teardown(TheResultsObserver));
+        It should_skip_not_setup_fixture = () => TheFixtureFor<AnotherNamespaceSetupFixture>().WasNotToldTo(f => f.Teardown(TheResultsObserver));
     }
 }
