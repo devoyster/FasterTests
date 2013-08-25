@@ -66,10 +66,16 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\AssemblySetupFixturesContextSpecification.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_performed_after_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_performed_without_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_performed_with_two_required_fixtures.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_performed.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_for_two_fixtures_from_the_same_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_executed_after_two_setups.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_with_not_required_fixture.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_and_first_fixture_fails.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_with_previously_failed_required_fixture.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_with_previously_succeeded_required_fixture.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_executed_after_setup.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_teardown_is_executed_without_setup.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed_for_two_required_fixtures.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\When_setup_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactorySpecs\When_all_setup_fixtures_from_assembly_are_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_parent_fixture_failed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_on_failing_fixture.cs" />

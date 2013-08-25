@@ -7,7 +7,7 @@ using Machine.Fakes;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.AssemblySetupFixturesContextSpecs
 {
     [Subject(typeof(AssemblySetupFixturesContext))]
-    public class When_teardown_is_performed_after_setup : AssemblySetupFixturesContextSpecification
+    public class When_teardown_is_executed_after_setup : AssemblySetupFixturesContextSpecification
     {
         Establish context = () =>
         {

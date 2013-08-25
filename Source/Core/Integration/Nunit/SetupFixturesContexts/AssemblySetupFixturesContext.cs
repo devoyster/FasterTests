@@ -18,8 +18,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
             _testAssemblyPath = testAssemblyPath;
             _setupFixtureFactory = setupFixtureFactory;
 
-            _allFixturesLazy = new Lazy<IEnumerable<ISetupFixture>>(() =>
-                _setupFixtureFactory.CreateAllFrom(_testAssemblyPath).ToReadOnlyCollection());
+            _allFixturesLazy = new Lazy<IEnumerable<ISetupFixture>>(CreateAllFixtures);
         }
 
         public bool SetupFor(TestDescriptor test, IObserver<TestResult> resultsObserver)
@@ -56,9 +55,17 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
             get { return _allFixturesLazy.Value; }
         }
 
+        private IEnumerable<ISetupFixture> CreateAllFixtures()
+        {
+            return _setupFixtureFactory.CreateAllFrom(_testAssemblyPath)
+                    .GroupBy(f => f.Type.Namespace)
+                    .Select(g => g.First())
+                    .ToReadOnlyCollection();
+        }
+
         private void TeardownNotRequiredFixtures(TestDescriptor test, IObserver<TestResult> resultsObserver)
         {
-            var notRequiredFixtures = AllFixtures.Where(f => !f.IsRequiredFor(test));
+            var notRequiredFixtures = AllFixtures.Except(GetRequiredFixtures(test));
             TeardownExecutedFixtures(notRequiredFixtures, resultsObserver);
         }
 

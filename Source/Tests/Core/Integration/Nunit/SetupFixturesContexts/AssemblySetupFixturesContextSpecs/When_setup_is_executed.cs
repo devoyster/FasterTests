@@ -7,7 +7,7 @@ using Machine.Fakes;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.AssemblySetupFixturesContextSpecs
 {
     [Subject(typeof(AssemblySetupFixturesContext))]
-    public class When_setup_is_performed : AssemblySetupFixturesContextSpecification
+    public class When_setup_is_executed : AssemblySetupFixturesContextSpecification
     {
         Establish context = () =>
         {

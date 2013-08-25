@@ -38,6 +38,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
             var state = isSetupSucceeded
                             ? SetupFixtureState.SetupSucceeded
                             : (isSetupFailed ? SetupFixtureState.SetupFailed : SetupFixtureState.NoSetupExecuted);
+            SetFixtureState<T>(state);
 
             fixture
                 .WhenToldTo(f => f.Type)
@@ -46,13 +47,17 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
                 .WhenToldTo(f => f.IsRequiredFor(TestDescriptor))
                 .Return(isRequired);
             fixture
-                .WhenToldTo(f => f.State)
-                .Return(() => state);
-            fixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
-                .Callback(() => state = SetupFixtureState.SetupSucceeded);
+                .Callback(() => SetFixtureState<T>(SetupFixtureState.SetupSucceeded));
 
             return fixture;
+        }
+
+        protected static void SetFixtureState<T>(SetupFixtureState state)
+        {
+            TheFixtureFor<T>()
+                .WhenToldTo(f => f.State)
+                .Return(() => state);
         }
 
         protected static TestDescriptor TestDescriptor { get; private set; }
