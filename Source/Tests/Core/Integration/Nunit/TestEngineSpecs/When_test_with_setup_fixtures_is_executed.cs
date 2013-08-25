@@ -1,5 +1,6 @@
 ﻿using FasterTests.Core.Integration.Nunit;
-using FasterTests.Core.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Tests.NunitTestAssembly;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using FasterTests.Tests.NunitTestAssembly.Namespace;
@@ -18,6 +19,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 
             Configure(r => r.For<string>().Use(typeof(AnotherNamespaceSetupFixture).Assembly.Location));
             Configure<ISetupFixtureFactory, SetupFixtureFactory>();
+            Configure<ISetupFixtureInspector, SetupFixtureInspector>();
             Configure<ISetupFixturesContext, AssemblySetupFixturesContext>();
         };
 

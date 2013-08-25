@@ -1,12 +1,12 @@
-﻿using FasterTests.Core.Integration.Nunit.SetupFixtures;
+﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Tests.NunitTestAssembly;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixtures.SetupFixtureSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_checked_for_test_from_same_namespace : NunitSetupFixtureSpecification<RootSetupFixture>
+    public class When_fixture_from_global_namespace_is_checked_for_any_test : NunitSetupFixtureSpecification<GlobalSetupFixture>
     {
         Because of = () =>
             isRequired = Subject.IsRequiredFor(typeof(PassingTest).GetTestDescriptor());

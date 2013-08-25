@@ -1,11 +1,11 @@
 ﻿using System;
-using FasterTests.Core.Integration.Nunit;
-using FasterTests.Core.Integration.Nunit.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixtures.SetupFixtureSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
     public class When_setup_is_executed_twice : NunitSetupFixtureSpecification<AnotherNamespaceSetupFixture>

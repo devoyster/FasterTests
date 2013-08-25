@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 
-namespace FasterTests.Core.Integration.Nunit.SetupFixtures
+namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 {
     public class AssemblySetupFixturesContext : ISetupFixturesContext
     {
         private readonly string _testAssemblyPath;
         private readonly ISetupFixtureFactory _setupFixtureFactory;
+        private readonly ISetupFixtureInspector _setupFixtureInspector;
         private IList<ISetupFixture> _allFixtures;
         private Stack<ISetupFixture> _activeFixtures;
 
-        public AssemblySetupFixturesContext(string testAssemblyPath, ISetupFixtureFactory setupFixtureFactory)
+        public AssemblySetupFixturesContext(string testAssemblyPath,
+                                            ISetupFixtureFactory setupFixtureFactory,
+                                            ISetupFixtureInspector setupFixtureInspector)
         {
             _testAssemblyPath = testAssemblyPath;
             _setupFixtureFactory = setupFixtureFactory;
+            _setupFixtureInspector = setupFixtureInspector;
         }
 
         public bool SetupFor(TestDescriptor test, IObserver<TestResult> resultsObserver)
@@ -67,14 +70,10 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixtures
                 return;
             }
 
-            var assembly = Assembly.LoadFrom(_testAssemblyPath);
-            _allFixtures = assembly.GetTypes()
-                                   .Where(SetUpFixtureBuilderProvider.Instance.CanBuildFrom)
-                                   .OrderBy(t => t.Namespace ?? string.Empty)
-                                   .ThenBy(t => t.Name)
-                                   .Select(_setupFixtureFactory.Create)
-                                   .ToList()
-                                   .AsReadOnly();
+            _allFixtures = _setupFixtureInspector.LoadAllTypesFrom(_testAssemblyPath)
+                                .Select(_setupFixtureFactory.Create)
+                                .ToList()
+                                .AsReadOnly();
 
             _activeFixtures = new Stack<ISetupFixture>();
         }

@@ -1,10 +1,10 @@
-﻿using FasterTests.Core.Integration.Nunit.SetupFixtures;
+﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
 using FasterTests.Tests.NunitTestAssembly.Namespace;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixtures.SetupFixtureSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
     public class When_checked_for_test_from_sibling_namespace : NunitSetupFixtureSpecification<NamespaceSetupFixture>

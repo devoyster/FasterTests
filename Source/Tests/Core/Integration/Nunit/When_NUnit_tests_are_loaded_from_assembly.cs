@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FasterTests.Core.Integration.Nunit;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Tests.NunitInspectorTestAssembly;
 using FasterTests.Tests.NunitInspectorTestAssembly.Namespace;
 using FasterTests.Tests.NunitInspectorTestAssembly.Properties;
@@ -13,7 +14,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit
     {
         Establish context = () =>
         {
-            subject = new TestInspector(new TestFrameworkInitializer());
+            subject = new TestInspector(new TestFrameworkInitializer(), new SetupFixtureInspector());
             nunitTestAssemblyPath = typeof(NunitInspectorTestAssemblyMarker).Assembly.Location;
         };
 

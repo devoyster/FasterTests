@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace FasterTests.Tests.NunitTestAssembly.FailingNamespace
+namespace FasterTests.Tests.NunitTestAssembly.AnotherFailingNamespace
 {
     [SetUpFixture]
     public class SetupFixtureWhichThrowsAnExceptionInTeardown

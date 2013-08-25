@@ -65,20 +65,20 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_on_failing_fixture.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_after_failed_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_after_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed_twice.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed_on_failing_fixture.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_fixture_from_global_namespace_is_checked_for_any_test.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_sibling_namespace.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_parent_namespace.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_nested_namespace.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\NunitSetupFixtureSpecification.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_same_namespace.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_without_setup.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixtures\When_setup_fixture_factory_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_on_failing_fixture.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_after_failed_setup.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_after_setup.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed_twice.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed_on_failing_fixture.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_fixture_from_global_namespace_is_checked_for_any_test.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_sibling_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_parent_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_nested_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\NunitSetupFixtureSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_same_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_without_setup.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\When_setup_fixture_factory_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\NunitTestEngineSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />

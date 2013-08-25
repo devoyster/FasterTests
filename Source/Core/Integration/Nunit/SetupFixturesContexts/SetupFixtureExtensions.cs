@@ -1,4 +1,4 @@
-﻿namespace FasterTests.Core.Integration.Nunit
+﻿namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 {
     public static class SetupFixtureExtensions
     {
