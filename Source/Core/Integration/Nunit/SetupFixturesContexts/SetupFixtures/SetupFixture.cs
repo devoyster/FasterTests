@@ -26,6 +26,11 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
             return string.IsNullOrEmpty(_type.Namespace) || test.Name.StartsWith(_type.Namespace + ".");
         }
 
+        public void SetParentFailed(IObserver<TestResult> resultsObserver)
+        {
+            State = SetupFixtureState.SetupFailed;
+        }
+
         public void Setup(IObserver<TestResult> resultsObserver)
         {
             if (State != SetupFixtureState.NoSetupExecuted)

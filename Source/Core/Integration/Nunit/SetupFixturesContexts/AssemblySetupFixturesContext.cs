@@ -33,29 +33,36 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
                 _activeFixtures.Pop();
             }
 
-            if (_activeFixtures.Any() && !_activeFixtures.Peek().IsSetupSucceeded())
-            {
-                return false;
-            }
+            var anyFixtureFailed = _activeFixtures.Any(f => !f.IsSetupSucceeded());
 
             var fixturesToSetup = _allFixtures.Where(f => f.IsRequiredFor(test))
                                               .Where(f => !_activeFixtures.Contains(f));
             foreach (var fixture in fixturesToSetup)
             {
                 _activeFixtures.Push(fixture);
-                fixture.Setup(resultsObserver);
 
-                if (!fixture.IsSetupSucceeded())
+                if (anyFixtureFailed)
                 {
-                    return false;
+                    fixture.SetParentFailed(resultsObserver);
                 }
+                else
+                {
+                    fixture.Setup(resultsObserver);
+                }
+
+                anyFixtureFailed |= !fixture.IsSetupSucceeded();
             }
 
-            return true;
+            return anyFixtureFailed;
         }
 
         public void TeardownAll(IObserver<TestResult> resultsObserver)
         {
+            if (_allFixtures == null)
+            {
+                return;
+            }
+
             while (_activeFixtures.Any())
             {
                 var fixture = _activeFixtures.Pop();
