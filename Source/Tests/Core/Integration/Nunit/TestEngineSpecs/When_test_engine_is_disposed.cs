@@ -7,7 +7,7 @@ using Machine.Fakes;
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
     [Subject(typeof(TestEngine))]
-    public class When_test_engine_is_disposed : NunitTestEngineSpecification
+    public class When_test_engine_is_disposed : TestEngineSpecification
     {
         Because of = () =>
             Subject.Dispose();

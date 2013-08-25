@@ -8,7 +8,7 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_teardown_is_executed_after_setup : NunitSetupFixtureSpecification<RootSetupFixture>
+    public class When_teardown_is_executed_after_setup : SetupFixtureSpecification<RootSetupFixture>
     {
         Because of = () =>
         {

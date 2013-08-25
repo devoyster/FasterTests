@@ -11,7 +11,7 @@ using FasterTests.Tests.TestHelpers;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
-    public abstract class NunitTestEngineSpecification : WithSubject<TestEngine>
+    public abstract class TestEngineSpecification : WithSubject<TestEngine>
     {
         Establish context = () =>
         {

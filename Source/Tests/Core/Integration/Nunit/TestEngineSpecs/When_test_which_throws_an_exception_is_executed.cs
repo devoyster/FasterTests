@@ -5,7 +5,7 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
     [Subject(typeof(TestEngine))]
-    public class When_test_which_throws_an_exception_is_executed : NunitTestEngineSpecification
+    public class When_test_which_throws_an_exception_is_executed : TestEngineSpecification
     {
         Because of = () =>
             RunTest<TestWhichThrowsAnException>();

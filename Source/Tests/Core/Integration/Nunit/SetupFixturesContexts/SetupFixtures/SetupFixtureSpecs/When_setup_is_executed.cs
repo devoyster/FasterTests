@@ -8,7 +8,7 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_setup_is_executed : NunitSetupFixtureSpecification<RootSetupFixture>
+    public class When_setup_is_executed : SetupFixtureSpecification<RootSetupFixture>
     {
         Because of = () =>
         {

@@ -5,7 +5,7 @@ using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
-    public abstract class NunitSetupFixtureSpecification<TSetupFixture> : WithSubject<SetupFixture> where TSetupFixture : class
+    public abstract class SetupFixtureSpecification<TSetupFixture> : WithSubject<SetupFixture> where TSetupFixture : class
     {
         Establish context = () =>
             Configure(r => r.For<Type>().Use(typeof(TSetupFixture)));

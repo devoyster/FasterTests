@@ -8,7 +8,7 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_setup_is_executed_twice : NunitSetupFixtureSpecification<AnotherNamespaceSetupFixture>
+    public class When_setup_is_executed_twice : SetupFixtureSpecification<AnotherNamespaceSetupFixture>
     {
         private Because of = () =>
             exception = Catch.Exception(() =>

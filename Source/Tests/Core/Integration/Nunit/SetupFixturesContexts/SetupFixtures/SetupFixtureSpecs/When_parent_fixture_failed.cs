@@ -8,7 +8,7 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_parent_fixture_failed : NunitSetupFixtureSpecification<RootSetupFixture>
+    public class When_parent_fixture_failed : SetupFixtureSpecification<RootSetupFixture>
     {
         Because of = () =>
         {

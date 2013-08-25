@@ -8,7 +8,7 @@ using Machine.Fakes;
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
     [Subject(typeof(TestEngine))]
-    public class When_test_with_setup_fixture_is_executed : NunitTestEngineSpecification
+    public class When_test_with_setup_fixture_is_executed : TestEngineSpecification
     {
         Because of = () =>
             RunTest<TestWithSetupFixture>();

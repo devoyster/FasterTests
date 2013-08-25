@@ -87,14 +87,14 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_sibling_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_parent_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_nested_namespace.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\NunitSetupFixtureSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\SetupFixtureSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_test_from_same_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_without_setup.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactorySpecs\When_single_setup_fixture_is_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixture_types_are_loaded_from_assembly.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_engine_is_disposed.cs" />
-    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\NunitTestEngineSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\TestEngineSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_red_nunit_test_is_executed.cs" />

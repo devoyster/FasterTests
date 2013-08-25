@@ -7,7 +7,7 @@ using FasterTests.Tests.TestHelpers;
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_checked_for_test_from_parent_namespace : NunitSetupFixtureSpecification<NamespaceSetupFixture>
+    public class When_checked_for_test_from_parent_namespace : SetupFixtureSpecification<NamespaceSetupFixture>
     {
         Because of = () =>
             isRequired = Subject.IsRequiredFor(typeof(PassingTest).GetTestDescriptor());
