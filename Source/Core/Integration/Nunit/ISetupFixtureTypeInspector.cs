@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace FasterTests.Core.Integration.Nunit
 {
-    public interface ISetupFixtureInspector
+    public interface ISetupFixtureTypeInspector
     {
-        IEnumerable<Type> LoadAllTypesFrom(string assemblyPath);
+        IEnumerable<Type> LoadAllFrom(string assemblyPath);
     }
 }

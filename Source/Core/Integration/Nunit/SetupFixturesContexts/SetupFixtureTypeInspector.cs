@@ -6,9 +6,9 @@ using NUnit.Core.Builders;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 {
-    public class SetupFixtureInspector : ISetupFixtureInspector
+    public class SetupFixtureTypeInspector : ISetupFixtureTypeInspector
     {
-        public IEnumerable<Type> LoadAllTypesFrom(string assemblyPath)
+        public IEnumerable<Type> LoadAllFrom(string assemblyPath)
         {
             var assembly = Assembly.LoadFrom(assemblyPath);
 

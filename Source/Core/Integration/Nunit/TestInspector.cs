@@ -10,12 +10,12 @@ namespace FasterTests.Core.Integration.Nunit
     public class TestInspector : ITestInspector
     {
         private readonly ITestFrameworkInitializer _initializer;
-        private readonly ISetupFixtureInspector _setupFixtureInspector;
+        private readonly ISetupFixtureTypeInspector _setupFixtureTypeInspector;
 
-        public TestInspector(ITestFrameworkInitializer initializer, ISetupFixtureInspector setupFixtureInspector)
+        public TestInspector(ITestFrameworkInitializer initializer, ISetupFixtureTypeInspector setupFixtureTypeInspector)
         {
             _initializer = initializer;
-            _setupFixtureInspector = setupFixtureInspector;
+            _setupFixtureTypeInspector = setupFixtureTypeInspector;
         }
 
         public IEnumerable<TestDescriptor> LoadAllTestsFrom(string assemblyPath)
@@ -27,7 +27,7 @@ namespace FasterTests.Core.Integration.Nunit
             return assembly
                     .GetTypes()
                     .Where(TestFixtureBuilder.CanBuildFrom)
-                    .Except(_setupFixtureInspector.LoadAllTypesFrom(assemblyPath))
+                    .Except(_setupFixtureTypeInspector.LoadAllFrom(assemblyPath))
                     .Select(t => new TestDescriptor
                                     {
                                         Name = t.FullName,

@@ -85,7 +85,7 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_setup_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_teardown_is_executed_without_setup.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\When_setup_fixture_factory_is_executed.cs" />
-    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixtures_are_loaded_from_assembly.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixture_types_are_loaded_from_assembly.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_engine_is_disposed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\NunitTestEngineSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_nunit_test_is_executed.cs" />

@@ -21,8 +21,8 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
                 .WhenToldTo(f => f.Create(Param.IsAny<Type>()))
                 .Return((Type t) => TheFixtureFor(t));
 
-            The<ISetupFixtureInspector>()
-                .WhenToldTo(i => i.LoadAllTypesFrom(Param.IsAny<string>()))
+            The<ISetupFixtureTypeInspector>()
+                .WhenToldTo(i => i.LoadAllFrom(Param.IsAny<string>()))
                 .Return(() => cachedFixtures.Keys
                                 .OrderBy(t => t.Namespace ?? "")
                                 .ThenBy(t => t.Name));

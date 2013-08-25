@@ -14,7 +14,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit
     {
         Establish context = () =>
         {
-            subject = new TestInspector(new TestFrameworkInitializer(), new SetupFixtureInspector());
+            subject = new TestInspector(new TestFrameworkInitializer(), new SetupFixtureTypeInspector());
             nunitTestAssemblyPath = typeof(NunitInspectorTestAssemblyMarker).Assembly.Location;
         };
 

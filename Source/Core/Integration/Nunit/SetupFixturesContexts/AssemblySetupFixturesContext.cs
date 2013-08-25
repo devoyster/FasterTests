@@ -9,17 +9,17 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
     {
         private readonly string _testAssemblyPath;
         private readonly ISetupFixtureFactory _setupFixtureFactory;
-        private readonly ISetupFixtureInspector _setupFixtureInspector;
+        private readonly ISetupFixtureTypeInspector _setupFixtureTypeInspector;
         private IList<ISetupFixture> _allFixtures;
         private Stack<ISetupFixture> _activeFixtures;
 
         public AssemblySetupFixturesContext(string testAssemblyPath,
                                             ISetupFixtureFactory setupFixtureFactory,
-                                            ISetupFixtureInspector setupFixtureInspector)
+                                            ISetupFixtureTypeInspector setupFixtureTypeInspector)
         {
             _testAssemblyPath = testAssemblyPath;
             _setupFixtureFactory = setupFixtureFactory;
-            _setupFixtureInspector = setupFixtureInspector;
+            _setupFixtureTypeInspector = setupFixtureTypeInspector;
         }
 
         public bool SetupFor(TestDescriptor test, IObserver<TestResult> resultsObserver)
@@ -77,7 +77,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
                 return;
             }
 
-            _allFixtures = _setupFixtureInspector.LoadAllTypesFrom(_testAssemblyPath)
+            _allFixtures = _setupFixtureTypeInspector.LoadAllFrom(_testAssemblyPath)
                                 .Select(_setupFixtureFactory.Create)
                                 .ToList()
                                 .AsReadOnly();
