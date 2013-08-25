@@ -10,11 +10,11 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
     [Subject(typeof(SetupFixture))]
     public class When_setup_is_executed : SetupFixtureSpecification<RootSetupFixture>
     {
-        Because of = () =>
-        {
+        Establish context = () =>
             RootSetupFixture.SetupWasInvoked = false;
+
+        Because of = () =>
             Subject.Setup(An<IObserver<TestResult>>());
-        };
 
         It should_invoke_underlying_nunit_fixture = () => RootSetupFixture.SetupWasInvoked.ShouldBeTrue();
 

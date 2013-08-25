@@ -10,11 +10,11 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
     [Subject(typeof(SetupFixture))]
     public class When_teardown_is_executed_on_failing_fixture : SetupFixtureSpecification<SetupFixtureWhichThrowsAnExceptionInTeardown>
     {
-        Because of = () =>
-        {
+        Establish context = () =>
             Subject.Setup(An<IObserver<TestResult>>());
+
+        Because of = () =>
             Subject.Teardown(An<IObserver<TestResult>>());
-        };
 
         It should_move_to_no_setup_state = () => Subject.State.ShouldEqual(SetupFixtureState.NoSetupExecuted);
     }

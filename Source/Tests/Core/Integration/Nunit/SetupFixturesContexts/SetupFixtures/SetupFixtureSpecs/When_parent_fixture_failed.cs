@@ -10,11 +10,11 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
     [Subject(typeof(SetupFixture))]
     public class When_parent_fixture_failed : SetupFixtureSpecification<RootSetupFixture>
     {
-        Because of = () =>
-        {
+        Establish context = () =>
             RootSetupFixture.SetupWasInvoked = false;
+
+        Because of = () =>
             Subject.SetParentFailed(An<IObserver<TestResult>>());
-        };
 
         It should_not_invoke_underlying_nunit_fixture = () => RootSetupFixture.SetupWasInvoked.ShouldBeFalse();
 

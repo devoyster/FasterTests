@@ -10,12 +10,11 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
     [Subject(typeof(SetupFixture))]
     public class When_setup_is_executed_twice : SetupFixtureSpecification<AnotherNamespaceSetupFixture>
     {
-        private Because of = () =>
-            exception = Catch.Exception(() =>
-            {
-                Subject.Setup(An<IObserver<TestResult>>());
-                Subject.Setup(An<IObserver<TestResult>>());
-            });
+        Establish context = () =>
+            Subject.Setup(An<IObserver<TestResult>>());
+
+        Because of = () =>
+            exception = Catch.Exception(() => Subject.Setup(An<IObserver<TestResult>>()));
 
         It should_fail = () => exception.ShouldBeOfType<InvalidOperationException>();
 
