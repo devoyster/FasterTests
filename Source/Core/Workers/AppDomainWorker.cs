@@ -8,6 +8,7 @@ using System.Reflection;
 using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;

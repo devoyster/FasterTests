@@ -67,14 +67,14 @@
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtureExtensions.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\ISetupFixtureAdapter.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\ISetupFixtureAdapterFactory.cs" />
-    <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureAdapterFactory.cs" />
+    <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\Adapters\SetupFixtureAdapterFactory.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\Trees\RootSetupFixtureStub.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\Trees\SetupFixtureTreeBuilder.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtureTypeInspector.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtureState.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContext.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixture.cs" />
-    <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureAdapter.cs" />
+    <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\Adapters\SetupFixtureAdapter.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactory.cs" />
     <Compile Include="Integration\Nunit\TestEngine.cs" />
     <Compile Include="TestDispatcher.cs" />

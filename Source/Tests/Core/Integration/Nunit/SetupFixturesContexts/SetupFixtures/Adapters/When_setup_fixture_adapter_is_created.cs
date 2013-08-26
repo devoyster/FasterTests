@@ -1,9 +1,10 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters;
 using FasterTests.Tests.NunitTestAssembly;
 using Machine.Fakes;
 using Machine.Specifications;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters
 {
     [Subject(typeof(SetupFixtureAdapterFactory))]
     public class When_setup_fixture_adapter_is_created : WithSubject<SetupFixtureAdapterFactory>

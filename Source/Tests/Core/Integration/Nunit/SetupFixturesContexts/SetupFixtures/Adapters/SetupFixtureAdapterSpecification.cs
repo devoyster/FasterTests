@@ -1,10 +1,9 @@
 ﻿using System;
-using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters;
 using Machine.Fakes;
 using Machine.Specifications;
-using NUnit.Core;
 
-namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureAdapterSpecs
+namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters
 {
     public abstract class SetupFixtureAdapterSpecification<TSetupFixture> : WithSubject<SetupFixtureAdapter> where TSetupFixture : class
     {

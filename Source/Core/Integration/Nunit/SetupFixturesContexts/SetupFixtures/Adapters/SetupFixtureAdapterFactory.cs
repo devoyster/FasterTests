@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
+namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.Adapters
 {
     public class SetupFixtureAdapterFactory : ISetupFixtureAdapterFactory
     {
