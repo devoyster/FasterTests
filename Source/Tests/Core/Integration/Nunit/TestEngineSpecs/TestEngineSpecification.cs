@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Helpers.Collections;
 using Machine.Fakes;
-using System.Linq;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
 
@@ -17,25 +14,22 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
         {
             Configure<ITestFrameworkInitializer, TestFrameworkInitializer>();
             WhenToldToSetupForReturn(true);
+
+            TestResult = null;
         };
+
+        Cleanup after = () =>
+            Subject.Dispose();
 
         protected static TestResult TestResult { get; private set; }
 
         protected static void RunTest<T>() where T : class
         {
-            TestResult = RunTests(typeof(T)).Single();
-        }
+            var test = typeof(T).GetTestDescriptor();
 
-        protected static IList<TestResult> RunTests(params Type[] testTypes)
-        {
-            var tests = testTypes.Select(t => t.GetTestDescriptor());
+            Subject.Results.Subscribe(r => TestResult = r);
 
-            var results = new List<TestResult>();
-            Subject.Results.Subscribe(results.Add);
-
-            tests.ForEach(Subject.RunTest);
-
-            return results;
+            Subject.RunTest(test);
         }
 
         protected static void WhenToldToSetupForReturn(bool result)

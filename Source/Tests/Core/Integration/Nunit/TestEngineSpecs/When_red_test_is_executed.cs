@@ -5,11 +5,11 @@ using Machine.Specifications;
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
     [Subject(typeof(TestEngine))]
-    public class When_green_nunit_test_is_executed : TestEngineSpecification
+    public class When_red_test_is_executed : TestEngineSpecification
     {
         Because of = () =>
-            RunTest<PassingTest>();
+            RunTest<TestWithFailingAssert>();
 
-        It should_pass = () => TestResult.IsSuccess.ShouldBeTrue();
+        It should_fail = () => TestResult.IsSuccess.ShouldBeFalse();
     }
 }

@@ -38,6 +38,11 @@ namespace FasterTests.Core.Integration.Nunit
             // TODO: Move to settings
             var testFilter = new NotFilter(new CategoryFilter("Slow"), topLevel: true);
 
+            if (!testFilter.Pass(testFixture))
+            {
+                return;
+            }
+
             if (_setupFixturesContext.SetupFor(test, _results))
             {
                 testFixture.Run(new ObserverEventListener(_results), testFilter);

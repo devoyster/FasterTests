@@ -139,11 +139,14 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\Trees\RootSetupFixtureStubSpecs\When_setup_fixture_type_is_requested.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\Adapters\When_setup_fixture_adapter_is_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixture_types_are_loaded_from_assembly.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_test_fixture_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_explicit_test_fixture_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_explicit_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_engine_is_disposed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\TestEngineSpecification.cs" />
-    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_nunit_test_is_executed.cs" />
-    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_nunit_test_is_executed.cs" />
-    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_red_nunit_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_test_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_red_test_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_which_throws_an_exception_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_failing_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_setup_fixture_is_executed.cs" />
