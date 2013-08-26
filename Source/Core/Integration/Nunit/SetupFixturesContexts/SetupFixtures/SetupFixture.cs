@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using FasterTests.Core.Interfaces.Models;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
@@ -6,14 +7,14 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
     public class SetupFixture : ISetupFixture
     {
         private readonly Type _type;
-        private readonly ISetupFixtureAdapterFactory _adapterFactory;
         private readonly Lazy<ISetupFixtureAdapter> _lazyAdapter;
 
         public SetupFixture(Type type, ISetupFixtureAdapterFactory adapterFactory)
         {
             _type = type;
-            _adapterFactory = adapterFactory;
-            _lazyAdapter = new Lazy<ISetupFixtureAdapter>(() => _adapterFactory.Create(type));
+            _lazyAdapter = new Lazy<ISetupFixtureAdapter>(
+                () => adapterFactory.Create(type),
+                LazyThreadSafetyMode.None);
         }
 
         public Type Type
