@@ -1,5 +1,4 @@
 ﻿using FasterTests.Core;
-using FasterTests.Tests.Core.ServiceContainerSpecs.TestServices;
 using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.ServiceContainerSpecs
@@ -14,17 +13,17 @@ namespace FasterTests.Tests.Core.ServiceContainerSpecs
             container.Register("string #1", "first");
             container.Register("string #2", "second");
 
-            container.Register<ServiceWithNamedParameters>();
+            container.Register<TestServiceWithNamedParameters>();
         };
 
         Because of = () =>
-            service = container.GetInstance<ServiceWithNamedParameters>();
+            service = container.GetInstance<TestServiceWithNamedParameters>();
 
         It should_inject_first_dependency_by_name = () => service.First.ShouldEqual("string #1");
 
         It should_inject_second_dependency_by_name = () => service.Second.ShouldEqual("string #2");
 
         private static ServiceContainer container;
-        private static ServiceWithNamedParameters service;
+        private static TestServiceWithNamedParameters service;
     }
 }

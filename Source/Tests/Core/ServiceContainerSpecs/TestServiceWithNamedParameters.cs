@@ -1,11 +1,11 @@
-﻿namespace FasterTests.Tests.Core.ServiceContainerSpecs.TestServices
+﻿namespace FasterTests.Tests.Core.ServiceContainerSpecs
 {
-    public class ServiceWithNamedParameters
+    public class TestServiceWithNamedParameters
     {
         private readonly string _first;
         private readonly string _second;
 
-        public ServiceWithNamedParameters(string first, string second)
+        public TestServiceWithNamedParameters(string first, string second)
         {
             _first = first;
             _second = second;

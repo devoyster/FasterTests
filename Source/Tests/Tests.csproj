@@ -133,7 +133,7 @@
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_failing_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\When_nunit_tests_are_loaded_from_assembly.cs" />
-    <Compile Include="Core\ServiceContainerSpecs\TestServices\ServiceWithNamedParameters.cs" />
+    <Compile Include="Core\ServiceContainerSpecs\TestServiceWithNamedParameters.cs" />
     <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched_with_no_parallel_groups.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Helpers\OptionSpecs\When_some_option_value_is_requested.cs" />
     <Compile Include="Helpers\OptionSpecs\When_none_option_is_created.cs" />
     <Compile Include="Helpers\OptionSpecs\When_some_option_is_created.cs" />
+    <Compile Include="Helpers\TestCrossDomainObject.cs" />
     <Compile Include="Helpers\Trees\When_tree_branch_is_taken_by_always_false_predicate.cs" />
     <Compile Include="Helpers\Trees\When_tree_is_enumerated.cs" />
     <Compile Include="Helpers\Trees\When_tree_node_is_added.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Helpers\Trees\When_tree_values_are_selected.cs" />
     <Compile Include="Helpers\Trees\When_tree_value_is_added.cs" />
     <Compile Include="Helpers\Trees\When_tree_root_is_created.cs" />
+    <Compile Include="Helpers\When_object_is_created_in_another_domain_from_assembly.cs" />
     <Compile Include="TestHelpers\EnumerableExtensions.cs" />
     <Compile Include="TestHelpers\NunitTestExtensions.cs" />
   </ItemGroup>
