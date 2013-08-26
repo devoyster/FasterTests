@@ -1,63 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Helpers.Trees;
 using Machine.Fakes;
 using Machine.Specifications;
-using System.Linq;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.AssemblySetupFixturesContextSpecs
 {
     public abstract class AssemblySetupFixturesContextSpecification : WithSubject<AssemblySetupFixturesContext>
     {
         Establish context = () =>
-        {
             TestDescriptor = new TestDescriptor();
 
-            cachedFixtures = new Dictionary<Type, ISetupFixture>();
-
-            The<ISetupFixtureFactory>()
-                .WhenToldTo(f => f.CreateAllFrom(Param.IsAny<string>()))
-                .Return(() => cachedFixtures.Values
-                                .OrderBy(f => f.Type.Namespace ?? "")
-                                .ThenBy(f => f.Type.Name));
-        };
-
-        protected static ISetupFixture TheFixtureFor<T>()
-        {
-            return cachedFixtures[typeof(T)];
-        }
-
-        protected static ISetupFixture ConfigureFixtureFor<T>(bool isRequired = false,
-                                                              bool isSetupSucceeded = false,
-                                                              bool isSetupFailed = false)
+        protected static ISetupFixture CreateFixture(bool isRequired = false,
+                                                     bool isSetupSucceeded = false,
+                                                     bool isSetupFailed = false)
         {
             var fixture = An<ISetupFixture>();
-            cachedFixtures.Add(typeof(T), fixture);
 
             var state = isSetupSucceeded
                             ? SetupFixtureState.SetupSucceeded
                             : (isSetupFailed ? SetupFixtureState.SetupFailed : SetupFixtureState.NoSetupExecuted);
-            SetFixtureState<T>(state);
+            SetFixtureState(fixture, state);
 
-            fixture
-                .WhenToldTo(f => f.Type)
-                .Return(typeof(T));
             fixture
                 .WhenToldTo(f => f.IsRequiredFor(TestDescriptor))
                 .Return(isRequired);
             fixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
-                .Callback(() => SetFixtureState<T>(SetupFixtureState.SetupSucceeded));
+                .Callback(() => SetFixtureState(fixture, SetupFixtureState.SetupSucceeded));
 
             return fixture;
         }
 
-        protected static void SetFixtureState<T>(SetupFixtureState state)
+        protected static void SetFixtureState(ISetupFixture fixture, SetupFixtureState state)
         {
-            TheFixtureFor<T>()
+            fixture
                 .WhenToldTo(f => f.State)
                 .Return(() => state);
+        }
+
+        protected static void ConfigureTreeBuilder(ITree<ISetupFixture> tree)
+        {
+            The<ISetupFixtureTreeBuilder>()
+                .WhenToldTo(f => f.BuildFrom(Param.IsAny<string>()))
+                .Return(tree);
         }
 
         protected static TestDescriptor TestDescriptor { get; private set; }
@@ -67,6 +54,9 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
             get { return The<IObserver<TestResult>>(); }
         }
 
-        private static Dictionary<Type, ISetupFixture> cachedFixtures;
+        protected static ISetupFixture RootFixture
+        {
+            get { return CreateFixture(isRequired: true, isSetupSucceeded: true); }
+        }
     }
 }

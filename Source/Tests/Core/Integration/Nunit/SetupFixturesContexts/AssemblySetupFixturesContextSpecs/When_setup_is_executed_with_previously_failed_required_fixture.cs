@@ -1,6 +1,5 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
-using FasterTests.Tests.NunitTestAssembly;
-using FasterTests.Tests.NunitTestAssembly.Namespace;
+using FasterTests.Helpers.Trees;
 using Machine.Specifications;
 using Machine.Fakes;
 
@@ -11,8 +10,17 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
     {
         Establish context = () =>
         {
-            ConfigureFixtureFor<RootSetupFixture>(isRequired: true, isSetupFailed: true);
-            ConfigureFixtureFor<NamespaceSetupFixture>(isRequired: true);
+            failedFixture = CreateFixture(isRequired: true, isSetupFailed: true);
+            requiredFixture = CreateFixture(isRequired: true);
+
+            ConfigureTreeBuilder(
+                new Tree<ISetupFixture>(RootFixture)
+                    {
+                        new Tree<ISetupFixture>(failedFixture)
+                            {
+                                requiredFixture
+                            }
+                    });
         };
 
         Because of = () =>
@@ -20,10 +28,12 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
 
         It should_fail = () => result.ShouldBeFalse();
 
-        It should_skip_already_failed_fixture = () => TheFixtureFor<RootSetupFixture>().WasNotToldTo(f => f.Setup(TheResultsObserver));
+        It should_skip_already_failed_fixture = () => failedFixture.WasNotToldTo(f => f.Setup(TheResultsObserver));
 
-        It should_set_parent_failed_for_newly_required_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.SetParentFailed(TheResultsObserver)).OnlyOnce();
+        It should_set_parent_failed_for_newly_required_fixture = () => requiredFixture.WasToldTo(f => f.SetParentFailed(TheResultsObserver)).OnlyOnce();
 
         private static bool result;
+        private static ISetupFixture failedFixture;
+        private static ISetupFixture requiredFixture;
     }
 }

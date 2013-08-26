@@ -1,6 +1,5 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
-using FasterTests.Tests.NunitTestAssembly;
-using FasterTests.Tests.NunitTestAssembly.Namespace;
+using FasterTests.Helpers.Trees;
 using Machine.Specifications;
 using Machine.Fakes;
 
@@ -11,23 +10,35 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
     {
         Establish context = () =>
         {
+            firstFixture = CreateFixture(isRequired: true);
+            secondFixture = CreateFixture(isRequired: true);
+
+            ConfigureTreeBuilder(
+                new Tree<ISetupFixture>(RootFixture)
+                    {
+                        new Tree<ISetupFixture>(firstFixture)
+                            {
+                                secondFixture
+                            }
+                    });
+
             order = 1;
 
-            ConfigureFixtureFor<RootSetupFixture>(isRequired: true)
+            firstFixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
                 .Callback(() =>
-                              {
-                                  firstFixtureOrder = order++;
-                                  SetFixtureState<RootSetupFixture>(SetupFixtureState.SetupSucceeded);
-                              });
+                            {
+                                firstFixtureOrder = order++;
+                                SetFixtureState(firstFixture, SetupFixtureState.SetupSucceeded);
+                            });
 
-            ConfigureFixtureFor<NamespaceSetupFixture>(isRequired: true)
+            secondFixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
                 .Callback(() =>
-                              {
-                                  secondFixtureOrder = order++;
-                                  SetFixtureState<NamespaceSetupFixture>(SetupFixtureState.SetupSucceeded);
-                              });
+                            {
+                                secondFixtureOrder = order++;
+                                SetFixtureState(secondFixture, SetupFixtureState.SetupSucceeded);
+                            });
         };
 
         Because of = () =>
@@ -35,15 +46,18 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
 
         It should_succeed = () => result.ShouldBeTrue();
 
-        It should_setup_first_fixture = () => TheFixtureFor<RootSetupFixture>().WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
+        It should_setup_first_fixture = () => firstFixture.WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
 
-        It should_setup_second_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
+        It should_setup_second_fixture = () => secondFixture.WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
 
         It should_setup_first_fixture_first = () => firstFixtureOrder.ShouldEqual(1);
 
         It should_setup_second_fixture_next = () => secondFixtureOrder.ShouldEqual(2);
 
         private static bool result;
+        private static ISetupFixture firstFixture;
+        private static ISetupFixture secondFixture;
+
         private static int order;
         private static int firstFixtureOrder;
         private static int secondFixtureOrder;

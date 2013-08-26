@@ -1,6 +1,5 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
-using FasterTests.Tests.NunitTestAssembly;
-using FasterTests.Tests.NunitTestAssembly.Namespace;
+using FasterTests.Helpers.Trees;
 using Machine.Specifications;
 using Machine.Fakes;
 
@@ -11,11 +10,21 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
     {
         Establish context = () =>
         {
-            ConfigureFixtureFor<RootSetupFixture>(isRequired: true)
-                .WhenToldTo(f => f.Setup(TheResultsObserver))
-                .Callback(() => SetFixtureState<RootSetupFixture>(SetupFixtureState.SetupFailed));
+            firstFixture = CreateFixture(isRequired: true);
+            secondFixture = CreateFixture(isRequired: true);
 
-            ConfigureFixtureFor<NamespaceSetupFixture>(isRequired: true);
+            ConfigureTreeBuilder(
+                new Tree<ISetupFixture>(RootFixture)
+                    {
+                        new Tree<ISetupFixture>(firstFixture)
+                            {
+                                secondFixture
+                            }
+                    });
+
+            firstFixture
+                .WhenToldTo(f => f.Setup(TheResultsObserver))
+                .Callback(() => SetFixtureState(firstFixture, SetupFixtureState.SetupFailed));
         };
 
         Because of = () =>
@@ -23,10 +32,12 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
 
         It should_fail = () => result.ShouldBeFalse();
 
-        It should_setup_first_fixture = () => TheFixtureFor<RootSetupFixture>().WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
+        It should_setup_first_fixture = () => firstFixture.WasToldTo(f => f.Setup(TheResultsObserver)).OnlyOnce();
 
-        It should_set_parent_failed_for_second_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.SetParentFailed(TheResultsObserver)).OnlyOnce();
+        It should_set_parent_failed_for_second_fixture = () => secondFixture.WasToldTo(f => f.SetParentFailed(TheResultsObserver)).OnlyOnce();
 
         private static bool result;
+        private static ISetupFixture firstFixture;
+        private static ISetupFixture secondFixture;
     }
 }

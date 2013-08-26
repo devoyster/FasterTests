@@ -1,31 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 using FasterTests.Helpers.Collections;
+using FasterTests.Helpers.Trees;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 {
     public class AssemblySetupFixturesContext : ISetupFixturesContext
     {
-        private readonly string _testAssemblyPath;
-        private readonly ISetupFixtureFactory _setupFixtureFactory;
-        private readonly Lazy<IEnumerable<ISetupFixture>> _allFixturesLazy;
+        private readonly Lazy<ITree<ISetupFixture>> _lazyFixtures;
 
         public AssemblySetupFixturesContext(string testAssemblyPath,
-                                            ISetupFixtureFactory setupFixtureFactory)
+                                            ISetupFixtureTreeBuilder setupFixtureTreeBuilder)
         {
-            _testAssemblyPath = testAssemblyPath;
-            _setupFixtureFactory = setupFixtureFactory;
-
-            _allFixturesLazy = new Lazy<IEnumerable<ISetupFixture>>(CreateAllFixtures);
+            _lazyFixtures = new Lazy<ITree<ISetupFixture>>(
+                () => setupFixtureTreeBuilder.BuildFrom(testAssemblyPath),
+                LazyThreadSafetyMode.None);
         }
 
         public bool SetupFor(TestDescriptor test, IObserver<TestResult> resultsObserver)
         {
-            TeardownNotRequiredFixtures(test, resultsObserver);
+            var requiredFixtures = GetRequiredFixtures(test);
 
-            var fixturesWhereSetupExecuted = GetRequiredFixtures(test).ToLookup(f => f.IsSetupExecuted());
+            TeardownNotRequiredFixtures(requiredFixtures, resultsObserver);
+
+            var fixturesWhereSetupExecuted = requiredFixtures.ToLookup(f => f.IsSetupExecuted());
 
             var anyFixtureFailed = fixturesWhereSetupExecuted[true].Any(f => f.IsSetupFailed());
             foreach (var fixture in fixturesWhereSetupExecuted[false])
@@ -47,38 +48,30 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 
         public void TeardownAll(IObserver<TestResult> resultsObserver)
         {
-            TeardownExecutedFixtures(AllFixtures, resultsObserver);
+            TeardownNotRequiredFixtures(Enumerable.Empty<ISetupFixture>(), resultsObserver);
         }
 
-        private IEnumerable<ISetupFixture> AllFixtures
+        private ITree<ISetupFixture> Fixtures
         {
-            get { return _allFixturesLazy.Value; }
+            get { return _lazyFixtures.Value; }
         }
 
-        private IEnumerable<ISetupFixture> CreateAllFixtures()
+        private void TeardownNotRequiredFixtures(IEnumerable<ISetupFixture> requiredFixtures, IObserver<TestResult> resultsObserver)
         {
-            return _setupFixtureFactory.CreateAllFrom(_testAssemblyPath)
-                    .GroupBy(f => f.Type.Namespace)
-                    .Select(g => g.First());
-        }
-
-        private void TeardownNotRequiredFixtures(TestDescriptor test, IObserver<TestResult> resultsObserver)
-        {
-            var notRequiredFixtures = AllFixtures.Except(GetRequiredFixtures(test));
-            TeardownExecutedFixtures(notRequiredFixtures, resultsObserver);
-        }
-
-        private void TeardownExecutedFixtures(IEnumerable<ISetupFixture> notRequiredFixtures, IObserver<TestResult> resultsObserver)
-        {
-            notRequiredFixtures
-                .Where(f => f.IsSetupExecuted())
+            GetFixturesWhereSetupExecuted()
+                .Except(requiredFixtures)
                 .Reverse()
                 .ForEach(f => f.Teardown(resultsObserver));
         }
 
-        private IEnumerable<ISetupFixture> GetRequiredFixtures(TestDescriptor test)
+        private IEnumerable<ISetupFixture> GetFixturesWhereSetupExecuted()
         {
-            return AllFixtures.Where(f => f.IsRequiredFor(test));
+            return Fixtures.ToBranchWhile(f => f.IsSetupExecuted());
+        }
+
+        private ICollection<ISetupFixture> GetRequiredFixtures(TestDescriptor test)
+        {
+            return Fixtures.ToBranchWhile(f => f.IsRequiredFor(test)).ToList();
         }
     }
 }

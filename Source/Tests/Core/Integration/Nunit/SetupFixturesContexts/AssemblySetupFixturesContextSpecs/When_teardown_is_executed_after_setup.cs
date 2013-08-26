@@ -1,6 +1,5 @@
 ﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
-using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
-using FasterTests.Tests.NunitTestAssembly.Namespace;
+using FasterTests.Helpers.Trees;
 using Machine.Specifications;
 using Machine.Fakes;
 
@@ -11,15 +10,25 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
     {
         Establish context = () =>
         {
-            ConfigureFixtureFor<NamespaceSetupFixture>(isSetupSucceeded: true);
-            ConfigureFixtureFor<AnotherNamespaceSetupFixture>();
+            setupFixture = CreateFixture(isSetupSucceeded: true);
+            notSetupFixture = CreateFixture();
+
+            ConfigureTreeBuilder(
+                new Tree<ISetupFixture>(RootFixture)
+                    {
+                        setupFixture,
+                        notSetupFixture
+                    });
         };
 
         Because of = () =>
             Subject.TeardownAll(TheResultsObserver);
 
-        It should_teardown_setup_fixture = () => TheFixtureFor<NamespaceSetupFixture>().WasToldTo(f => f.Teardown(TheResultsObserver)).OnlyOnce();
+        It should_teardown_setup_fixture = () => setupFixture.WasToldTo(f => f.Teardown(TheResultsObserver)).OnlyOnce();
 
-        It should_skip_not_setup_fixture = () => TheFixtureFor<AnotherNamespaceSetupFixture>().WasNotToldTo(f => f.Teardown(TheResultsObserver));
+        It should_skip_not_setup_fixture = () => notSetupFixture.WasNotToldTo(f => f.Teardown(TheResultsObserver));
+
+        private static ISetupFixture setupFixture;
+        private static ISetupFixture notSetupFixture;
     }
 }

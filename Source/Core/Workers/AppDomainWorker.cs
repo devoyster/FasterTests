@@ -8,6 +8,7 @@ using System.Reflection;
 using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
 using FasterTests.Helpers.Collections;
@@ -45,7 +46,7 @@ namespace FasterTests.Core.Workers
         private IDisposable RunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
             var engine = new TestEngine(new TestFrameworkInitializer(),
-                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureFactory(new SetupFixtureTypeInspector(), new SetupFixtureAdapterFactory())));
+                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureTreeBuilder(new SetupFixtureFactory(new SetupFixtureTypeInspector(), new SetupFixtureAdapterFactory()))));
 
             using (engine)
             {
