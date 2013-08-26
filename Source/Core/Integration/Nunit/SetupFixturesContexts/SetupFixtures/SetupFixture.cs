@@ -6,12 +6,14 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
     public class SetupFixture : ISetupFixture
     {
         private readonly Type _type;
-        private readonly Lazy<SetupFixtureAdapter> _lazyAdapter;
+        private readonly ISetupFixtureAdapterFactory _adapterFactory;
+        private readonly Lazy<ISetupFixtureAdapter> _lazyAdapter;
 
-        public SetupFixture(Type type)
+        public SetupFixture(Type type, ISetupFixtureAdapterFactory adapterFactory)
         {
             _type = type;
-            _lazyAdapter = new Lazy<SetupFixtureAdapter>(() => new SetupFixtureAdapter(type));
+            _adapterFactory = adapterFactory;
+            _lazyAdapter = new Lazy<ISetupFixtureAdapter>(() => _adapterFactory.Create(type));
         }
 
         public Type Type
@@ -38,11 +40,9 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
                 throw new InvalidOperationException("Fixture was already set up");
             }
 
-            var testResult = _lazyAdapter.Value.Setup();
+            var isSucccess = _lazyAdapter.Value.Setup();
 
-            State = testResult.IsFailure || testResult.IsError
-                        ? SetupFixtureState.SetupFailed
-                        : SetupFixtureState.SetupSucceeded;
+            State = isSucccess ? SetupFixtureState.SetupSucceeded : SetupFixtureState.SetupFailed;
         }
 
         public void Teardown(IObserver<TestResult> resultsObserver)

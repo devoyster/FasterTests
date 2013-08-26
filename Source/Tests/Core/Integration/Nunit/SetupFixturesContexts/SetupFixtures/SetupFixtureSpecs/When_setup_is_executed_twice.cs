@@ -2,13 +2,13 @@
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Tests.NunitTestAssembly.AnotherNamespace;
+using FasterTests.Tests.NunitTestAssembly;
 using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_setup_is_executed_twice : SetupFixtureSpecification<AnotherNamespaceSetupFixture>
+    public class When_setup_is_executed_twice : SetupFixtureSpecification<RootSetupFixture>
     {
         Establish context = () =>
             Subject.Setup(An<IObserver<TestResult>>());

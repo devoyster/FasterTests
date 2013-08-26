@@ -44,7 +44,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AnotherFailingNamespace\TestWithFailingSetupFixture.cs" />
+    <Compile Include="AnotherFailingNamespace\AnotherTestWithFailingSetupFixture.cs" />
     <Compile Include="AnotherNamespace\AnotherNamespaceSetupFixture.cs" />
     <Compile Include="AnotherNamespace\AnotherTestWithSetupFixture.cs" />
     <Compile Include="AnotherFailingNamespace\SetupFixtureWhichThrowsAnExceptionInTeardown.cs" />

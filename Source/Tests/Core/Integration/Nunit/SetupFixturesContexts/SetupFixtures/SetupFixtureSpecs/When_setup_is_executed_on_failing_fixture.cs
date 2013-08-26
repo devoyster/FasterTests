@@ -2,14 +2,17 @@
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Tests.NunitTestAssembly.FailingNamespace;
+using FasterTests.Tests.NunitTestAssembly;
 using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
     [Subject(typeof(SetupFixture))]
-    public class When_setup_is_executed_on_failing_fixture : SetupFixtureSpecification<SetupFixtureWhichThrowsAnException>
+    public class When_setup_is_executed_on_failing_fixture : SetupFixtureSpecification<RootSetupFixture>
     {
+        Establish context = () =>
+            ConfigureAdapterToFail();
+
         Because of = () =>
             Subject.Setup(An<IObserver<TestResult>>());
 

@@ -3,30 +3,28 @@ using NUnit.Core;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
 {
-    public class SetupFixtureAdapter : SetUpFixture
+    public class SetupFixtureAdapter : SetUpFixture, ISetupFixtureAdapter
     {
         public SetupFixtureAdapter(Type type) : base(type)
         {
         }
 
-        public TestResult Setup()
+        public bool Setup()
         {
             var testResult = CreateNunitTestResult();
 
             DoOneTimeSetUp(testResult);
             DoOneTimeBeforeTestSuiteActions(testResult);
 
-            return testResult;
+            return !testResult.IsFailure && !testResult.IsError;
         }
 
-        public TestResult Teardown()
+        public void Teardown()
         {
             var testResult = CreateNunitTestResult();
 
             DoOneTimeAfterTestSuiteActions(testResult);
             DoOneTimeTearDown(testResult);
-
-            return testResult;
         }
 
         private TestResult CreateNunitTestResult()

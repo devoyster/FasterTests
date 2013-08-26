@@ -3,6 +3,7 @@ using FasterTests.Tests.NunitTestAssembly;
 using FasterTests.Tests.NunitTestAssembly.Namespace;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
+using Machine.Fakes;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures.SetupFixtureSpecs
 {
@@ -13,6 +14,8 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
             isRequired = Subject.IsRequiredFor(typeof(TestWithSetupFixture).GetTestDescriptor());
 
         It should_be_required = () => isRequired.ShouldBeTrue();
+
+        It should_not_create_adapter = () => The<ISetupFixtureAdapterFactory>().WasNotToldTo(f => f.Create(typeof (RootSetupFixture)));
 
         private static bool isRequired;
     }
