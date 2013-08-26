@@ -1,4 +1,5 @@
 ﻿using System;
+using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using Machine.Fakes;
 using Machine.Specifications;
@@ -21,6 +22,17 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
         protected static void ConfigureAdapterToFail()
         {
             TheAdapterWhenToldToSetupReturn(false);
+        }
+
+        protected static ISetupFixture CreateFixtureFor<T>()
+        {
+            var fixture = An<ISetupFixture>();
+
+            fixture
+                .WhenToldTo(f => f.Type)
+                .Return(typeof(T));
+
+            return fixture;
         }
 
         private static void TheAdapterWhenToldToSetupReturn(bool value)

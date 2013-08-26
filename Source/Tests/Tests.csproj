@@ -92,6 +92,10 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\AssemblySetupFixturesContextSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_nested_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_parent_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_sibling_namespace.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_fixture_from_global_namespace_is_checked_for_any_other_fixture.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\Trees\SetupFixtureTreeBuilderSpecs\When_tree_is_built_from_global_fixture_with_one_children.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\Trees\SetupFixtureTreeBuilderSpecs\When_tree_is_built_from_root_fixture_with_two_children.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\Trees\SetupFixtureTreeBuilderSpecs\When_tree_is_built_from_two_fixtures_in_different_namespace.cs" />
