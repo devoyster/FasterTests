@@ -4,9 +4,9 @@ using System.Reflection;
 using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
+using FasterTests.Helpers.Collections;
 using Machine.Fakes;
 using Machine.Specifications;
-using FasterTests.Helpers;
 using FasterTests.Tests.TestHelpers;
 using System.Linq;
 

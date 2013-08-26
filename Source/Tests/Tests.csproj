@@ -142,6 +142,11 @@
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_successful_test_results_to_console.cs" />
     <Compile Include="Core\When_tests_are_ran.cs" />
     <Compile Include="Core\When_test_runner_bootstrapper_is_invoked.cs" />
+    <Compile Include="Helpers\Collections\When_enumerable_created_from_enumerator_is_used.cs" />
+    <Compile Include="Helpers\Collections\When_enumerable_is_created_from_enumerator.cs" />
+    <Compile Include="Helpers\Collections\When_head_and_tail_are_obtained_for_empty_enumerable.cs" />
+    <Compile Include="Helpers\Collections\When_foreach_is_executed.cs" />
+    <Compile Include="Helpers\Collections\When_head_and_tail_are_obtained.cs" />
     <Compile Include="Helpers\OptionSpecs\When_none_option_value_is_requested.cs" />
     <Compile Include="Helpers\OptionSpecs\When_some_option_value_is_requested.cs" />
     <Compile Include="Helpers\OptionSpecs\When_none_option_is_created.cs" />

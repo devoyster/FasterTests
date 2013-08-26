@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
-using FasterTests.Helpers;
+using FasterTests.Helpers.Collections;
 
 namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 {
@@ -59,8 +59,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
         {
             return _setupFixtureFactory.CreateAllFrom(_testAssemblyPath)
                     .GroupBy(f => f.Type.Namespace)
-                    .Select(g => g.First())
-                    .ToReadOnlyCollection();
+                    .Select(g => g.First());
         }
 
         private void TeardownNotRequiredFixtures(TestDescriptor test, IObserver<TestResult> resultsObserver)

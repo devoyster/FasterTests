@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FasterTests.Helpers;
+using FasterTests.Helpers.Collections;
 
 namespace FasterTests.Tests.TestHelpers
 {

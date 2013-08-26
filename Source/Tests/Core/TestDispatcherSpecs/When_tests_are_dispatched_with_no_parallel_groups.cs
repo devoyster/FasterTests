@@ -5,7 +5,7 @@ using System.Reflection;
 using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Core.Interfaces.Workers;
-using FasterTests.Helpers;
+using FasterTests.Helpers.Collections;
 using FasterTests.Tests.TestHelpers;
 using Machine.Fakes;
 using Machine.Specifications;

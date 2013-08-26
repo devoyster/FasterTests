@@ -39,7 +39,8 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AppDomainExtensions.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Collections\HeadAndTail.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
     <Compile Include="Option.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

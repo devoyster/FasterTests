@@ -10,7 +10,7 @@ using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
 using System.Linq;
-using FasterTests.Helpers;
+using FasterTests.Helpers.Collections;
 
 namespace FasterTests.Core.Workers
 {

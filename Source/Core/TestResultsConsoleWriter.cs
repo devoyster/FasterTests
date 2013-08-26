@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Helpers;
+using FasterTests.Helpers.Collections;
 
 namespace FasterTests.Core
 {

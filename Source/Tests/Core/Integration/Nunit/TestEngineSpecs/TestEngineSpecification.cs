@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using FasterTests.Core.Integration.Nunit;
 using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Helpers.Collections;
 using Machine.Fakes;
 using System.Linq;
-using FasterTests.Helpers;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
 
