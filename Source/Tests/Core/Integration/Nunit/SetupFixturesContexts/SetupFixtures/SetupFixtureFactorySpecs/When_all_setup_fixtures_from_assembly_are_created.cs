@@ -23,15 +23,15 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
         };
 
         Because of = () =>
-            setupFixtures = Subject.CreateAllFrom(assemblyPath);
+            setupFixtures = Subject.CreateAllFrom(assemblyPath).ToList();
 
         It should_create_instances_of_setup_fixture = () => setupFixtures.ShouldEachConformTo(f => f is SetupFixture);
 
-        It should_initialize_first_fixture_with_supplied_type = () => setupFixtures.First().Type.ShouldEqual(typeof(RootSetupFixture));
+        It should_initialize_first_fixture_with_supplied_type = () => setupFixtures[0].Type.ShouldEqual(typeof(RootSetupFixture));
 
-        It should_initialize_second_fixture_with_supplied_type = () => setupFixtures.ElementAt(1).Type.ShouldEqual(typeof(NamespaceSetupFixture));
+        It should_initialize_second_fixture_with_supplied_type = () => setupFixtures[1].Type.ShouldEqual(typeof(NamespaceSetupFixture));
 
         private static string assemblyPath;
-        private static IEnumerable<ISetupFixture> setupFixtures;
+        private static List<ISetupFixture> setupFixtures;
     }
 }

@@ -20,7 +20,7 @@ namespace FasterTests.Tests.Core.TestDispatcherSpecs
             var noParallelGroups = new[]
                                        {
                                            new[] { "Namespace1.", "Namespace2." },
-                                           new[] { "Namespace3." },
+                                           new[] { "Namespace3." }
                                        };
             subject = new TestDispatcher(The<ITestWorkersPool>(), noParallelGroups);
 
@@ -36,12 +36,12 @@ namespace FasterTests.Tests.Core.TestDispatcherSpecs
                         };
             tests.ForEach(d => d.AssemblyPath = Assembly.GetExecutingAssembly().Location);
 
-            buckets = new List<IEnumerable<TestDescriptor>>();
+            buckets = new List<List<TestDescriptor>>();
             The<ITestWorkersPool>()
                 .WhenToldTo(p => p.RunTests(Param.IsAny<IEnumerable<TestDescriptor>>()))
                 .Return((IEnumerable<TestDescriptor> t) =>
                             {
-                                buckets.Add(t);
+                                buckets.Add(t.ToList());
                                 return Observable.Empty<TestResult>();
                             }); 
         };
@@ -49,12 +49,12 @@ namespace FasterTests.Tests.Core.TestDispatcherSpecs
         Because of = () =>
             subject.RunTests(tests).ConsumeAll();
 
-        It should_group_together_tests_from_the_first_no_parallel_group = () => buckets.First().Count().ShouldEqual(3);
+        It should_group_together_tests_from_the_first_no_parallel_group = () => buckets[0].Count.ShouldEqual(3);
 
-        It should_group_together_tests_from_the_second_no_parallel_group = () => buckets.ElementAt(1).Count().ShouldEqual(4);
+        It should_group_together_tests_from_the_second_no_parallel_group = () => buckets[1].Count.ShouldEqual(4);
 
         private static TestDispatcher subject;
         private static IEnumerable<TestDescriptor> tests;
-        private static List<IEnumerable<TestDescriptor>> buckets;
+        private static List<List<TestDescriptor>> buckets;
     }
 }
