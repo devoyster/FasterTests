@@ -25,7 +25,17 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
 
         public bool IsRequiredFor(TestDescriptor test)
         {
-            return string.IsNullOrEmpty(_type.Namespace) || test.Name.StartsWith(_type.Namespace + ".");
+            return IsRequiredFor(test.Name);
+        }
+
+        public bool IsRequiredFor(ISetupFixture otherFixture)
+        {
+            return IsRequiredFor(otherFixture.Type.FullName);
+        }
+
+        private bool IsRequiredFor(string typeFullName)
+        {
+            return string.IsNullOrEmpty(_type.Namespace) || typeFullName.StartsWith(_type.Namespace + Type.Delimiter);
         }
 
         public void SetParentFailed(IObserver<TestResult> resultsObserver)

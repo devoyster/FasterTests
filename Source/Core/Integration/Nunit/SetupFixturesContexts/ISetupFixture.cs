@@ -11,6 +11,8 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 
         bool IsRequiredFor(TestDescriptor test);
 
+        bool IsRequiredFor(ISetupFixture otherFixture);
+
         void SetParentFailed(IObserver<TestResult> resultsObserver);
 
         void Setup(IObserver<TestResult> resultsObserver);
