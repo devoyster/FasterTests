@@ -151,6 +151,13 @@
     <Compile Include="Helpers\OptionSpecs\When_some_option_value_is_requested.cs" />
     <Compile Include="Helpers\OptionSpecs\When_none_option_is_created.cs" />
     <Compile Include="Helpers\OptionSpecs\When_some_option_is_created.cs" />
+    <Compile Include="Helpers\Trees\When_tree_branch_is_taken_by_always_false_predicate.cs" />
+    <Compile Include="Helpers\Trees\When_tree_is_enumerated.cs" />
+    <Compile Include="Helpers\Trees\When_tree_node_is_added.cs" />
+    <Compile Include="Helpers\Trees\When_tree_branch_is_taken_by_predicate.cs" />
+    <Compile Include="Helpers\Trees\When_tree_values_are_selected.cs" />
+    <Compile Include="Helpers\Trees\When_tree_value_is_added.cs" />
+    <Compile Include="Helpers\Trees\When_tree_root_is_created.cs" />
     <Compile Include="TestHelpers\EnumerableExtensions.cs" />
     <Compile Include="TestHelpers\NunitTestExtensions.cs" />
   </ItemGroup>
