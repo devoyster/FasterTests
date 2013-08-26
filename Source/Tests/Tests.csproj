@@ -142,6 +142,10 @@
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_successful_test_results_to_console.cs" />
     <Compile Include="Core\When_tests_are_ran.cs" />
     <Compile Include="Core\When_test_runner_bootstrapper_is_invoked.cs" />
+    <Compile Include="Helpers\OptionSpecs\When_none_option_value_is_requested.cs" />
+    <Compile Include="Helpers\OptionSpecs\When_some_option_value_is_requested.cs" />
+    <Compile Include="Helpers\OptionSpecs\When_none_option_is_created.cs" />
+    <Compile Include="Helpers\OptionSpecs\When_some_option_is_created.cs" />
     <Compile Include="TestHelpers\EnumerableExtensions.cs" />
     <Compile Include="TestHelpers\NunitTestExtensions.cs" />
   </ItemGroup>
