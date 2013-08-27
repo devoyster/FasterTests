@@ -7,37 +7,22 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
     public class SetupFixture : ISetupFixture
     {
         private readonly Type _type;
-        private readonly Lazy<ISetupFixtureAdapter> _lazyAdapter;
+        private ISetupFixtureState _state;
 
         public SetupFixture(Type type, ISetupFixtureAdapterFactory adapterFactory)
         {
             _type = type;
-            _lazyAdapter = new Lazy<ISetupFixtureAdapter>(
-                () => adapterFactory.Create(type),
-                LazyThreadSafetyMode.None);
+
+            var lazyAdapter = new Lazy<ISetupFixtureAdapter>(
+                                () => adapterFactory.Create(type),
+                                LazyThreadSafetyMode.None);
+            _state = new NotExecutedSetupFixtureState(lazyAdapter);
         }
 
         public Type Type
         {
             get { return _type; }
         }
-
-        public bool IsExecuted
-        {
-            get { return IsSucceeded || IsFailed; }
-        }
-
-        public bool IsSucceeded
-        {
-            get { return State == SetupFixtureState.SetupSucceeded; }
-        }
-
-        public bool IsFailed
-        {
-            get { return State == SetupFixtureState.SetupFailed; }
-        }
-
-        private SetupFixtureState State { get; set; }
 
         public bool IsRequiredFor(TestDescriptor test)
         {
@@ -54,41 +39,42 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
             return string.IsNullOrEmpty(_type.Namespace) || typeFullName.StartsWith(_type.Namespace + Type.Delimiter);
         }
 
+        public bool IsExecuted
+        {
+            get { return _state.IsExecuted; }
+        }
+
+        public bool IsSucceeded
+        {
+            get { return _state.IsSucceeded; }
+        }
+
+        public bool IsFailed
+        {
+            get { return _state.IsFailed; }
+        }
+
         public void SetParentFailed(IObserver<TestResult> resultsObserver)
         {
-            if (State != SetupFixtureState.NoSetupExecuted)
-            {
-                throw new InvalidOperationException("Fixture was already set up");
-            }
-
-            State = SetupFixtureState.SetupFailed;
+            _state.SetParentFailed(resultsObserver);
+            UpdateState();
         }
 
         public void Setup(IObserver<TestResult> resultsObserver)
         {
-            if (State != SetupFixtureState.NoSetupExecuted)
-            {
-                throw new InvalidOperationException("Fixture was already set up");
-            }
-
-            var isSucccess = _lazyAdapter.Value.Setup();
-
-            State = isSucccess ? SetupFixtureState.SetupSucceeded : SetupFixtureState.SetupFailed;
+            _state.Setup(resultsObserver);
+            UpdateState();
         }
 
         public void Teardown(IObserver<TestResult> resultsObserver)
         {
-            switch (State)
-            {
-                case SetupFixtureState.NoSetupExecuted:
-                    throw new InvalidOperationException("Fixture was not set up");
+            _state.Teardown(resultsObserver);
+            UpdateState();
+        }
 
-                case SetupFixtureState.SetupSucceeded:
-                    _lazyAdapter.Value.Teardown();
-                    break;
-            }
-
-            State = SetupFixtureState.NoSetupExecuted;
+        private void UpdateState()
+        {
+            _state = _state.NextState();
         }
     }
 }
