@@ -92,6 +92,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\AssemblySetupFixturesContextSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_failed_parent_fixture_is_registered_twice.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_nested_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_parent_namespace.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_sibling_namespace.cs" />

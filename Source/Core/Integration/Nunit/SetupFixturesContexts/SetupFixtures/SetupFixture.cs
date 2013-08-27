@@ -41,6 +41,11 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
 
         public void SetParentFailed(IObserver<TestResult> resultsObserver)
         {
+            if (State != SetupFixtureState.NoSetupExecuted)
+            {
+                throw new InvalidOperationException("Fixture was already set up");
+            }
+
             State = SetupFixtureState.SetupFailed;
         }
 
