@@ -1,5 +1,4 @@
 ﻿using System;
-using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Tests.NunitTestAssembly;
@@ -16,6 +15,8 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
         Because of = () =>
             Subject.Setup(An<IObserver<TestResult>>());
 
-        It should_move_to_setup_failed_state = () => Subject.State.ShouldEqual(SetupFixtureState.SetupFailed);
+        It should_move_to_setup_failed_state = () => Subject.IsFailed.ShouldBeTrue();
+
+        It should_be_marked_as_executed = () => Subject.IsExecuted.ShouldBeTrue();
     }
 }

@@ -1,5 +1,4 @@
-﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
-using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees;
+﻿using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees;
 using Machine.Fakes;
 using Machine.Specifications;
 
@@ -8,11 +7,10 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Trees.R
     [Subject(typeof(RootSetupFixtureStub))]
     public class When_state_is_obtained : WithSubject<RootSetupFixtureStub>
     {
-        Because of = () =>
-            state = Subject.State;
+        It should_always_be_executed = () => Subject.IsExecuted.ShouldBeTrue();
 
-        It should_always_be_setup_succceeded = () => state.ShouldEqual(SetupFixtureState.SetupSucceeded);
+        It should_always_be_succceeded = () => Subject.IsSucceeded.ShouldBeTrue();
 
-        private static SetupFixtureState state;
+        It should_never_be_failed = () => Subject.IsFailed.ShouldBeFalse();
     }
 }

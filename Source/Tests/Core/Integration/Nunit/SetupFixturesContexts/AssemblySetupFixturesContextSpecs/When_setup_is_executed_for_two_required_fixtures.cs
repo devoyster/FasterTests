@@ -29,7 +29,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
                 .Callback(() =>
                             {
                                 firstFixtureOrder = order++;
-                                SetFixtureState(firstFixture, SetupFixtureState.SetupSucceeded);
+                                SetFixtureSucceeded(firstFixture);
                             });
 
             secondFixture
@@ -37,7 +37,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
                 .Callback(() =>
                             {
                                 secondFixtureOrder = order++;
-                                SetFixtureState(secondFixture, SetupFixtureState.SetupSucceeded);
+                                SetFixtureSucceeded(secondFixture);
                             });
         };
 

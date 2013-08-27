@@ -12,9 +12,19 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees
             get { throw new NotSupportedException(); }
         }
 
-        public SetupFixtureState State
+        public bool IsExecuted
         {
-            get { return SetupFixtureState.SetupSucceeded; }
+            get { return true; }
+        }
+
+        public bool IsSucceeded
+        {
+            get { return true; }
+        }
+
+        public bool IsFailed
+        {
+            get { return false; }
         }
 
         public bool IsRequiredFor(TestDescriptor test)

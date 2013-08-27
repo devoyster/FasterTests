@@ -1,5 +1,4 @@
 ﻿using System;
-using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Tests.NunitTestAssembly;
@@ -19,7 +18,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
 
         It should_invoke_underlying_nunit_fixture = () => The<ISetupFixtureAdapter>().WasToldTo(a => a.Teardown()).OnlyOnce();
 
-        It should_move_to_no_setup_state = () => Subject.State.ShouldEqual(SetupFixtureState.NoSetupExecuted);
+        It should_move_to_no_setup_state = () => Subject.IsExecuted.ShouldBeFalse();
 
         It should_create_adapter = () => The<ISetupFixtureAdapterFactory>().WasToldTo(f => f.Create(typeof(RootSetupFixture))).OnlyOnce();
     }

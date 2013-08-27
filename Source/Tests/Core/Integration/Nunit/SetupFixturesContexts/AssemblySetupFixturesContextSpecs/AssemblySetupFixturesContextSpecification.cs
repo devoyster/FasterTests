@@ -18,26 +18,40 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
         {
             var fixture = An<ISetupFixture>();
 
-            var state = isSetupSucceeded
-                            ? SetupFixtureState.SetupSucceeded
-                            : (isSetupFailed ? SetupFixtureState.SetupFailed : SetupFixtureState.NoSetupExecuted);
-            SetFixtureState(fixture, state);
+            if (isSetupSucceeded)
+            {
+                SetFixtureSucceeded(fixture);
+            }
+            else if (isSetupFailed)
+            {
+                SetFixtureFailed(fixture);
+            }
 
+            fixture
+                .WhenToldTo(f => f.IsExecuted)
+                .Return(() => fixture.IsSucceeded || fixture.IsFailed);
             fixture
                 .WhenToldTo(f => f.IsRequiredFor(TestDescriptor))
                 .Return(isRequired);
             fixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
-                .Callback(() => SetFixtureState(fixture, SetupFixtureState.SetupSucceeded));
+                .Callback(() => SetFixtureSucceeded(fixture));
 
             return fixture;
         }
 
-        protected static void SetFixtureState(ISetupFixture fixture, SetupFixtureState state)
+        protected static void SetFixtureSucceeded(ISetupFixture fixture)
         {
             fixture
-                .WhenToldTo(f => f.State)
-                .Return(() => state);
+                .WhenToldTo(f => f.IsSucceeded)
+                .Return(true);
+        }
+
+        protected static void SetFixtureFailed(ISetupFixture fixture)
+        {
+            fixture
+                .WhenToldTo(f => f.IsFailed)
+                .Return(true);
         }
 
         protected static void ConfigureTreeBuilder(ITree<ISetupFixture> tree)

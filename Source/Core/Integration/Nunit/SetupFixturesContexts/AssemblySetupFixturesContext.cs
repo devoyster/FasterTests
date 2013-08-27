@@ -26,9 +26,9 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 
             TeardownNotRequiredFixtures(requiredFixtures, resultsObserver);
 
-            var fixturesWhereSetupExecuted = requiredFixtures.ToLookup(f => f.IsSetupExecuted());
+            var fixturesWhereSetupExecuted = requiredFixtures.ToLookup(f => f.IsExecuted);
 
-            var anyFixtureFailed = fixturesWhereSetupExecuted[true].Any(f => f.IsSetupFailed());
+            var anyFixtureFailed = fixturesWhereSetupExecuted[true].Any(f => f.IsFailed);
             foreach (var fixture in fixturesWhereSetupExecuted[false])
             {
                 if (anyFixtureFailed)
@@ -40,7 +40,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
                     fixture.Setup(resultsObserver);
                 }
 
-                anyFixtureFailed |= fixture.IsSetupFailed();
+                anyFixtureFailed |= fixture.IsFailed;
             }
 
             return !anyFixtureFailed;
@@ -66,7 +66,7 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
 
         private IEnumerable<ISetupFixture> GetFixturesWhereSetupExecuted()
         {
-            return Fixtures.ToBranchWhile(f => f.IsSetupExecuted());
+            return Fixtures.ToBranchWhile(f => f.IsExecuted);
         }
 
         private ICollection<ISetupFixture> GetRequiredFixtures(TestDescriptor test)

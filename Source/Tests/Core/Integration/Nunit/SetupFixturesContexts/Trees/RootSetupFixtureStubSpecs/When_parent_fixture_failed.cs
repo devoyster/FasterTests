@@ -1,5 +1,4 @@
 ﻿using System;
-using FasterTests.Core.Integration.Nunit.SetupFixturesContexts;
 using FasterTests.Core.Integration.Nunit.SetupFixturesContexts.Trees;
 using Machine.Fakes;
 using Machine.Specifications;
@@ -14,7 +13,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Trees.R
 
         It should_fail = () => exception.ShouldBeOfType<NotSupportedException>();
 
-        It should_not_change_state = () => Subject.State.ShouldEqual(SetupFixtureState.SetupSucceeded);
+        It should_not_change_state = () => Subject.IsSucceeded.ShouldBeTrue();
 
         private static Exception exception;
     }

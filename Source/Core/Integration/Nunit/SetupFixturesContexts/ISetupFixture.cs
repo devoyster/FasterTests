@@ -7,7 +7,11 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts
     {
         Type Type { get; }
 
-        SetupFixtureState State { get; }
+        bool IsExecuted { get; }
+
+        bool IsSucceeded { get; }
+
+        bool IsFailed { get; }
 
         bool IsRequiredFor(TestDescriptor test);
 

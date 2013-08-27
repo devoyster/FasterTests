@@ -24,7 +24,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Assembl
 
             firstFixture
                 .WhenToldTo(f => f.Setup(TheResultsObserver))
-                .Callback(() => SetFixtureState(firstFixture, SetupFixtureState.SetupFailed));
+                .Callback(() => SetFixtureFailed(firstFixture));
         };
 
         Because of = () =>

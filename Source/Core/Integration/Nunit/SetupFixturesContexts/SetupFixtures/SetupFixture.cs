@@ -22,7 +22,22 @@ namespace FasterTests.Core.Integration.Nunit.SetupFixturesContexts.SetupFixtures
             get { return _type; }
         }
 
-        public SetupFixtureState State { get; private set; }
+        public bool IsExecuted
+        {
+            get { return IsSucceeded || IsFailed; }
+        }
+
+        public bool IsSucceeded
+        {
+            get { return State == SetupFixtureState.SetupSucceeded; }
+        }
+
+        public bool IsFailed
+        {
+            get { return State == SetupFixtureState.SetupFailed; }
+        }
+
+        private SetupFixtureState State { get; set; }
 
         public bool IsRequiredFor(TestDescriptor test)
         {
