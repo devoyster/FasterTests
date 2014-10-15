@@ -14,7 +14,7 @@ namespace FasterTests.Tests.Helpers.Trees
         Because of = () =>
             exception = Catch.Exception(() => ((IEnumerable)tree).GetEnumerator());
 
-        It should_fail = () => exception.ShouldBeOfType<InvalidOperationException>();
+        It should_fail = () => exception.ShouldBeOfExactType<InvalidOperationException>();
 
         private static Tree<int> tree;
         private static Exception exception;

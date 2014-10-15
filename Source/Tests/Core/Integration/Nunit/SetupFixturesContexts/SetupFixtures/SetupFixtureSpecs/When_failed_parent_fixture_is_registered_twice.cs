@@ -15,7 +15,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
         Because of = () =>
             exception = Catch.Exception(() => Subject.SetParentFailed(An<IObserver<TestResult>>()));
 
-        It should_fail = () => exception.ShouldBeOfType<InvalidOperationException>();
+        It should_fail = () => exception.ShouldBeOfExactType<InvalidOperationException>();
 
         It should_not_change_state = () => Subject.IsFailed.ShouldBeTrue();
 

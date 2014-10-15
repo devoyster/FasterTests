@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers;
 
@@ -14,9 +15,9 @@ namespace FasterTests.Core.Workers
         private readonly string[] _configStringsToPatch;
         private int _workerIndex;
 
-        public TestWorkersPool(string[] configStringsToPatch)
+        public TestWorkersPool(TestRunSettings settings)
         {
-            _configStringsToPatch = configStringsToPatch;
+            _configStringsToPatch = settings.ConfigStringsToPatch;
         }
 
         public IObservable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)

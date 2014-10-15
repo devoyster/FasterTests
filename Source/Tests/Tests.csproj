@@ -34,57 +34,49 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\log4net.dll</HintPath>
+    <Reference Include="LightInject">
+      <HintPath>..\packages\LightInject.3.0.2.0\lib\net40\LightInject.dll</HintPath>
     </Reference>
-    <Reference Include="Machine.Fakes">
-      <HintPath>..\packages\Machine.Fakes.1.7.0\lib\net40\Machine.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Fakes.Adapters.Moq">
-      <HintPath>..\packages\Machine.Fakes.Moq.1.7.0\lib\net40\Machine.Fakes.Adapters.Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\packages\Machine.Specifications.0.5.14\lib\net40\Machine.Specifications.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit-console-runner">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit-console-runner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit-gui-runner">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit-gui-runner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="Machine.Fakes, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.dll</HintPath>
+      <HintPath>..\packages\Machine.Fakes.2.4.0\lib\net40\Machine.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="Machine.Fakes.Adapters.Moq, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.core.interfaces.dll</HintPath>
+      <HintPath>..\packages\Machine.Fakes.Moq.2.4.0\lib\net40\Machine.Fakes.Adapters.Moq.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.uiexception">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.uiexception.dll</HintPath>
+    <Reference Include="Machine.Specifications, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Machine.Specifications.0.8.3\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.uikit">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.uikit.dll</HintPath>
+    <Reference Include="Machine.Specifications.Should">
+      <HintPath>..\packages\Machine.Specifications.Should.0.7.2\lib\net40\Machine.Specifications.Should.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\packages\NUnit.Runners.lite.2.6.2.20121104\lib\nunit.util.dll</HintPath>
+    <Reference Include="Moq, Version=4.2.1409.1722, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.3.20131019\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.Runners.lite.2.6.3.20131019\lib\nunit.core.interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Reactive.Core, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net40\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Interfaces, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net40\System.Reactive.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net40\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Linq, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net40\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net40\System.Reactive.PlatformServices.dll</HintPath>
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net40\System.Reactive.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -152,8 +144,6 @@
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_failing_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\When_nunit_tests_are_loaded_from_assembly.cs" />
-    <Compile Include="Core\ServiceContainerSpecs\TestServiceWithNamedParameters.cs" />
-    <Compile Include="Core\ServiceContainerSpecs\When_named_services_are_registered.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched_with_no_parallel_groups.cs" />
     <Compile Include="Core\TestResultsConsoleWriterSpecs\When_writing_failed_test_results_to_console.cs" />
@@ -183,6 +173,7 @@
     <Compile Include="TestHelpers\NunitTestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

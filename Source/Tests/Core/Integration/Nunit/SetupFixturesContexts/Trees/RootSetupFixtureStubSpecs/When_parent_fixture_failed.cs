@@ -11,7 +11,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.Trees.R
         Because of = () =>
             exception = Catch.Exception(() => Subject.SetParentFailed(null));
 
-        It should_fail = () => exception.ShouldBeOfType<NotSupportedException>();
+        It should_fail = () => exception.ShouldBeOfExactType<NotSupportedException>();
 
         It should_not_change_state = () => Subject.IsSucceeded.ShouldBeTrue();
 

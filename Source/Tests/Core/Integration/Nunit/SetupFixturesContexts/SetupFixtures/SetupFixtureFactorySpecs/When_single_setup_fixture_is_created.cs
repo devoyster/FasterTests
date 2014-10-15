@@ -12,7 +12,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.SetupFixturesContexts.SetupFi
         Because of = () =>
             setupFixture = Subject.Create(typeof(RootSetupFixture));
 
-        It should_create_instance_of_setup_fixture = () => setupFixture.ShouldBeOfType<SetupFixture>();
+        It should_create_instance_of_setup_fixture = () => setupFixture.ShouldBeOfExactType<SetupFixture>();
 
         It should_initialize_fixture_with_supplied_type = () => setupFixture.Type.ShouldEqual(typeof(RootSetupFixture));
 

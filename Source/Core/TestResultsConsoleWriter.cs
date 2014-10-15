@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Helpers.Collections;
 
 namespace FasterTests.Core
@@ -11,9 +12,9 @@ namespace FasterTests.Core
     {
         private readonly TextWriter _output;
 
-        public TestResultsConsoleWriter(TextWriter output)
+        public TestResultsConsoleWriter(TestRunSettings settings)
         {
-            _output = output;
+            _output = settings.Output;
         }
 
         public void Consume(IEnumerable<TestResult> results)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 
 namespace FasterTests.Core
@@ -14,10 +15,10 @@ namespace FasterTests.Core
         private readonly ITestWorkersPool _testWorkersPool;
         private readonly string[][] _noParallelGroups;
 
-        public TestDispatcher(ITestWorkersPool testWorkersPool, string[][] noParallelGroups)
+        public TestDispatcher(ITestWorkersPool testWorkersPool, TestRunSettings settings)
         {
             _testWorkersPool = testWorkersPool;
-            _noParallelGroups = noParallelGroups;
+            _noParallelGroups = settings.NoParallelGroups;
         }
 
         public IEnumerable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)

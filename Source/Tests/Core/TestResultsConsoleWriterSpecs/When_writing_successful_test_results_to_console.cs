@@ -2,6 +2,7 @@
 using System.IO;
 using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.TestResultsConsoleWriterSpecs
@@ -12,7 +13,7 @@ namespace FasterTests.Tests.Core.TestResultsConsoleWriterSpecs
         Establish context = () =>
         {
             output = new StringWriter();
-            writer = new TestResultsConsoleWriter(output);
+            writer = new TestResultsConsoleWriter(new TestRunSettings { Output = output });
 
             testResults = new[]
                               {

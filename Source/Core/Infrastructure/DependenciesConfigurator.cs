@@ -1,5 +1,6 @@
 ﻿using System;
 using FasterTests.Core.Interfaces.Settings;
+using LightInject;
 
 namespace FasterTests.Core.Infrastructure
 {
@@ -16,11 +17,8 @@ namespace FasterTests.Core.Infrastructure
         {
             var container = new ServiceContainer();
 
-            container.Register(_settings.AssemblyPath, "testAssemblyPath");
-            container.Register(_settings.NoParallelGroups, "noParallelGroups");
-            container.Register(_settings.ConfigStringsToPatch, "configStringsToPatch");
-
-            container.Register(_settings.Output ?? Console.Out, "output");
+            _settings.Output = _settings.Output ?? Console.Out;
+            container.RegisterInstance(_settings);
 
             container.RegisterAssembly(GetType().Assembly);
 

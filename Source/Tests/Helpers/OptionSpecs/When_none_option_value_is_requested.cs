@@ -13,7 +13,7 @@ namespace FasterTests.Tests.Helpers.OptionSpecs
         Because of = () =>
             exception = Catch.Exception(() => value = option.Value);
 
-        It should_fail = () => exception.ShouldBeOfType<InvalidOperationException>();
+        It should_fail = () => exception.ShouldBeOfExactType<InvalidOperationException>();
 
         private static Option<string> option;
         private static string value;

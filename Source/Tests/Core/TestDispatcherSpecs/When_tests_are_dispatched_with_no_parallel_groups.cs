@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Reflection;
 using FasterTests.Core;
 using FasterTests.Core.Interfaces.Models;
+using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers.Collections;
 using FasterTests.Tests.TestHelpers;
@@ -22,7 +23,7 @@ namespace FasterTests.Tests.Core.TestDispatcherSpecs
                                            new[] { "Namespace1.", "Namespace2." },
                                            new[] { "Namespace3." }
                                        };
-            subject = new TestDispatcher(The<ITestWorkersPool>(), noParallelGroups);
+            subject = new TestDispatcher(The<ITestWorkersPool>(), new TestRunSettings { NoParallelGroups = noParallelGroups });
 
             tests = new[]
                         {

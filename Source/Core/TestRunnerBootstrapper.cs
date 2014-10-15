@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Integration;
+using FasterTests.Core.Interfaces.Settings;
 
 namespace FasterTests.Core
 {
@@ -11,12 +12,12 @@ namespace FasterTests.Core
         private readonly ITestDispatcher _testDispatcher;
         private readonly ITestResultsConsumer _testResultsConsumer;
 
-        public TestRunnerBootstrapper(string testAssemblyPath,
+        public TestRunnerBootstrapper(TestRunSettings settings,
                                       ITestInspector testInspector,
                                       ITestDispatcher testDispatcher,
                                       ITestResultsConsumer testResultsConsumer)
         {
-            _testAssemblyPath = testAssemblyPath;
+            _testAssemblyPath = settings.AssemblyPath;
             _testInspector = testInspector;
             _testDispatcher = testDispatcher;
             _testResultsConsumer = testResultsConsumer;
