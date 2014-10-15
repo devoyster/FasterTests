@@ -11,8 +11,6 @@ namespace FasterTests.Tests.Helpers.OptionSpecs
 
         It should_identify_as_some = () => option.IsSome.ShouldBeTrue();
 
-        It should_return_value_supplied_on_creation = () => option.Value.ShouldEqual("string");
-
         private static Option<string> option;
     }
 }

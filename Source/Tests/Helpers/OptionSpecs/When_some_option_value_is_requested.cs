@@ -12,7 +12,7 @@ namespace FasterTests.Tests.Helpers.OptionSpecs
         Because of = () =>
             value = option.Value;
 
-        It should_return_value_supplied_on_creation = () => option.Value.ShouldEqual("string");
+        It should_return_value_supplied_on_creation = () => value.ShouldEqual("string");
 
         private static Option<string> option;
         private static string value;
