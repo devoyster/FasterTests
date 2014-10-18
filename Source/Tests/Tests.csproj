@@ -83,6 +83,12 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_config_options.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_groups_options.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_help_option.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_without_options.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\TestRunnerCommandSpecification.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_without_arguments.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\AssemblySetupFixturesContextSpecs\AssemblySetupFixturesContextSpecification.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_failed_parent_fixture_is_registered_twice.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureSpecs\When_checked_for_fixture_from_nested_namespace.cs" />
@@ -177,6 +183,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleRunner\ConsoleRunner.csproj">
+      <Project>{746154ed-63a4-42f5-bb7d-746ee353a53c}</Project>
+      <Name>ConsoleRunner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Interfaces\Core.Interfaces.csproj">
       <Project>{25706010-0f5b-46d4-a13b-8ed490972f55}</Project>
       <Name>Core.Interfaces</Name>

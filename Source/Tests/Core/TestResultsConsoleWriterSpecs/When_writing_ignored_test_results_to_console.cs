@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using FasterTests.Core;
+using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Core.Interfaces.Settings;
 using Machine.Specifications;
 
 namespace FasterTests.Tests.Core.TestResultsConsoleWriterSpecs

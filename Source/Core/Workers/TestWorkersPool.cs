@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 using FasterTests.Helpers;
 

@@ -46,10 +46,11 @@
     <Compile Include="Integration\ITestFrameworkInitializer.cs" />
     <Compile Include="ITestDispatcher.cs" />
     <Compile Include="ITestResultsConsumer.cs" />
+    <Compile Include="ITestRunner.cs" />
     <Compile Include="ITestRunnerBootstrapper.cs" />
     <Compile Include="Models\TestDescriptor.cs" />
     <Compile Include="Models\TestResult.cs" />
-    <Compile Include="Settings\TestRunSettings.cs" />
+    <Compile Include="TestRunSettings.cs" />
     <Compile Include="Workers\ITestWorkersPool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

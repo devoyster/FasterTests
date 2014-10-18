@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using FasterTests.Core;
-using FasterTests.Core.Interfaces.Settings;
+using FasterTests.Core.Interfaces;
 using FasterTests.Tests.NunitTestAssembly.Properties;
 using Machine.Specifications;
 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
-using FasterTests.Core.Interfaces.Settings;
 using FasterTests.Core.Interfaces.Workers;
 
 namespace FasterTests.Core

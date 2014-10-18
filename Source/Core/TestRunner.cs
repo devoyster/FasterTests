@@ -1,10 +1,9 @@
 ﻿using FasterTests.Core.Infrastructure;
 using FasterTests.Core.Interfaces;
-using FasterTests.Core.Interfaces.Settings;
 
 namespace FasterTests.Core
 {
-    public class TestRunner
+    public class TestRunner : ITestRunner
     {
         public void Run(TestRunSettings settings)
         {

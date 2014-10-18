@@ -1,5 +1,5 @@
 ﻿using System;
-using FasterTests.Core.Interfaces.Settings;
+using FasterTests.Core.Interfaces;
 using LightInject;
 
 namespace FasterTests.Core.Infrastructure

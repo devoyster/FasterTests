@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace FasterTests.Core.Interfaces.Settings
+namespace FasterTests.Core.Interfaces
 {
     public class TestRunSettings
     {
