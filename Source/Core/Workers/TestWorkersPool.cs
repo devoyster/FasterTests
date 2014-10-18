@@ -34,7 +34,7 @@ namespace FasterTests.Core.Workers
                                          ConfigurationFile = PatchConfigFile(Path.GetFileName(assemblyPath) + ".config")
                                      };
 
-            var domain = AppDomain.CreateDomain("Funt.Worker", null, domainSettings);
+            var domain = AppDomain.CreateDomain("FasterTests.Worker", null, domainSettings);
 
             var worker = domain.CreateInstanceFromAndUnwrap<AppDomainWorker>();
             worker.InstallAssemblyResolve(AppDomain.CurrentDomain.BaseDirectory);

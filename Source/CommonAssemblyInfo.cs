@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("Andriy Kozachuk")]
 [assembly: AssemblyProduct("FasterTests")]
-[assembly: AssemblyCopyright("Copyright © Andriy Kozachuk 2013")]
+[assembly: AssemblyCopyright("Copyright © Andriy Kozachuk 2013-2014")]
 
 [assembly: ComVisible(false)]
 
