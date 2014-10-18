@@ -47,8 +47,10 @@ namespace FasterTests.ConsoleRunner
             return new OptionSet
                 {
                     { "<>", v => _settings.AssemblyPath = v },
-                    { "g|groups=", ";-separated namespace groups", v => _settings.NoParallelGroups = ParseGroups(v) },
-                    { "c|config=", ",-separated config strings to patch", v => _settings.ConfigStringsToPatch = v.Split(',') },
+                    { "i|include=", "Comma-separated categories to include", v => _settings.IncludeCategories = ParseCsv(v) },
+                    { "x|exclude=", "Comma-separated categories to exclude", v => _settings.ExcludeCategories = ParseCsv(v) },
+                    { "g|groups=", "Semicolon-separated namespace groups", v => _settings.NoParallelGroups = ParseGroups(v) },
+                    { "c|config=", "Comma-separated config strings to patch", v => _settings.ConfigStringsToPatch = ParseCsv(v) },
                     { "h|help", "Show this message and exit", h => _showHelp = h != null }
                 };
         }
@@ -59,6 +61,11 @@ namespace FasterTests.ConsoleRunner
                 .Split(';')
                 .Select(g => g.Split(','))
                 .ToArray();
+        }
+
+        private static string[] ParseCsv(string commaSeparatedValues)
+        {
+            return commaSeparatedValues.Split(',');
         }
 
         private void WriteHelp(OptionSet options, TextWriter output)

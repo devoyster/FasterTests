@@ -5,7 +5,6 @@ using FasterTests.Core.Interfaces.Integration;
 using FasterTests.Core.Interfaces.Models;
 using System.Reactive.Linq;
 using NUnit.Core;
-using NUnit.Core.Filters;
 using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
 namespace FasterTests.Core.Integration.Nunit
@@ -14,12 +13,16 @@ namespace FasterTests.Core.Integration.Nunit
     {
         private readonly ITestFrameworkInitializer _initializer;
         private readonly ISetupFixturesContext _setupFixturesContext;
+        private readonly ITestFilterProvider _testFilterProvider;
         private readonly Subject<TestResult> _results;
 
-        public TestEngine(ITestFrameworkInitializer initializer, ISetupFixturesContext setupFixturesContext)
+        public TestEngine(ITestFrameworkInitializer initializer,
+                          ISetupFixturesContext setupFixturesContext,
+                          ITestFilterProvider testFilterProvider)
         {
             _initializer = initializer;
             _setupFixturesContext = setupFixturesContext;
+            _testFilterProvider = testFilterProvider;
             _results = new Subject<TestResult>();
         }
 
@@ -35,17 +38,14 @@ namespace FasterTests.Core.Integration.Nunit
             var testType = Assembly.LoadFrom(test.AssemblyPath).GetType(test.Name);
             var testFixture = TestFixtureBuilder.BuildFrom(testType);
 
-            // TODO: Move to settings
-            var testFilter = new NotFilter(new CategoryFilter("Slow"), topLevel: true);
-
-            if (!testFilter.Pass(testFixture))
+            if (!_testFilterProvider.TestFilter.Pass(testFixture))
             {
                 return;
             }
 
             if (_setupFixturesContext.SetupFor(test, _results))
             {
-                testFixture.Run(new ObserverEventListener(_results), testFilter);
+                testFixture.Run(new ObserverEventListener(_results), _testFilterProvider.TestFilter);
             }
             else
             {

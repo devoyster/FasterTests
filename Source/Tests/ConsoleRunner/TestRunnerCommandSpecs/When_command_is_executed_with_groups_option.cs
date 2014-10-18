@@ -7,7 +7,7 @@ using System.Linq;
 namespace FasterTests.Tests.ConsoleRunner.TestRunnerCommandSpecs
 {
     [Subject(typeof(TestRunnerCommand))]
-    public class When_command_is_executed_with_groups_options : TestRunnerCommandSpecification
+    public class When_command_is_executed_with_groups_option : TestRunnerCommandSpecification
     {
         Because of =
             () => Subject.Execute(new[] { "Test.Assembly.dll", "-g", "1,2;3,4,5" }, Output);

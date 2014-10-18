@@ -36,18 +36,19 @@ namespace FasterTests.Core.Workers
                     };
         }
 
-        public IObservable<TestResult> RunTestsAsync(IEnumerable<TestDescriptor> tests)
+        public IObservable<TestResult> RunTestsAsync(AppDomainWorkerSettings settings, IEnumerable<TestDescriptor> tests)
         {
             return Observable
-                       .Create<TestResult>(o => RunTests(tests, o))
+                       .Create<TestResult>(o => RunTests(settings, tests, o))
                        .SubscribeOn(Scheduler.Default)
                        .Remotable();
         }
 
-        private IDisposable RunTests(IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
+        private IDisposable RunTests(AppDomainWorkerSettings settings, IEnumerable<TestDescriptor> tests, IObserver<TestResult> observer)
         {
             var engine = new TestEngine(new TestFrameworkInitializer(),
-                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureTreeBuilder(new SetupFixtureFactory(new SetupFixtureTypeInspector(), new SetupFixtureAdapterFactory()))));
+                                        new AssemblySetupFixturesContext(tests.First().AssemblyPath, new SetupFixtureTreeBuilder(new SetupFixtureFactory(new SetupFixtureTypeInspector(), new SetupFixtureAdapterFactory()))),
+                                        new TestFilterProvider(settings.IncludeCategories, settings.ExcludeCategories));
 
             using (engine)
             {

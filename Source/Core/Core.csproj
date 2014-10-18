@@ -70,6 +70,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Integration\Nunit\ISetupFixtureTypeInspector.cs" />
+    <Compile Include="Integration\Nunit\ITestFilterProvider.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\ISetupFixture.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\ISetupFixtureFactory.cs" />
     <Compile Include="Integration\Nunit\ISetupFixturesContext.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\Adapters\SetupFixtureAdapter.cs" />
     <Compile Include="Integration\Nunit\SetupFixturesContexts\SetupFixtures\SetupFixtureFactory.cs" />
     <Compile Include="Integration\Nunit\TestEngine.cs" />
+    <Compile Include="Integration\Nunit\TestFilterProvider.cs" />
     <Compile Include="TestDispatcher.cs" />
     <Compile Include="TestResultsConsoleWriter.cs" />
     <Compile Include="TestRunnerBootstrapper.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRunner.cs" />
     <Compile Include="Workers\AppDomainWorker.cs" />
+    <Compile Include="Workers\AppDomainWorkerSettings.cs" />
     <Compile Include="Workers\TestWorkersPool.cs" />
   </ItemGroup>
   <ItemGroup>

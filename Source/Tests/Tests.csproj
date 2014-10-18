@@ -83,8 +83,10 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_config_options.cs" />
-    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_groups_options.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_exclude_option.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_include_option.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_config_option.cs" />
+    <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_groups_option.cs" />
     <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_with_help_option.cs" />
     <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\When_command_is_executed_without_options.cs" />
     <Compile Include="ConsoleRunner\TestRunnerCommandSpecs\TestRunnerCommandSpecification.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\Trees\RootSetupFixtureStubSpecs\When_setup_fixture_type_is_requested.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\SetupFixtures\Adapters\When_setup_fixture_adapter_is_created.cs" />
     <Compile Include="Core\Integration\Nunit\SetupFixturesContexts\When_setup_fixture_types_are_loaded_from_assembly.cs" />
+    <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_green_test_with_prohibiting_test_filter_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_ignored_test_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_explicit_test_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_explicit_test_is_executed.cs" />
@@ -149,6 +152,11 @@
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_which_throws_an_exception_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_failing_setup_fixture_is_executed.cs" />
     <Compile Include="Core\Integration\Nunit\TestEngineSpecs\When_test_with_setup_fixture_is_executed.cs" />
+    <Compile Include="Core\Integration\Nunit\TestFilterProviderSpecs\When_include_and_exclude_categories_are_provided.cs" />
+    <Compile Include="Core\Integration\Nunit\TestFilterProviderSpecs\When_exclude_categories_are_provided.cs" />
+    <Compile Include="Core\Integration\Nunit\TestFilterProviderSpecs\When_include_categories_are_provided.cs" />
+    <Compile Include="Core\Integration\Nunit\TestFilterProviderSpecs\TestFilterProviderSpecification.cs" />
+    <Compile Include="Core\Integration\Nunit\TestFilterProviderSpecs\When_no_categories_are_provided.cs" />
     <Compile Include="Core\Integration\Nunit\When_nunit_tests_are_loaded_from_assembly.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched.cs" />
     <Compile Include="Core\TestDispatcherSpecs\When_tests_are_dispatched_with_no_parallel_groups.cs" />

@@ -5,6 +5,8 @@ using FasterTests.Core.Interfaces.Models;
 using Machine.Fakes;
 using Machine.Specifications;
 using FasterTests.Tests.TestHelpers;
+using NUnit.Core;
+using TestResult = FasterTests.Core.Interfaces.Models.TestResult;
 
 namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
 {
@@ -14,6 +16,7 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
         {
             Configure<ITestFrameworkInitializer, TestFrameworkInitializer>();
             WhenToldToSetupForReturn(true);
+            WhenToldToTestFilterReturn(TestFilter.Empty);
 
             TestResult = null;
         };
@@ -36,6 +39,13 @@ namespace FasterTests.Tests.Core.Integration.Nunit.TestEngineSpecs
         {
             The<ISetupFixturesContext>()
                 .WhenToldTo(c => c.SetupFor(Param.IsAny<TestDescriptor>(), Param.IsAny<IObserver<TestResult>>()))
+                .Return(result);
+        }
+
+        protected static void WhenToldToTestFilterReturn(ITestFilter result)
+        {
+            The<ITestFilterProvider>()
+                .WhenToldTo(c => c.TestFilter)
                 .Return(result);
         }
     }
