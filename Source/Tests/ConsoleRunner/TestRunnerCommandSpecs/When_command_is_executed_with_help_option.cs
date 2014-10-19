@@ -9,10 +9,10 @@ namespace FasterTests.Tests.ConsoleRunner.TestRunnerCommandSpecs
     public class When_command_is_executed_with_help_option : TestRunnerCommandSpecification
     {
         Because of =
-            () => Subject.Execute(new[] { "Test.Assembly.dll", "-h" }, Output);
+            () => Subject.Execute(new[] { "Test.Assembly.dll", "-Help" }, Output);
 
         It should_not_run_tests = () => The<ITestRunner>().WasNotToldTo(r => r.Run(Param.IsAny<TestRunSettings>()));
 
-        It should_write_help = () => Output.ToString().ShouldContain("Usage: FasterTests-Run \"test assembly path\" [options]");
+        It should_write_help = () => Output.ToString().ShouldContain("Usage: FasterTests-Run [testassemblies] [options]");
     }
 }

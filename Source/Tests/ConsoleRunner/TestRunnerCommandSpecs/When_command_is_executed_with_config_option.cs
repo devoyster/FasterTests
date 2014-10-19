@@ -10,7 +10,7 @@ namespace FasterTests.Tests.ConsoleRunner.TestRunnerCommandSpecs
     public class When_command_is_executed_with_config_option : TestRunnerCommandSpecification
     {
         Because of =
-            () => Subject.Execute(new[] { "Test.Assembly.dll", "-c", "1,2,3" }, Output);
+            () => Subject.Execute(new[] { "Test.Assembly.dll", "-ConfigStringsToPatch", "1,2,3" }, Output);
 
         It should_supply_groups_to_test_run =
             () => The<ITestRunner>().WasToldTo(r => r.Run(Param<TestRunSettings>.Matches(s => s.ConfigStringsToPatch.SequenceEqual(new[] { "1", "2", "3" })))).OnlyOnce();

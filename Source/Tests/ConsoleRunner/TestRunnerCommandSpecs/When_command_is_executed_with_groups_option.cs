@@ -10,7 +10,7 @@ namespace FasterTests.Tests.ConsoleRunner.TestRunnerCommandSpecs
     public class When_command_is_executed_with_groups_option : TestRunnerCommandSpecification
     {
         Because of =
-            () => Subject.Execute(new[] { "Test.Assembly.dll", "-g", "1,2;3,4,5" }, Output);
+            () => Subject.Execute(new[] { "Test.Assembly.dll", "-NoParallelGroups", "1,2;3,4,5" }, Output);
 
         It should_supply_groups_to_test_run =
             () => The<ITestRunner>().WasToldTo(r => r.Run(Param<TestRunSettings>.Matches(s => s.NoParallelGroups[0].SequenceEqual(new[] { "1", "2" })

@@ -33,7 +33,6 @@ namespace FasterTests.ConsoleRunner
             if (string.IsNullOrWhiteSpace(_settings.AssemblyPath))
             {
                 output.WriteLine("Error: Test assembly path should be provided as first argument. See help below. Exiting...");
-                output.WriteLine();
                 WriteHelp(options, output);
                 return;
             }
@@ -47,11 +46,11 @@ namespace FasterTests.ConsoleRunner
             return new OptionSet
                 {
                     { "<>", v => _settings.AssemblyPath = v },
-                    { "i|include=", "Comma-separated categories to include", v => _settings.IncludeCategories = ParseCsv(v) },
-                    { "x|exclude=", "Comma-separated categories to exclude", v => _settings.ExcludeCategories = ParseCsv(v) },
-                    { "g|groups=", "Semicolon-separated namespace groups", v => _settings.NoParallelGroups = ParseGroups(v) },
-                    { "c|config=", "Comma-separated config strings to patch", v => _settings.ConfigStringsToPatch = ParseCsv(v) },
-                    { "h|help", "Show this message and exit", h => _showHelp = h != null }
+                    { "i|IncludeCategories=", "Comma-separated categories to include", v => _settings.IncludeCategories = ParseCsv(v) },
+                    { "x|ExcludeCategories=", "Comma-separated categories to exclude", v => _settings.ExcludeCategories = ParseCsv(v) },
+                    { "g|NoParallelGroups=", "Semicolon-separated namespace groups", v => _settings.NoParallelGroups = ParseGroups(v) },
+                    { "c|ConfigStringsToPatch=", "Comma-separated config strings to patch", v => _settings.ConfigStringsToPatch = ParseCsv(v) },
+                    { "h|Help", "Show this message and exit", h => _showHelp = h != null }
                 };
         }
 
@@ -70,10 +69,12 @@ namespace FasterTests.ConsoleRunner
 
         private void WriteHelp(OptionSet options, TextWriter output)
         {
-            output.WriteLine("Usage: FasterTests-Run \"test assembly path\" [options]");
+            output.WriteLine();
+            output.WriteLine("Usage: FasterTests-Run [testassemblies] [options]");
+            output.WriteLine();
             output.WriteLine("Runs unit tests in parallel");
             output.WriteLine();
-            output.WriteLine("Example: FasterTests-Run MyTestAssembly.dll");
+            output.WriteLine("Example: FasterTests-Run MyTestAssembly.dll -ExcludeCategories Slow");
             output.WriteLine();
             output.WriteLine("Options:");
 
