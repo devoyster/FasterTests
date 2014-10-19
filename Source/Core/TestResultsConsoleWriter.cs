@@ -23,17 +23,23 @@ namespace FasterTests.Core
             var sw = Stopwatch.StartNew();
 
             var errors = new List<string>();
+            
             int count = 0;
+            int successfulCount = 0;
+            int ignoredCount = 0;
+
             results.ForEach(r =>
                                 {
                                     count++;
                                     if (r.IsSuccess)
                                     {
                                         _output.Write('.');
+                                        successfulCount++;
                                     }
                                     else if (r.IsIgnored)
                                     {
                                         _output.Write('I');
+                                        ignoredCount++;
                                     }
                                     else
                                     {
@@ -49,7 +55,9 @@ namespace FasterTests.Core
             _output.WriteLine("time = {0}s", sw.Elapsed.TotalSeconds);
             _output.WriteLine("count = {0}", count);
             _output.WriteLine();
+            _output.WriteLine("successful = {0}", successfulCount);
             _output.WriteLine("failed = {0}", errors.Count);
+            _output.WriteLine("ignored = {0}", ignoredCount);
             _output.WriteLine();
 
             errors.ForEach(_output.WriteLine);
