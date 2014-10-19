@@ -36,6 +36,7 @@ namespace FasterTests.ConsoleRunner
 
             if (string.IsNullOrWhiteSpace(_settings.AssemblyPath))
             {
+                output.WriteLine();
                 output.WriteLine("Error: Test assembly path should be provided as first argument. See help below. Exiting...");
                 WriteHelp(options, output);
                 return;
@@ -78,7 +79,6 @@ namespace FasterTests.ConsoleRunner
         {
             output.WriteLine("FasterTests-Run v.{0}", Assembly.GetExecutingAssembly().GetName().Version);
             output.WriteLine("Copyright (c) 2013-2014 Andriy Kozachuk");
-            output.WriteLine();
         }
 
         private void WriteHelp(OptionSet options, TextWriter output)

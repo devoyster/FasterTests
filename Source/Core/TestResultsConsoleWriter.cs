@@ -20,6 +20,7 @@ namespace FasterTests.Core
         {
             var output = _settings.Output;
 
+            output.WriteLine();
             output.WriteLine("Running \"{0}\":", _settings.AssemblyPath);
 
             var sw = Stopwatch.StartNew();
