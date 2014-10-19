@@ -12,12 +12,12 @@ namespace FasterTests.Core
     public class TestDispatcher : ITestDispatcher
     {
         private readonly ITestWorkersPool _testWorkersPool;
-        private readonly string[][] _noParallelGroups;
+        private readonly TestRunSettings _settings;
 
         public TestDispatcher(ITestWorkersPool testWorkersPool, TestRunSettings settings)
         {
             _testWorkersPool = testWorkersPool;
-            _noParallelGroups = settings.NoParallelGroups;
+            _settings = settings;
         }
 
         public IEnumerable<TestResult> RunTests(IEnumerable<TestDescriptor> tests)
@@ -35,7 +35,7 @@ namespace FasterTests.Core
 
         private IEnumerable<IEnumerable<TestDescriptor>> SplitTests(IEnumerable<TestDescriptor> tests)
         {
-            var groups = _noParallelGroups;
+            var groups = _settings.NoParallelGroups;
             if (groups != null && groups.Length == 0)
             {
                 groups = null;
@@ -53,7 +53,7 @@ namespace FasterTests.Core
                             .Select(g => g.Select(x => x.d).ToList());
             var groupedQueue = new Queue<List<TestDescriptor>>(grouped);
 
-            var maxDegreeOfParallelism = Environment.ProcessorCount;
+            var maxDegreeOfParallelism = _settings.DegreeOfParallelism;
 
             var batchSize = tests.Count() / maxDegreeOfParallelism + 1;
             var buckets = Enumerable

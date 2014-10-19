@@ -23,7 +23,12 @@ namespace FasterTests.Tests.Core.TestDispatcherSpecs
                                            new[] { "Namespace1.", "Namespace2." },
                                            new[] { "Namespace3." }
                                        };
-            subject = new TestDispatcher(The<ITestWorkersPool>(), new TestRunSettings { NoParallelGroups = noParallelGroups });
+            subject = new TestDispatcher(The<ITestWorkersPool>(),
+                                         new TestRunSettings
+                                             {
+                                                 NoParallelGroups = noParallelGroups,
+                                                 DegreeOfParallelism = 8
+                                             });
 
             tests = new[]
                         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FasterTests.Core.Interfaces;
@@ -11,6 +12,7 @@ namespace FasterTests.ConsoleRunner
         private readonly ITestRunner _testRunner;
         private readonly TestRunSettings _settings;
         private bool _showHelp;
+        private int? _degreeOfParallelism;
 
         public TestRunnerCommand(ITestRunner testRunner)
         {
@@ -37,7 +39,9 @@ namespace FasterTests.ConsoleRunner
                 return;
             }
 
+            _settings.DegreeOfParallelism = _degreeOfParallelism ?? Environment.ProcessorCount;
             _settings.Output = output;
+
             _testRunner.Run(_settings);
         }
 
@@ -48,6 +52,7 @@ namespace FasterTests.ConsoleRunner
                     { "<>", v => _settings.AssemblyPath = v },
                     { "i|IncludeCategories=", "Comma-separated categories to include", v => _settings.IncludeCategories = ParseCsv(v) },
                     { "x|ExcludeCategories=", "Comma-separated categories to exclude", v => _settings.ExcludeCategories = ParseCsv(v) },
+                    { "p|DegreeOfParallelism=", "Max amount of tests to run in parallel", (int v) => _degreeOfParallelism = v },
                     { "g|NoParallelGroups=", "Semicolon-separated namespace groups", v => _settings.NoParallelGroups = ParseGroups(v) },
                     { "c|ConfigStringsToPatch=", "Comma-separated config strings to patch", v => _settings.ConfigStringsToPatch = ParseCsv(v) },
                     { "h|Help", "Show this message and exit", h => _showHelp = h != null }

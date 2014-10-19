@@ -18,6 +18,7 @@ namespace FasterTests.Tests.Core
             settings = new TestRunSettings
                            {
                                AssemblyPath = typeof(NunitTestAssemblyMarker).Assembly.Location,
+                               DegreeOfParallelism = Environment.ProcessorCount,
                                Output = output
                            };
         };
