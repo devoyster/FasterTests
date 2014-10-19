@@ -28,7 +28,7 @@ namespace FasterTests.Tests.Core
 
         It should_not_throw_exceptions = () => exception.ShouldBeNull();
 
-        It should_run_some_tests = () => output.ToString().ShouldMatch("count = [1-9]");
+        It should_run_some_tests = () => output.ToString().ShouldMatch("Tests run: [1-9],");
 
         private static TestRunner subject;
         private static StringWriter output;

@@ -1,66 +1,70 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using FasterTests.Core.Interfaces;
 using FasterTests.Core.Interfaces.Models;
 using FasterTests.Helpers.Collections;
+using System.Linq;
 
 namespace FasterTests.Core
 {
     public class TestResultsConsoleWriter : ITestResultsConsumer
     {
-        private readonly TextWriter _output;
+        private readonly TestRunSettings _settings;
 
         public TestResultsConsoleWriter(TestRunSettings settings)
         {
-            _output = settings.Output;
+            _settings = settings;
         }
 
         public void Consume(IEnumerable<TestResult> results)
         {
-            _output.WriteLine("Run results:");
+            var output = _settings.Output;
+
+            output.WriteLine("Running \"{0}\":", _settings.AssemblyPath);
 
             var sw = Stopwatch.StartNew();
 
             var errors = new List<string>();
             
-            int count = 0;
-            int successfulCount = 0;
+            int totalCount = 0;
             int ignoredCount = 0;
 
             results.ForEach(r =>
                                 {
-                                    count++;
+                                    totalCount++;
                                     if (r.IsSuccess)
                                     {
-                                        _output.Write('.');
-                                        successfulCount++;
+                                        output.Write('.');
                                     }
                                     else if (r.IsIgnored)
                                     {
-                                        _output.Write('I');
+                                        output.Write('N');
                                         ignoredCount++;
                                     }
                                     else
                                     {
-                                        _output.Write('F');
+                                        output.Write('F');
                                         errors.Add(r.ErrorMessage);
                                     }
                                 });
 
             sw.Stop();
 
-            _output.WriteLine();
-            _output.WriteLine();
-            _output.WriteLine("time = {0}s", sw.Elapsed.TotalSeconds);
-            _output.WriteLine("count = {0}", count);
-            _output.WriteLine();
-            _output.WriteLine("successful = {0}", successfulCount);
-            _output.WriteLine("failed = {0}", errors.Count);
-            _output.WriteLine("ignored = {0}", ignoredCount);
-            _output.WriteLine();
+            output.WriteLine();
+            output.WriteLine("Tests run: {0}, Failures: {1}, Time: {2:R}", totalCount - ignoredCount, errors.Count, sw.Elapsed.TotalSeconds);
+            output.WriteLine("  Not run: {0}, Ignored: {0}", ignoredCount);
 
-            errors.ForEach(_output.WriteLine);
+            if (errors.Any())
+            {
+                output.WriteLine();
+                output.WriteLine("Failures:");
+
+                foreach (var x in errors.Select((error, i) => new { error, i }))
+                {
+                    output.WriteLine("{0}) {1}", x.i + 1, x.error);
+                    output.WriteLine();
+                }
+            }
         }
     }
 }

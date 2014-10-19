@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using FasterTests.Core.Interfaces;
 using NDesk.Options;
 
@@ -23,8 +24,9 @@ namespace FasterTests.ConsoleRunner
         public void Execute(IEnumerable<string> args, TextWriter output)
         {
             var options = ConfigureOptions();
+            options.Parse(args);
 
-            ConfigureOptions().Parse(args);
+            WriteProgramDescription(output);
 
             if (_showHelp)
             {
@@ -70,6 +72,13 @@ namespace FasterTests.ConsoleRunner
         private static string[] ParseCsv(string commaSeparatedValues)
         {
             return commaSeparatedValues.Split(',');
+        }
+
+        private static void WriteProgramDescription(TextWriter output)
+        {
+            output.WriteLine("FasterTests-Run v.{0}", Assembly.GetExecutingAssembly().GetName().Version);
+            output.WriteLine("Copyright (c) 2013-2014 Andriy Kozachuk");
+            output.WriteLine();
         }
 
         private void WriteHelp(OptionSet options, TextWriter output)

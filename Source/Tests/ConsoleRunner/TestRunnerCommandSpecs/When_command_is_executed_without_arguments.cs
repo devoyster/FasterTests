@@ -14,7 +14,7 @@ namespace FasterTests.Tests.ConsoleRunner.TestRunnerCommandSpecs
 
         It should_not_run_tests = () => The<ITestRunner>().WasNotToldTo(r => r.Run(Param.IsAny<TestRunSettings>()));
 
-        It should_write_error_message = () => Output.ToString().ShouldStartWith("Error: Test assembly path should be provided as first argument");
+        It should_write_error_message = () => Output.ToString().ShouldContain("Error: Test assembly path should be provided as first argument");
 
         It should_write_help = () => Output.ToString().ShouldContain("Usage: FasterTests-Run [testassemblies] [options]");
     }

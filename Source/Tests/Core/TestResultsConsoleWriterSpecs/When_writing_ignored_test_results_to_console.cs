@@ -29,11 +29,13 @@ namespace FasterTests.Tests.Core.TestResultsConsoleWriterSpecs
             result = output.ToString();
         };
 
-        It should_write_progress_dots_for_all_tests = () => result.ShouldContain("I.I");
+        It should_write_progress_dots_for_all_tests = () => result.ShouldContain("N.N");
 
-        It should_write_count_of_all_tests = () => result.ShouldContain("count = 3");
+        It should_write_count_of_all_executed_tests = () => result.ShouldContain("Tests run: 1,");
 
-        It should_write_that_zero_tests_were_failed = () => result.ShouldContain("failed = 0");
+        It should_write_count_of_all_ignored_tests = () => result.ShouldContain("Not run: 2, Ignored: 2");
+
+        It should_write_that_zero_tests_were_failed = () => result.ShouldContain("Failures: 0,");
 
         private static StringWriter output;
         private static TestResultsConsoleWriter writer;
