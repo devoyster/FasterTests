@@ -46,7 +46,7 @@ You can tell FasterTests to patch certain strings in test assembly .config file 
 FasterTests-Run "My.NUnit.Tests.Assembly.dll" -ConfigStringsToPatch "=test_db,=other_test_db"
 ```
 
-Here FasterTests will patch tests .config for each thread by searching for provided substrings (comma-separated) and adding thread index numeric suffix to them (for all threads except the first one). So if 3 threads are running tests in parallel then substring "=test_db" will be replaced with "=test_db**_2**" for thread #2 and "=test_db**_3**" for thread #3, and the same will be true for "=other_test_db".
+Here FasterTests will patch tests .config for each thread by searching for provided substrings (comma-separated) and adding thread index numeric suffix to them (for all threads except the first one). So if 3 threads are running tests in parallel then substring "=test_db" will be replaced with "=test_db_2" for thread #2 and "=test_db_3" for thread #3, and the same will be true for "=other_test_db".
 
 This is useful for storage tests (like DB tests) to make sure that each test thread uses its own storage.
 
