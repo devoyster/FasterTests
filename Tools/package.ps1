@@ -4,6 +4,7 @@ $rootFolder = ".."
 $sourceFolder = "$rootFolder\Source"
 $buildFolder = "$rootFolder\build"
 $packageFolder = "$rootFolder\package"
+$nuspecFile = "FasterTests.nuspec"
 
 function cleanup_package_folder()
 {
@@ -27,14 +28,17 @@ function pack_nuget()
     Write-Host "Preparing NuGet package..."
     
     $nuget = "$sourceFolder\.nuget\nuget.exe"
-    &$nuget pack FasterTests.nuspec -BasePath $buildFolder -OutputDirectory $packageFolder -Verbosity quiet
+    &$nuget pack $nuspecFile -BasePath $buildFolder -OutputDirectory $packageFolder -Verbosity quiet
 }
 
 function pack_zip()
 {
     Write-Host "Preparing zip package..."
     
-    zip $buildFolder "$packageFolder\latest.zip"
+    [xml]$nuspec = Get-Content $nuspecFile
+    $version = $nuspec.package.metadata.version
+    
+    zip $buildFolder "$packageFolder\FasterTests-$version.zip"
 }
 
 cleanup_package_folder
