@@ -2,7 +2,7 @@
 
 FasterTests is a console unit tests runner which can execute your regular tests in parallel to run them faster. And you won't need to change your existing test code for that.
 
-You can install FasterTests from NuGet:
+You can [download FasterTests from GitHub](./releases) or install it from NuGet:
 
 ```
 Install-Package FasterTests
