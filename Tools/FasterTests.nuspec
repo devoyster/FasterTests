@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>FasterTests</id>
+    <version>0.1.0</version>
+    <authors>Andriy Kozachuk</authors>
+    <description>FasterTests is a parallel unit tests console runner for NUnit</description>
+    <licenseUrl>https://raw.githubusercontent.com/devoyster/FasterTests/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/devoyster/FasterTests</projectUrl>
+    <copyright>Copyright (c) 2013-2014, Andriy Kozachuk</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>parallel unit test runner NUnit</tags>
+  </metadata>
+</package>

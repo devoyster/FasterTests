@@ -41,6 +41,7 @@ _ReSharper*/
 
 # Project files
 [Bb]uild/
+[Pp]ackage/
 
 # Office Temp Files
 ~$*
