@@ -1,6 +1,6 @@
 # FasterTests - parallel unit test runner
 
-FasterTests is a console unit tests runner which can execute your regular tests in parallel to run them faster. And you won't need to change your existing test code for that.
+FasterTests is a console unit tests runner that can execute your regular tests in parallel to run them faster. Moreover, you will not need to change your existing test code for that.
 
 You can [download FasterTests from GitHub](../../releases) or install it from NuGet:
 
@@ -8,7 +8,7 @@ You can [download FasterTests from GitHub](../../releases) or install it from Nu
 Install-Package FasterTests
 ```
 
-And then run it from console it as pretty much any other test runner:
+Then run it from console as any other test runner:
 
 ```bat
 FasterTests-Run "My.NUnit.Tests.Assembly.dll" -ExcludeCategories "Slow,Full"
@@ -16,7 +16,7 @@ FasterTests-Run "My.NUnit.Tests.Assembly.dll" -ExcludeCategories "Slow,Full"
 
 This will run all tests from your test assembly except those marked with "Slow" and "Full" categories. Tests will be running in several parallel threads, each thread with its own AppDomain.
 
-Runner behavior can be adjusted with optional command-line arguments:
+You can adjust runner behavior with optional command-line arguments:
 
 * `-IncludeCategories` - comma-separated list of test categories to include into run
 * `-ExcludeCategories` - comma-separated list of test categories to exclude from run
@@ -26,7 +26,7 @@ Runner behavior can be adjusted with optional command-line arguments:
 
 ## Handling conflicting tests
 
-Some tests cannot be run in parallel due to conflicts - common example is DB tests. FasterTests provides two workarounds to solve this problem:
+Some tests are failing when executed in parallel due to conflicts - common example is DB tests. FasterTests provides two workarounds to solve this problem:
 
 ### Group tests which can't run in parallel
 
@@ -36,7 +36,7 @@ You can group together tests which cannot run in parallel using `-NoParallelGrou
 FasterTests-Run "My.NUnit.Tests.Assembly.dll" -NoParallelGroups "Tests.Database.;Tests.Elastic.,Tests.Solr."
 ```
 
-In this example test classes which full name starts with "Tests.Database." will not run in parallel with other such tests. Same is true for the second group - tests which have names starting with "Tests.Elastic." or "Tests.Solr." will not run in parallel with other tests in the same namespaces.
+In this example, test classes which full name starts with "Tests.Database." will not run in parallel with other such tests. It is true for the second group as well - tests that have names starting with "Tests.Elastic." or "Tests.Solr." will not run in parallel with other tests in the same namespaces.
 
 ### Patch test config per thread
 
@@ -63,9 +63,9 @@ Work on FasterTests is in progress so it has some limitations (a.k.a. project TO
 
 ## Other runners
 
-There are other free parallel NUnit test runners out there. Some of them are more mature and feature-rich, but FasterTests seems to be faster :) If FasterTests won't fit your requirements then maybe other runners will.
+There are other free parallel NUnit test runners out there. Some of them are more mature and feature-rich, but FasterTests seems to be faster :) If FasterTests will not fit your requirements then maybe other runners will.
 
-Here are links to some other parallel runners I've discovered:
+Here are links to some other parallel runners I have discovered:
 
 * https://github.com/nunit/dev/wiki/Framework-Parallel-Test-Execution
 * https://cpntr.codeplex.com/
