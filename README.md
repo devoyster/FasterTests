@@ -55,7 +55,7 @@ This is useful for storage tests (like DB tests) to make sure that each test thr
 Work on FasterTests is in progress so it has some limitations (a.k.a. project TODO list):
 
 * Works for NUnit tests only
-* Cannot output results in NUnit XML or Team—ity formats
+* Cannot output results in NUnit XML or TeamCity formats
 * Always creates threads in the same process, with dedicated AppDomains
 * Cannot process more than one test assembly
 * Cannot run specific test - you can only provide categories to include/exclude
