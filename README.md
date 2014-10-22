@@ -67,6 +67,7 @@ There are other free parallel NUnit test runners out there. Some of them are mor
 
 Here are links to some other parallel runners I've discovered:
 
+* https://github.com/nunit/dev/wiki/Framework-Parallel-Test-Execution
 * https://cpntr.codeplex.com/
 * https://nunitmulticore.codeplex.com/
 * http://www.codeproject.com/Tips/134389/Running-NUnit-tests-in-parallel
